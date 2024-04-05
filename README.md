@@ -60,7 +60,7 @@ $ django-admin startproject mysite .
 ```
 $ python manage.py runserver 0:8080
 ```
-ホストの8080ポートをコンテナの8080ポートにマッピングしているため、`https://localhost:8080`にアクセスすると、次の画面が表示されます。
+ホストの8080ポートをコンテナの8080ポートにマッピングしているため、`http://localhost:8080`にアクセスすると、次の画面が表示されます。
 <img width="1512" alt="スクリーンショット 2024-03-25 17 32 18" src="https://github.com/Scala-partners/djangio-tutorial-DC/assets/115516552/3f106c0e-32fb-4ee0-9c14-a1eb40cde76a">
 
 ## 4. コンテナを停止する
@@ -71,7 +71,7 @@ $ dc down
 
 ## 5. その他
 - 次回以降、`1. イメージをビルドする`をスキップして、`2. コンテナを作成して起動する`から実行することができます
-- `dokcer-compose.yml`16行目のコメントアウトを外して`dc up -d`をすると、自動で開発サーバーが起動し、`https://localhost:8000`からアクセスできるようになります
+- `dokcer-compose.yml`16行目のコメントアウトを外して`dc up -d`をすると、自動で開発サーバーが起動し、`http://localhost:8000`からアクセスできるようになります
 
 # 備考
 - DjangoのバージョンはLTSである`4.2`を指定しています
