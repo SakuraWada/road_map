@@ -1,0 +1,31 @@
+body{
+    padding: 40px;
+    background-color: #DADDE4;
+    margin: 10%;
+}
+
+h1{
+    padding: auto;
+}
+.mypage_container{
+    display: grid;
+    grid-template-columns: 150px 150px 150px;
+    grid-template-rows: 150px 150px;
+    gap: 20px;
+}
+.mypage_button{
+    background-color: #FFFFFF;
+    padding: 40px;
+}
+
+
+/* a.mypage_button:hover {
+    margin-top: 3px;
+    color: #fff;
+    background: #f56500;
+}
+
+a.mypage_button--shadow {
+    -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  } */ 

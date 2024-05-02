@@ -14,5 +14,9 @@ RUN pip install --upgrade pip && \
 COPY ./Pipfile ./Pipfile.lock /code/
 RUN pipenv install --system
 
+#エイリアスの設定
+RUN echo 'alias pm="python manage.py"' >> ~/.bashrc
+RUN echo 'alias pmrun="python manage.py runserver 0:8080"' >> ~/.bashrc
+
 # プロジェクトファイルをコピー
 COPY . /code/
