@@ -1,8 +1,8 @@
 from django.contrib.auth import login,authenticate
+from django.contrib.auth.views import LoginView as BaseLoginView, LogoutView as BaseLogoutView
 from django.views import generic
-from django.template import loader
 from django.urls import reverse_lazy
-from ..forms import UserRegisterForm
+from ..forms import *
 
 class AccountRegisterView(generic.CreateView):
     form_class = UserRegisterForm
@@ -16,4 +16,11 @@ class AccountRegisterView(generic.CreateView):
         user = authenticate(username=username, password=password)
         login(self.request, user)
         return response
+
+class LoginView(BaseLoginView):
+    form_class = LoginForm
+    template_name = "overwin/login.html"
+
+class LogoutView(BaseLogoutView):
+    success_url = reverse_lazy('overwin:mypage')
 

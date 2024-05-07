@@ -1,5 +1,4 @@
 {% extends 'overwin/base.html'%}
-{%  load static %}
 
 {% block title %}
 <div class="h1">新規会員登録</div>
@@ -22,6 +21,7 @@
             <button type="submit" class="btn btn-primary">アカウントを登録する</button>
             <a href="{% url 'overwin:mypage' %}" class="btn btn-secondary">戻る</a>
         </div>
+        <span><a href="{% url 'overwin:login' %}">すでにアカウントを持っている方はこちら</a></span>
     </form>
 </div>
 {% endblock %}

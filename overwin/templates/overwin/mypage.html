@@ -1,10 +1,8 @@
 {% extends 'overwin/base.html' %}
-{%  load static %}
 
 <head>
     <title>マイページ</title>
 </head>
-<link rel="stylesheet" href="{% static 'overwin/css/style.css'%}">
 
 {% block title %}
     <h1>マイページ</h1>
@@ -18,7 +16,7 @@
                 <a href="{% url 'overwin:account_register' %}">新規会員登録</a>
             </div>
             <div class="mypage_button fit">
-                <a href=>プレイヤー検索</a>
+                <a href="{% url 'overwin:search_player' %}">プレイヤー検索</a>
             </div>
             <div class="mypage_button fit">
                 <a href=>お気に入りプレイヤー</a>
@@ -33,7 +31,7 @@
                 <a href=>自己紹介カード</a>
             </div>
         </div>
-        <a href=>ログアウト</a>
+        <a href="{% url 'overwin:logout' %}">ログアウト</a>
     {% else %}
         <a href="{% url 'overwin:account_register' %}" class="btn btn-primary">ログインもしくは新規登録</a>
     {% endif %}
