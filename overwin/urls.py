@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from .views import mypage,account_register_and_login
 
 app_name = "overwin"

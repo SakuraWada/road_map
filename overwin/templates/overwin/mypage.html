@@ -1,5 +1,6 @@
+{% extends 'overwin/base.html' %}
 {%  load static %}
-{% extends 'base.html' %}
+
 <head>
     <title>マイページ</title>
 </head>
@@ -7,33 +8,33 @@
 
 {% block title %}
     <h1>マイページ</h1>
-{% end block %}
+{% endblock %}
 
-{% block content%}
-{% if user.is_authenticated %}
-<p>こんにちは{{ user.username }}さん</p>
-
-<div class = "mypage_container fill">
-    <div class="mypage_button fit">
-        <a href="{% url 'overwin:account_register' %}">新規会員登録</a>
-    </div>
-    <div class="mypage_button fit">
-        <a href=>プレイヤー検索</a>
-    </div>
-    <div class="mypage_button fit">
-        <a href=>お気に入りプレイヤー</a>
-    </div>
-    <div class="mypage_button fit">
-        <a href=>アカウント情報</a>
-    </div>
-    <div class="mypage_button fit">
-        <a href=>パーティー募集</a>
-    </div>
-    <div class="mypage_button fit">
-        <a href=>自己紹介カード</a>
-    </div>
-</div>
-
-<a href=>ログアウト</a>
-
-{% else %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <p>こんにちは{{ user.username }}さん</p>
+        <div class = "mypage_container fill">
+            <div class="mypage_button fit">
+                <a href="{% url 'overwin:account_register' %}">新規会員登録</a>
+            </div>
+            <div class="mypage_button fit">
+                <a href=>プレイヤー検索</a>
+            </div>
+            <div class="mypage_button fit">
+                <a href=>お気に入りプレイヤー</a>
+            </div>
+            <div class="mypage_button fit">
+                <a href=>アカウント情報</a>
+            </div>
+            <div class="mypage_button fit">
+                <a href=>パーティー募集</a>
+            </div>
+            <div class="mypage_button fit">
+                <a href=>自己紹介カード</a>
+            </div>
+        </div>
+        <a href=>ログアウト</a>
+    {% else %}
+        <a href="{% url 'overwin:account_register' %}" class="btn btn-primary">ログインもしくは新規登録</a>
+    {% endif %}
+{% endblock %}
