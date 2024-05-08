@@ -5,6 +5,10 @@
 {% endblock %}
 
 {% block content %}
+    <form action="" method="get">
+        <input name="query" value="{{ request.GET.query }}" type="search" />
+        <button type="submit">検索</button>
+    </form>
     <div>
         {% for player in object_list %}
         <ul>
@@ -12,4 +16,5 @@
         </ul>
         {% endfor %}
     </div>
+    <a href="{% url 'overwin:mypage' %}" class="btn btn-secondary">戻る</a>
 {% endblock %}
