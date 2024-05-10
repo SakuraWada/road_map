@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 class User(AbstractUser):
-    pass
+    slug = models.SlugField(unique=True)
 
 class Game_Player(models.Model):
     battle_tag = models.CharField(max_length=32)
