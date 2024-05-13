@@ -1,0 +1,16 @@
+{% extends 'overwin/base.html'%}
+
+{% block title %}
+<div class="h1">お気に入りプレイヤー一覧</div>
+{% endblock %}
+
+{% block content %}
+    <div>
+        {% for player in object_list %}
+        <ul>
+            <li>{{ player.battle_tag }}</li>
+        </ul>
+        {% endfor %}
+    </div>
+    <a href="{% url 'overwin:mypage' %}" class="btn btn-secondary">戻る</a>
+{% endblock %}

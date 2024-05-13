@@ -2,6 +2,7 @@ from ..models import *
 from ..forms import *
 from django.shortcuts import render, get_object_or_404,redirect
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 
 #クラスベースビューだとurlにslugやpkが必要になるので関数ビューで実装
 @login_required
