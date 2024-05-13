@@ -8,6 +8,6 @@ urlpatterns = [
     path('',account_register_and_login.LoginView.as_view(), name='login'),
     path('logout/',account_register_and_login.LogoutView.as_view(), name='logout'),
     path('search_player/',search_favorite_player.PlayerSearchView.as_view(), name='search_player'),
-    path('<slug:slug>/', account_info.AccountInfoView.as_view(), name='account_info'),
-    path('<slug:slug>/update/', account_info.AccountInfoUpdateView.as_view(), name='account_info_update'),
+    path('account_info/', account_info.show_account_info, name='account_info'),
+    path('account_info/update/', account_info.update_account_info, name='account_info_update'),
 ]

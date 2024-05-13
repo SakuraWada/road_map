@@ -1,20 +1,30 @@
-from django.views import generic
 from ..models import *
 from ..forms import *
+from django.shortcuts import render, get_object_or_404,redirect
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 
-class AccountInfoView(generic.DetailView):
-    model=User
-    template_name = "overwin/account_info.html"
-    slug_field = 'slug'
-    slug_url_kwarg = 'account_info'
+#クラスベースビューだとurlにslugやpkが必要になるので関数ビューで実装
+@login_required
+def show_account_info(request):
+    user = get_object_or_404(User, pk=request.user.pk)
+    context = {
+        'username': user.username,
+        'email': user.email,
+    }
+    return render(request, 'overwin/account_info.html', context)
 
-class AccountInfoUpdateView(generic.UpdateView):
-    model = User
-    form_class = AccountInfoUpdateForm
-    template_name = 'overwin/account_info_update.html'
-    slug_field = 'slug'
-    slug_url_kwarg = 'account_info'
-    def get_success_url(self):
-        url = reverse('overwin:account_info')
-        return url
+@login_required
+def update_account_info(request):
+    user = get_object_or_404(User, pk=request.user.pk)
+    if request.method == 'POST':
+        form = AccountInfoUpdateForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('overwin:account_info'))
+    else:
+        form = AccountInfoUpdateForm(instance=user)
+        context = {
+            'form': form,
+        }
+    return render(request, 'overwin/account_info_update.html', context)

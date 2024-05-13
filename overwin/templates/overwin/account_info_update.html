@@ -19,6 +19,6 @@
     </table>
     {% csrf_token %}
     <button type="submit" class="btn btn-success" >更新</button>
-    <a href="{% url 'overwin:account_info' user.pk %}" class="btn btn-secondary">アカウント情報に戻る</a>
+    <a href="{% url 'overwin:account_info'%}" class="btn btn-secondary">アカウント情報に戻る</a>
 {% endblock %}
 

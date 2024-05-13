@@ -10,15 +10,15 @@
             <tbody>
                 <tr>
                     <th>ユーザー名</th>
-                    <td>{{ user.username }}</td>
+                    <td>{{ username }}</td>
                 </tr>
                 <tr>
                     <th>メールアドレス</th>
-                    <td>{{ user.email }}</td>
+                    <td>{{ email }}</td>
                 </tr>
             </tbody>
         </table>
-        <a href="{% url 'overwin:account_info_update' user.slug %}" class="btn btn-primary ">編集する</a>
+        <a href="{% url 'overwin:account_info_update' %}" class="btn btn-primary ">編集する</a>
         <a href="{% url 'overwin:mypage' %}" class="btn btn-secondary">マイページに戻る</a>
     </div>
 {% endblock %}
