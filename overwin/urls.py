@@ -10,4 +10,5 @@ urlpatterns = [
     path('search_player/',search_favorite_player.PlayerSearchView.as_view(), name='search_player'),
     path('account_info/', account_info.show_account_info, name='account_info'),
     path('account_info/update/', account_info.update_account_info, name='account_info_update'),
+    path('account_delete', account_info.delete_account, name='account_delete'),
 ]

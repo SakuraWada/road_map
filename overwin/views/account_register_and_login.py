@@ -2,6 +2,7 @@ from django.contrib.auth import login,authenticate
 from django.contrib.auth.views import LoginView as BaseLoginView, LogoutView as BaseLogoutView
 from django.views import generic
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
 from ..forms import *
 
 class AccountRegisterView(generic.CreateView):
@@ -14,7 +15,6 @@ class AccountRegisterView(generic.CreateView):
         password = form.cleaned_data.get("password")
         username = form.cleaned_data.get("username")
         user = authenticate(username=username, password=password)
-        login(self.request, user)
         return response
 
 class LoginView(BaseLoginView):

@@ -2,7 +2,6 @@ from ..models import *
 from ..forms import *
 from django.shortcuts import render, get_object_or_404,redirect
 from django.contrib.auth.decorators import login_required
-from django.urls import reverse
 
 #クラスベースビューだとurlにslugやpkが必要になるので関数ビューで実装
 @login_required
@@ -28,3 +27,10 @@ def update_account_info(request):
             'form': form,
         }
     return render(request, 'overwin/account_info_update.html', context)
+
+@login_required
+def delete_account(request):
+    user = get_object_or_404(User, pk=request.user.pk)
+    user.delete()
+    return redirect(reverse('overwin:login'))
+
