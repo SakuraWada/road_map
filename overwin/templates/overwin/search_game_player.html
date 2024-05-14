@@ -9,12 +9,18 @@
         <input name="query" value="{{ request.GET.query }}" type="search" />
         <button type="submit">検索</button>
     </form>
-    <div>
-        {% for player in object_list %}
-        <ul>
-            <li>{{ player.battle_tag }}</li>
-        </ul>
-        {% endfor %}
-    </div>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div>
+            {% for player in object_list %}
+            <ul>
+                <li>
+                    {{ player.battle_tag }}<input type="checkbox" name="favorite_player" value="{{ player.id }}">
+                </li>
+            </ul>
+            {% endfor %}
+        </div>
+        <button type="submit">お気に入りに追加</button>
+    </form>
     <a href="{% url 'overwin:mypage' %}" class="btn btn-secondary">戻る</a>
 {% endblock %}

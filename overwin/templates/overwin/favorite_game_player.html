@@ -8,7 +8,14 @@
     <div>
         {% for player in object_list %}
         <ul>
-            <li>{{ player.battle_tag }}</li>
+            <li>
+                {{ player.game_player.battle_tag }}
+                <form action="{% url 'overwin:favorite_game_player' %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="favorite_id" value="{{ player.id }}">
+                    <button type="submit">削除</button>
+                </form>
+            </li>
         </ul>
         {% endfor %}
     </div>

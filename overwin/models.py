@@ -9,11 +9,11 @@ class GamePlayer(models.Model):
         return self.battle_tag
 
 class User(AbstractUser):
-    favorite_game_player = models.ManyToManyField(GamePlayer, blank=True)
+    pass
 
-# class Favorite_Game_Player(models.Model):
-#     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-#     game_player_id = models.ForeignKey(Game_Player, on_delete=models.CASCADE)
-#     def __str__(self):
-#         return self.User.username
+class FavoriteGamePlayer(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    game_player = models.ForeignKey(GamePlayer, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f"{self.user.username} - {self.game_player.battle_tag}"
