@@ -22,5 +22,4 @@ class GamePlayerSearchView(generic.ListView):
         for game_player_id in favorite_game_player_ids:
             game_player = get_object_or_404(GamePlayer, id=game_player_id)
             favorite, created = FavoriteGamePlayer.objects.get_or_create(user=request.user, game_player=game_player)
-
         return self.get(request, *args, **kwargs)
