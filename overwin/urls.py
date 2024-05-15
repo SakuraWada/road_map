@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import account_info,account_register_and_login,favorite_game_player,game_player_stats,mypage,search_game_player
+from .views import account_info,account_register_and_login,favorite_game_player,game_player_info_and_stats,mypage,search_game_player
 
 app_name = "overwin"
 urlpatterns = [
@@ -10,7 +10,7 @@ urlpatterns = [
     path('',                      account_register_and_login.LoginView.as_view(),           name='login'),
     path('logout/',               account_register_and_login.LogoutView.as_view(),          name='logout'),
     #個人戦績
-    path('game_player_stats/',     game_player_stats.GamePlayerInfoView.as_view(),          name='game_player_info'),
+    path('game_player_info/',    game_player_info_and_stats.GamePlayerInfoView.as_view(),  name='game_player_info'),
     #プレイヤー検索
     path('search_game_player/',   search_game_player.GamePlayerSearchView.as_view(),        name='search_game_player'),
     #お気に入りプレイヤー表示

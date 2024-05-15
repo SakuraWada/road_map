@@ -1,0 +1,10 @@
+{% extends 'overwin/base.html'%}
+
+{% block content %}
+    {% if player %}
+    <h1>{{ player.battle_tag }}</h1>
+    {% else %}
+    <p>プレイヤーが見つかりませんでした</p>
+    {% endif %}
+    <a href="{% url 'overwin:favorite_game_player' %}" class="btn btn-secondary">戻る</a>
+{% endblock %}
