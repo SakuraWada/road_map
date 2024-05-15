@@ -3,6 +3,7 @@ from ..models import *
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.shortcuts import get_object_or_404
+import requests
 
 @method_decorator(login_required, name="dispatch")
 class GamePlayerSearchView(generic.ListView):
@@ -12,10 +13,32 @@ class GamePlayerSearchView(generic.ListView):
         query = self.request.GET.get('query')
 
         if query:
-            game_player_list = GamePlayer.objects.filter(battle_tag__icontains=query)
+            search_query = query.replace('#','-')
+
+            #apiからデータを取得
+            api_url   = f'https://overfast-api.tekrop.fr/players'
+            params    = {'name':search_query, 'limit': 200}
+            response  = requests.get(api_url, params=params)
+            json_data = response.json()
+
+            #データのフィルタリング
+            game_player_list = [
+                {
+                    'player_id'  : player['player_id']  , #（例）player-1234
+                    'name'       : player['name']       , #（例）player#1234
+                    'namecard'   : player['namecard']   ,
+                    'title'      : player['title']      ,
+                    'career_url' : player['career_url'] ,
+                    'blizzard_id': player['blizzard_id'],
+                }
+                for player in json_data['results']
+            ]
+
         else:
-            game_player_list = GamePlayer.objects.all()
+            game_player_list = []
+
         return game_player_list
+
     #お気に入り追加時の動作
     def post(self, request, *args, **kwargs):
         favorite_game_player_ids = request.POST.getlist('favorite_player')
