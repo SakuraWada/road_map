@@ -1,5 +1,7 @@
 from django.urls import path
-from .views import account_info,account_register_and_login,favorite_game_player,game_player_info_and_stats,mypage,search_game_player
+# from .views import account_info,account_register_and_login,favorite_game_player,game_player_info_and_stats,mypage,search_game_player
+from views.account_info import show_account_info,update_account_info,delete_account
+
 
 app_name = "overwin"
 urlpatterns = [
@@ -16,7 +18,7 @@ urlpatterns = [
     #お気に入りプレイヤー表示
     path('favorite_game_player/', favorite_game_player.FavoritePlayerView.as_view(),        name='favorite_game_player'),
     #アカウント情報関連
-    path('account_info/',         account_info.show_account_info,                           name='account_info'),
-    path('account_info/update/',  account_info.update_account_info,                         name='account_info_update'),
-    path('account_delete',        account_info.delete_account,                              name='account_delete'),
+    path('account_info/',         show_account_info,                           name='account_info'),
+    path('account_info/update/',  update_account_info,                         name='account_info_update'),
+    path('account_delete',        delete_account,                              name='account_delete'),
 ]
