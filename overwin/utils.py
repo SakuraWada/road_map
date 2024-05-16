@@ -8,8 +8,11 @@ def fetch_data_from_api(continuation_api_url,params):
     #例）https://overfast-api.tekrop.fr/players
     api_url = f"{base_api_url}{continuation_api_url}"
 
+    if params:
     #例）https://overfast-api.tekrop.fr/players?name=sara&limit=200
-    response  = requests.get(api_url, params=params)
+        response  = requests.get(api_url, params=params)
+    else:
+        response  = requests.get(api_url)
     json_data = response.json()
 
     return json_data

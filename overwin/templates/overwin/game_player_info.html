@@ -2,7 +2,12 @@
 
 {% block content %}
     {% if player %}
-    <h1>{{ player.battle_tag }}</h1>
+    <h1>{{ player_data.username }}</h1>
+    <img src="{{ player_data.avatar }}" alt="Player Avatar">
+    <img src="{{ player_data.namecard }}" alt="Player Namecard">
+    <p>{{ player_data.title }}</p>
+    <p><img src="{{ player_data.endorsement.frame }}" alt="Endorsement Frame"></p>
+    <h2>Hero Stats</h2>
     {% else %}
     <p>プレイヤーが見つかりませんでした</p>
     {% endif %}
