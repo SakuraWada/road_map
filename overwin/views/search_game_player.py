@@ -3,7 +3,7 @@ from ..models import *
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.shortcuts import get_object_or_404
-import requests
+from ..utils import fetch_data_from_api
 
 @method_decorator(login_required, name="dispatch")
 class GamePlayerSearchView(generic.ListView):
@@ -16,10 +16,8 @@ class GamePlayerSearchView(generic.ListView):
             search_query = query.replace('#','-')
 
             #apiからデータを取得
-            api_url   = f'https://overfast-api.tekrop.fr/players'
             params    = {'name':search_query, 'limit': 200}
-            response  = requests.get(api_url, params=params)
-            json_data = response.json()
+            json_data = fetch_data_from_api("players", params)
 
             #データのフィルタリング
             game_player_list = [
