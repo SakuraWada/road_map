@@ -1,25 +1,11 @@
 from ..models import *
 from ..forms import *
 from django.views import generic
-from ..utils import fetch_data_from_api
+from ..utils import fetch_data_from_api, rate_calculation, seconds_to_hour_and_minutes
 import math
 
 class GamePlayerInfoView(generic.TemplateView):
     template_name = 'overwin/game_player_info.html'
-
-
-    def seconds_to_hour_and_minutes(self, seconds):
-        hours = math.floor(seconds / 3600)
-        minutes = math.floor((seconds % 3600) / 60)
-        return f"{hours:02d}:{minutes:02d}"
-
-    def kill_count_divide_death_count(self,kill_count,death_count):
-        try:
-            divided_num = round((kill_count / death_count),2)
-        except ZeroDivisionError:
-            divided_num = "-"
-        return divided_num
-
 
     def fetch_player_info_by_battle_tag(self):
         battle_tag = self.request.GET.get('battle_tag')
@@ -38,9 +24,6 @@ class GamePlayerInfoView(generic.TemplateView):
                 'tank_rank_cs' :    fetch_player_info_summary['competitive']['console']['tank'],
                 'damage_rank_cs' :  fetch_player_info_summary['competitive']['console']['damage'],
                 'support_rank_cs' : fetch_player_info_summary['competitive']['console']['support'],
-                # 'tank_rank_pc' :    fetch_player_info_summary['competitive']['pc']['tank'],
-                # 'damage_rank_pc' :  fetch_player_info_summary['competitive']['pc']['damage'],
-                # 'support_rank_pc' : fetch_player_info_summary['competitive']['pc']['support'],
             }
 
         # todo: APIエラーになったときの処理
@@ -59,25 +42,26 @@ class GamePlayerInfoView(generic.TemplateView):
         try:
             #ヒーローごとの簡単なスタッツ
             fetch_hero_stats_summary = fetch_data_from_api(f"players/{battle_tag_to_fetch}/stats/summary", params={'gamemode':'competitive'})
+
             heroes_stats_summary_dict = fetch_hero_stats_summary["heroes"]
-            #ヒーローの画像
-            # fetch_hero_portrait = 
+            #TODO:ヒーローの画像も入れる
 
             player_hero_info = {}
 
             for hero_name, hero_stats in heroes_stats_summary_dict.items():
+                time_played = seconds_to_hour_and_minutes(hero_stats["time_played"])
+                win_rate = hero_stats["winrate"]
+
                 kill_count = hero_stats["average"].get("eliminations", 0)
                 death_count = hero_stats["average"].get("deaths", 0)
-                kill_count_divide_death_count = self.kill_count_divide_death_count(kill_count,death_count)
+                kill_count_divide_death_count = rate_calculation(kill_count,death_count,2)
 
-                time_played = self.seconds_to_hour_and_minutes(hero_stats["time_played"])
-                win_rate = hero_stats["winrate"]
                 average_damage = int(hero_stats["average"].get("damage", 0))
 
                 player_hero_info[hero_name] = {
-                    "kill_count_divide_death_count" : kill_count_divide_death_count,
                     "time_played" :                   time_played,
                     "win_rate" :                      win_rate,
+                    "kill_count_divide_death_count" : kill_count_divide_death_count,
                     "average_damage" :                average_damage,
                 }
 

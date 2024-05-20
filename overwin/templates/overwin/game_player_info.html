@@ -6,22 +6,22 @@
         {% if player_info %}
         <div>
             <img src="{{ player_info.avatar }}" alt="Player Avatar">
-            <img src="{{ player_info.namecard }}" alt="Player Namecard">
-            <p>{{ player_info.title }}</p>
-            <p><img src="{{ player_info.endorsement.frame }}" alt="Endorsement Frame"></p>
+            <img src="{{ player_info.namecard }}" alt="Player Namecard" width=400>
+            <p>Title:{{ player_info.title }}</p>
+            <p><img src="{{ player_info.endorsement.frame }}" alt="Endorsement Frame" width=100></p>
         </div>
         <div>
-            <img src="{{ player_info.tank_rank_cs.role_icon }}" alt="tank_cs_role_icon">
+            <img src="{{ player_info.tank_rank_cs.role_icon }}" alt="tank_cs_role_icon" width=50>
             <img src="{{ player_info.tank_rank_cs.rank_icon }}" alt="tank_cs_rank_icon">
             <img src="{{ player_info.tank_rank_cs.tier_icon }}" alt="tank_cs_tier_icon">
         </div>
         <div>
-            <img src="{{ player_info.damage_rank_cs.role_icon }}" alt="damage_cs_role_icon">
+            <img src="{{ player_info.damage_rank_cs.role_icon }}" alt="damage_cs_role_icon" width=50>
             <img src="{{ player_info.damage_rank_cs.rank_icon }}" alt="damage_cs_rank_icon">
             <img src="{{ player_info.damage_rank_cs.tier_icon }}" alt="damage_cs_tier_icon">
         </div>
         <div>
-            <img src="{{ player_info.support_rank_cs.role_icon }}" alt="support_cs_role_icon">
+            <img src="{{ player_info.support_rank_cs.role_icon }}" alt="support_cs_role_icon" width=50>
             <img src="{{ player_info.support_rank_cs.rank_icon }}" alt="support_cs_rank_icon">
             <img src="{{ player_info.support_rank_cs.tier_icon }}" alt="support_cs_tier_icon">
         </div>
