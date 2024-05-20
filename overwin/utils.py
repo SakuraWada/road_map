@@ -16,3 +16,4 @@ def fetch_data_from_api(continuation_api_url,params):
     json_data = response.json()
 
     return json_data
+
