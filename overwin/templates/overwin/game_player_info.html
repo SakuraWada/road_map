@@ -2,12 +2,18 @@
 
 {% block content %}
     {% if player %}
-    <h1>{{ player_data.username }}</h1>
-    <img src="{{ player_data.avatar }}" alt="Player Avatar">
-    <img src="{{ player_data.namecard }}" alt="Player Namecard">
-    <p>{{ player_data.title }}</p>
-    <p><img src="{{ player_data.endorsement.frame }}" alt="Endorsement Frame"></p>
-    <h2>Hero Stats</h2>
+    <h1>{{ player }}</h1>
+        {% if player_info %}
+        <img src="{{ player_info.avatar }}" alt="Player Avatar">
+        <img src="{{ player_info.namecard }}" alt="Player Namecard">
+        <p>{{ player_info.title }}</p>
+        <p><img src="{{ player_info.endorsement.frame }}" alt="Endorsement Frame"></p>
+        <p>{{ player_info.tank_rank }}</p>
+        <h2>Hero Stats</h2>
+        <p>{{ player_hero_info }}</p>
+        {% else %}
+        <p>非公開のプレイヤーです</p>
+        {% endif %}
     {% else %}
     <p>プレイヤーが見つかりませんでした</p>
     {% endif %}
