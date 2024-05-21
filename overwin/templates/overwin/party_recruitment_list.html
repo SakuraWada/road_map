@@ -7,7 +7,7 @@
 {% block content %}
 <a href="{% url 'overwin:party_recruitment_create'%}">募集の新規作成</a>
 <ul>
-    {% for recruitment in recruitments %}
+    {% for recruitment in object_list %}
         <li>
             <h3>募集者：{{ recruitment.owner.username }}</h3>
             <p>募集人数: {{ recruitment.max_recruit_member }}</p>

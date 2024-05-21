@@ -5,5 +5,6 @@ from.models import *
 admin.site.register(User)
 admin.site.register(GamePlayer)
 admin.site.register(FavoriteGamePlayer)
+admin.site.register(Recruitment)
 
 

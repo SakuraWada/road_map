@@ -57,9 +57,9 @@ class JoinedMember(models.Model):
         null=True
     )
 
-    # @receiver(post_save, sender=JoinedMember)
-    # def update_current_member_count(sender, instance, created, **kwargs):
-    #     if created:
-    #         recruitment = instance.recruitment
-    #         recruitment.current_member_count += 1
-    #         recruitment.save()
+@receiver(post_save, sender=JoinedMember)
+def update_current_member_count(sender, instance, created, **kwargs):
+    if created:
+        recruitment = instance.recruitment
+        recruitment.current_member_count += 1
+        recruitment.save()
