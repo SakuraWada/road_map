@@ -13,9 +13,12 @@ def fetch_data_from_api(continuation_api_url,params=None):
     return json_data
 
 
-def rate_calculation(divisor,dividend,digits_after_point):
+def rate_calculation(divisor,dividend,digits_after_point=None):
     try:
-        divided_num = round((divisor / dividend),digits_after_point)
+        if digits_after_point:
+            divided_num = round((divisor / dividend),digits_after_point)
+        else:
+            divided_num = round((divisor / dividend),digits_after_point)
 
     except ZeroDivisionError:
         divided_num = "-"
