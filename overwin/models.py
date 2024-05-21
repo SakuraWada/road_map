@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 # Create your models here.
 
@@ -17,3 +18,12 @@ class FavoriteGamePlayer(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.game_player.battle_tag}"
+
+class Recruitment(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    max_recruit_member = models.IntegerField(
+        validators=[
+            MinValueValidator(1),
+            MaxValueValidator(4)
+        ]
+    )
