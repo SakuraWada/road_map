@@ -15,3 +15,8 @@ class AccountInfoUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username','email')
+
+class RecruitmentForm(forms.ModelForm):
+    class Meta:
+        model = Recruitment
+        fields = ['max_recruit_member', 'comment']
