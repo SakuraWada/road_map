@@ -20,3 +20,8 @@ class RecruitmentForm(forms.ModelForm):
     class Meta:
         model = Recruitment
         fields = ['max_recruit_member', 'comment']
+
+class RecruitmentUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Recruitment
+        fields = ['max_recruit_member', 'comment']

@@ -2,9 +2,9 @@ from django.views import generic
 from ..models import *
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from ..forms import RecruitmentForm
-from django.urls import reverse_lazy
-from django.shortcuts import render
+from ..forms import RecruitmentForm,RecruitmentUpdateForm
+from django.urls import reverse_lazy, reverse
+from django.shortcuts import render, get_object_or_404,redirect
 
 @login_required
 def show_recruitement_list(request):
@@ -27,3 +27,39 @@ class PartyRecruitmentCreateView(generic.CreateView):
     def form_valid(self, form):
         form.instance.owner = self.request.user
         return super().form_valid(form)
+
+@method_decorator(login_required, name="dispatch")
+class PartyRecruitmentDetailView(generic.DetailView):
+    def get(self, request, pk):
+        recruitment = get_object_or_404(Recruitment, pk=pk)
+        is_owner = request.user.pk == recruitment.owner.pk
+        form = RecruitmentUpdateForm(instance=recruitment)
+        context = {
+            'recruitment': recruitment,
+            'is_owner': is_owner,
+            'form' : form
+        }
+        return render(request, 'overwin/party_recruitment_detail.html', context)
+
+    def post(self, request, pk):
+        recruitment = get_object_or_404(Recruitment, pk=pk)
+        is_owner = request.user.pk == recruitment.owner.pk
+        form = RecruitmentUpdateForm(instance=recruitment)
+        context = {
+            'recruitment': recruitment,
+            'is_owner': is_owner,
+            'form' : form
+        }
+        return render(request, 'overwin/party_recruitment_detail.html', context)
+
+# @login_required
+# def recruitment_delete(request):
+#     recruitment = get_object_or_404(Recruitment, owner=request.user)
+#     recruitment.delete()
+#     return redirect(reverse('overwin:login'))
+
+# @login_required
+# def recruitment_join(request, pk):
+#     # 他人の募集に参加
+#     recruitment = get_object_or_404(Recruitment, pk=pk)
+#     # 参加処理...
