@@ -25,7 +25,7 @@ class FavoriteGamePlayer(models.Model):
 
 
 class Recruitment(models.Model):
-    owner              = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     max_recruit_member = models.IntegerField(
         validators=[

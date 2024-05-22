@@ -4,7 +4,7 @@ from .views.account_register_and_login import AccountRegisterView, LoginView, Lo
 from .views.game_player_info_and_stats import GamePlayerInfoView
 from .views.search_game_player import GamePlayerSearchView
 from .views.favorite_game_player import FavoritePlayerView
-from .views.party_recruitment import PartyRecruitmentListView,PartyRecruitmentCreateView
+from .views.party_recruitment import show_recruitement_list,PartyRecruitmentCreateView
 from .views.account_info import show_account_info,update_account_info,delete_account
 
 
@@ -27,6 +27,6 @@ urlpatterns = [
     path('account_info/update/',  update_account_info,                name='account_info_update'),
     path('account_delete',        delete_account,                     name='account_delete'),
     #パーティー募集
-    path('party_recruitment_list',   PartyRecruitmentListView.as_view(),   name='party_recruitment_list'),
+    path('party_recruitment_list',   show_recruitement_list,               name='party_recruitment_list'),
     path('party_recruitment_create', PartyRecruitmentCreateView.as_view(), name='party_recruitment_create'),
 ]

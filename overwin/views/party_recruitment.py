@@ -4,11 +4,18 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from ..forms import RecruitmentForm
 from django.urls import reverse_lazy
+from django.shortcuts import render
 
-@method_decorator(login_required, name="dispatch")
-class PartyRecruitmentListView(generic.ListView):
-    template_name = "overwin/party_recruitment_list.html"
-    model = Recruitment
+@login_required
+def show_recruitement_list(request):
+    user_recruitment = Recruitment.objects.filter(owner=request.user)
+    other_recruitments = Recruitment.objects.exclude(owner=request.user)
+    context = {
+        'user_recruitment': user_recruitment,
+        'other_recruitments': other_recruitments,
+    }
+    # breakpoint()
+    return render(request, 'overwin/party_recruitment_list.html', context)
 
 @method_decorator(login_required, name="dispatch")
 class PartyRecruitmentCreateView(generic.CreateView):
