@@ -14,7 +14,6 @@ def show_recruitement_list(request):
         'user_recruitment': user_recruitment,
         'other_recruitments': other_recruitments,
     }
-    # breakpoint()
     return render(request, 'overwin/party_recruitment_list.html', context)
 
 @method_decorator(login_required, name="dispatch")
