@@ -40,9 +40,11 @@ class UpdateAccountInfoView(generic.UpdateView):
         else:
             return self.form_invalid(form)
 
-@login_required
-def delete_account(request):
-    user = get_object_or_404(User, pk=request.user.pk)
-    user.delete()
-    return redirect(reverse('overwin:login'))
+@method_decorator(login_required, name="dispatch")
+class DeleteAccountInfoView(generic.DeleteView):
+    model = User
+    success_url = reverse_lazy('overwin:login')
+    template_name = 'overwin/account_delete.html'
 
+    def get_object(self, queryset=None):
+        return get_object_or_404(User, pk=self.request.user.pk)
