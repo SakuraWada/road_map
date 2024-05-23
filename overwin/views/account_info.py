@@ -6,15 +6,15 @@ from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.utils.decorators import method_decorator
 
-#クラスベースビューだとurlにslugやpkが必要になるので関数ビューで実装
-@login_required
-def show_account_info(request):
-    user = get_object_or_404(User, pk=request.user.pk)
-    context = {
-        'username': user.username,
-        'email': user.email,
-    }
-    return render(request, 'overwin/account_info.html', context)
+@method_decorator(login_required, name="dispatch")
+class AccountInfoView(generic.TemplateView):
+    template_name = 'overwin/account_info.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['username'] = self.request.user.username
+        context['email'] = self.request.user.email
+        return context
 
 @method_decorator(login_required, name="dispatch")
 class UpdateAccountInfoView(generic.UpdateView):
