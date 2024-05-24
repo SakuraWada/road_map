@@ -10,7 +10,7 @@
 <p>作成者: {{ recruitment.author.username }}</p>
 
 {% if is_owner %}
-<form action="" method="POST">
+<form method="POST">
     {{ form.non_field_errors }}
             {% for field in form %}
                 <label for="{{ field.id_for_label }}">{{ field.label }}</label>

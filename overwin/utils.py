@@ -1,7 +1,6 @@
 #汎用的な関数を記述しているファイル
 import requests,math
 
-# fetchdata(players, {'name':search_query, 'limit': 200})
 def fetch_data_from_api(continuation_api_url,params=None):
     """
     overfast(API)からデータを取得し、データをjson形式で返す関数

@@ -10,7 +10,6 @@ class FavoritePlayerView(generic.ListView):
     model = FavoriteGamePlayer
     query_set = FavoriteGamePlayer.objects.all()
 
-    #削除時の動作
     def post(self, request, *args, **kwargs):
         favorite_id = request.POST.get('favorite_id')
         if favorite_id:

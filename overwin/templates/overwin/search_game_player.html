@@ -5,11 +5,11 @@
 {% endblock %}
 
 {% block content %}
-<form action="" method="get">
+<form method="get">
     <input name="query" value="{{ request.GET.query }}" type="search" />
     <button type="submit">検索</button>
 </form>
-<form action="" method="post">
+<form method="post">
     {% csrf_token %}
     <div>
         {% for player in object_list %}

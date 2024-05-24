@@ -11,17 +11,7 @@ class LoginForm(AuthenticationForm):
     class Meta:
         model = User
 
-class AccountInfoUpdateForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ('username','email')
-
 class RecruitmentForm(forms.ModelForm):
-    class Meta:
-        model = Recruitment
-        fields = ['max_recruit_member', 'comment']
-
-class RecruitmentUpdateForm(forms.ModelForm):
     class Meta:
         model = Recruitment
         fields = ['max_recruit_member', 'comment']

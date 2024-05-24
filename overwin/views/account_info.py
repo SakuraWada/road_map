@@ -6,7 +6,6 @@ from django.urls import reverse
 from django.views import generic
 from django.utils.decorators import method_decorator
 
-#クラスベースビューだとurlにslugやpkが必要になるので関数ビューで実装
 @login_required
 def show_account_info(request):
     user = get_object_or_404(User, pk=request.user.pk)
@@ -20,13 +19,7 @@ def show_account_info(request):
 class UpdateAccountInfoView(generic.UpdateView):
     def get(self, request):
         user = get_object_or_404(User, pk=request.user.pk)
-    # if request.method == 'POST':
-    #     form = AccountInfoUpdateForm(request.POST, instance=user)
-    #     if form.is_valid():
-    #         form.save()
-    #         return redirect(reverse('overwin:account_info'))
-    # else:
-        form = AccountInfoUpdateForm(instance=user)
+        form = UserRegisterForm(instance=user)
         context = {
             'form': form,
         }

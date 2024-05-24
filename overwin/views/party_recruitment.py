@@ -2,7 +2,7 @@ from django.views import generic
 from ..models import *
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from ..forms import RecruitmentForm,RecruitmentUpdateForm
+from ..forms import *
 from django.urls import reverse_lazy, reverse
 from django.shortcuts import render, get_object_or_404,redirect
 
@@ -14,7 +14,6 @@ def show_recruitement_list(request):
         'user_recruitment': user_recruitment,
         'other_recruitments': other_recruitments,
     }
-    # breakpoint()
     return render(request, 'overwin/party_recruitment_list.html', context)
 
 @method_decorator(login_required, name="dispatch")
@@ -44,22 +43,10 @@ class PartyRecruitmentDetailView(generic.DetailView):
     def post(self, request, pk):
         recruitment = get_object_or_404(Recruitment, pk=pk)
         is_owner = request.user.pk == recruitment.owner.pk
-        form = RecruitmentUpdateForm(instance=recruitment)
+        form = RecruitmentForm(instance=recruitment)
         context = {
             'recruitment': recruitment,
             'is_owner': is_owner,
             'form' : form
         }
         return render(request, 'overwin/party_recruitment_detail.html', context)
-
-# @login_required
-# def recruitment_delete(request):
-#     recruitment = get_object_or_404(Recruitment, owner=request.user)
-#     recruitment.delete()
-#     return redirect(reverse('overwin:login'))
-
-# @login_required
-# def recruitment_join(request, pk):
-#     # 他人の募集に参加
-#     recruitment = get_object_or_404(Recruitment, pk=pk)
-#     # 参加処理...
