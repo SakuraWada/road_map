@@ -1,5 +1,5 @@
 from django.views import generic
-from ..models import *
+from ..models import FavoriteGamePlayer
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.shortcuts import redirect

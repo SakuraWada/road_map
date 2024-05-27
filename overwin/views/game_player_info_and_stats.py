@@ -1,5 +1,4 @@
-from ..models import *
-from ..forms import *
+from ..models import GamePlayer
 from django.views import generic
 from ..utils import fetch_data_from_api, rate_calculation, seconds_to_hour_and_minutes
 import math

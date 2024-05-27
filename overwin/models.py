@@ -45,7 +45,7 @@ class JoinedMember(models.Model):
     role = models.CharField(
         max_length=16,
         choices=Role.choices(),
-        default=None,
+        default=Role.FREE_ROLE.key,
         blank=True,
         null=True
     )

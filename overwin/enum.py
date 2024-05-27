@@ -28,6 +28,7 @@ class KeyLabelEnum(BaseEnum):
         return [(e.key, e.label) for e in cls]
 
 class Role(KeyLabelEnum):
+    FREE_ROLE = ("free_role", "ロール自由")
     TANK = ("tank", "タンク")
     DAMAGE = ("damage", "ダメージ")
     SUPPORT = ("support", "サポート")
