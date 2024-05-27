@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import MinValueValidator, MaxValueValidator
-from django.dispatch import receiver
 from .enum import Role
 
 class GamePlayer(models.Model):
