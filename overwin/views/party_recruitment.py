@@ -1,8 +1,8 @@
 from django.views import generic
-from ..models import *
+from ..models import Recruitment
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from ..forms import *
+from ..forms import RecruitmentForm
 from django.urls import reverse_lazy, reverse
 from django.shortcuts import render, get_object_or_404,redirect
 
@@ -32,7 +32,7 @@ class PartyRecruitmentDetailView(generic.DetailView):
     def get(self, request, pk):
         recruitment = get_object_or_404(Recruitment, pk=pk)
         is_owner = request.user.pk == recruitment.owner.pk
-        form = RecruitmentUpdateForm(instance=recruitment)
+        form = RecruitmentForm(instance=recruitment)
         context = {
             'recruitment': recruitment,
             'is_owner': is_owner,
@@ -50,3 +50,9 @@ class PartyRecruitmentDetailView(generic.DetailView):
             'form' : form
         }
         return render(request, 'overwin/party_recruitment_detail.html', context)
+
+@method_decorator(login_required, name="dispatch")
+class DeleteRecruitmentView(generic.DeleteView):
+    model = Recruitment
+    success_url = reverse_lazy('overwin:party_recruitment_list')
+    template_name = 'overwin/recruitment_delete.html'
