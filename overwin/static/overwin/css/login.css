@@ -1,0 +1,48 @@
+h1{
+    margin: 20px;
+    color: #4C4C4C;
+    text-align: center;
+}
+
+.logo {
+    text-align: center;
+}
+
+.logo img{
+    width: 150px;
+    height: auto;
+}
+
+.login-container{
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+}
+
+.login-container form input[type="text"],
+.login-container form input[type="password"] {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 20px;
+    color: #4C4C4C;
+}
+
+.btn-primary{
+    align-self: center;
+    padding: 10px 50px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn-secondary{
+    color: #37A6F6;
+    text-align: center;
+}
+
+.btn-area{
+    text-align: center;
+}

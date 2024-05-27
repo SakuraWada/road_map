@@ -1,0 +1,28 @@
+body{
+    padding: 40px;
+    background-color: #DADDE4;
+    font-family: Arial, sans-serif;
+    color: #4c4c4c;
+}
+
+.logo {
+    text-align: center;
+}
+
+.logo img{
+    width: 150px;
+    height: auto;
+}
+
+.btn-primary{
+    padding: 10px 20px;
+    background-color: #E0612B;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
