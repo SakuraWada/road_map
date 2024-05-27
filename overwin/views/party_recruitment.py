@@ -2,7 +2,7 @@ from django.views import generic
 from ..models import Recruitment
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from forms.party_recruitment import RecruitmentForm
+from ..forms.party_recruitment import RecruitmentForm
 from django.urls import reverse_lazy, reverse
 from django.shortcuts import render, get_object_or_404,redirect
 

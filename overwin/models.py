@@ -46,6 +46,4 @@ class JoinedMember(models.Model):
         max_length=16,
         choices=Role.choices(),
         default=Role.FREE_ROLE.key,
-        blank=True,
-        null=True
     )

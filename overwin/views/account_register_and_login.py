@@ -3,7 +3,7 @@ from django.contrib.auth.views import LoginView as BaseLoginView, LogoutView as 
 from django.views import generic
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
-from forms.login import LoginForm
+from ..forms.account_register_and_login import UserRegisterForm,LoginForm
 
 class AccountRegisterView(generic.CreateView):
     form_class = UserRegisterForm

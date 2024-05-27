@@ -50,3 +50,5 @@ class GamePlayerSearchView(generic.ListView):
             add_game_player_name = GamePlayer.objects.get(battle_tag=game_player_name)
             favorite, created = FavoriteGamePlayer.objects.get_or_create(user=request.user, game_player=add_game_player_name)
         return self.get(request, *args, **kwargs)
+
+    #TODO:各プレイヤーの戦績画面へ遷移する動作

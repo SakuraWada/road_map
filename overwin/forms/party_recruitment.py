@@ -1,4 +1,4 @@
-from .models import Recruitment
+from ..models import Recruitment
 from django import forms
 
 class RecruitmentForm(forms.ModelForm):
