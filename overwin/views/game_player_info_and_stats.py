@@ -1,5 +1,4 @@
-from ..models import *
-from ..forms import *
+from ..models import GamePlayer
 from django.views import generic
 from ..utils import fetch_data_from_api, rate_calculation, seconds_to_hour_and_minutes
 import math
@@ -15,7 +14,6 @@ class GamePlayerInfoView(generic.TemplateView):
             #推薦レベル、ランク、アイコン、バナー、称号
             fetch_player_info_summary = fetch_data_from_api(f"players/{battle_tag_to_fetch}/summary", params=None)
 
-            #データの作成
             player_info ={
                 'avatar':           fetch_player_info_summary['avatar'],
                 'namecard':         fetch_player_info_summary['namecard'],
@@ -40,7 +38,7 @@ class GamePlayerInfoView(generic.TemplateView):
         battle_tag_to_fetch = battle_tag.replace("#","-")
 
         try:
-            #ヒーローごとの簡単なスタッツ
+            #ヒーローごとの簡単なスタッツを取得
             fetch_hero_stats_summary = fetch_data_from_api(f"players/{battle_tag_to_fetch}/stats/summary", params={'gamemode':'competitive'})
 
             heroes_stats_summary_dict = fetch_hero_stats_summary["heroes"]

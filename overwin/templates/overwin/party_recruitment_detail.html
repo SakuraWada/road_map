@@ -1,0 +1,33 @@
+{% extends 'overwin/base.html'%}
+
+{% block title %}
+<div class="h1">パーティー募集</div>
+{% endblock %}
+
+{% block content %}
+<h1>{{ recruitment.title }}</h1>
+<p>{{ recruitment.content }}</p>
+<p>作成者: {{ recruitment.author.username }}</p>
+
+{% if is_owner %}
+<form method="POST">
+    {{ form.non_field_errors }}
+            {% for field in form %}
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+            {% endfor %}
+    {% csrf_token %}
+    <button type="submit" class="btn btn-success" >更新</button>
+    <a href="{% url 'overwin:party_recruitment_list'%}" class="btn btn-secondary">募集一覧に戻る</a>
+{% else %}
+<ul>
+    <li>
+        <h3>募集者：{{ recruitment.owner.username }}</h3>
+        <p>募集人数: {{ recruitment.max_recruit_member }}</p>
+        <p>参加人数: {{ recruitment.current_member_count }}</p>
+        <p>備考欄: {{ recruitment.comment }}</p>
+    <a href="{% url 'overwin:party_recruitment_list'%}" class="btn btn-secondary">募集一覧に戻る</a>
+    </li>
+</ul>
+{% endif %}
+{% endblock %}

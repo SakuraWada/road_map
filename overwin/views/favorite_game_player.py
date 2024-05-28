@@ -1,5 +1,5 @@
 from django.views import generic
-from ..models import *
+from ..models import FavoriteGamePlayer
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.shortcuts import redirect
@@ -10,7 +10,6 @@ class FavoritePlayerView(generic.ListView):
     model = FavoriteGamePlayer
     query_set = FavoriteGamePlayer.objects.all()
 
-    #削除時の動作
     def post(self, request, *args, **kwargs):
         favorite_id = request.POST.get('favorite_id')
         if favorite_id:

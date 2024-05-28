@@ -1,8 +1,22 @@
 #汎用的な関数を記述しているファイル
 import requests,math
 
-# fetchdata(players, {'name':search_query, 'limit': 200})
 def fetch_data_from_api(continuation_api_url,params=None):
+    """
+    overfast(API)からデータを取得し、データをjson形式で返す関数
+
+    Parameters
+    ----------
+    continuation_api_url : str
+        base_api_urlの続きのurl
+    params : dictionary, optional
+        パラメータが必要な際に{パラメータ：値}の形式で入力する。 デフォルトはNone
+
+    Returns
+    -------
+    dictionary
+        APIから取得した値
+    """
     base_api_url = "https://overfast-api.tekrop.fr/"
 
     #例）https://overfast-api.tekrop.fr/players
