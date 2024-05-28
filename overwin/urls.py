@@ -5,7 +5,7 @@ from .views.game_player_info_and_stats import GamePlayerInfoView
 from .views.search_game_player import GamePlayerSearchView
 from .views.favorite_game_player import FavoritePlayerView
 from .views.account_info import show_account_info,UpdateAccountInfoView,delete_account
-from .views.party_recruitment import show_recruitement_list,PartyRecruitmentCreateView,PartyRecruitmentDetailView
+from .views.party_recruitment import show_recruitement_list,PartyRecruitmentCreateView,PartyRecruitmentDetailView, PartyRecruitmentDeleteView
 
 
 app_name = "overwin"
@@ -29,5 +29,6 @@ urlpatterns = [
     #パーティー募集
     path('party_recruitment_list',   show_recruitement_list,               name='party_recruitment_list'),
     path('party_recruitment_create', PartyRecruitmentCreateView.as_view(), name='party_recruitment_create'),
+    path('party_recruitment_delete/<int:pk>', PartyRecruitmentDeleteView.as_view(), name='party_recruitment_delete'),
     path('party_recruitment_detail/<int:pk>', PartyRecruitmentDetailView.as_view(),              name='party_recruitment_detail'),
 ]

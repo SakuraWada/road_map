@@ -45,13 +45,13 @@ class PartyRecruitmentDetailView(generic.DetailView):
         is_owner = request.user.pk == recruitment.owner.pk
         form = RecruitmentForm(instance=recruitment)
 
-        if is_owner:
+        #募集者側の操作
+        if 'recruitment_update' in request.POST:
             if form.is_valid():
                 form.save()
             return redirect('overwin:party_recruitment_detail', pk=pk)
-        else:
-            form = RecruitmentForm(instance=recruitment)
 
+        #参加者側の操作
         if 'join' in request.POST:
             recruitment.current_member_count += 1
             recruitment.save()
@@ -64,7 +64,7 @@ class PartyRecruitmentDetailView(generic.DetailView):
         return render(request, 'overwin/party_recruitment_detail.html', context)
 
 @method_decorator(login_required, name="dispatch")
-class DeleteRecruitmentView(generic.DeleteView):
+class PartyRecruitmentDeleteView(generic.DeleteView):
     model = Recruitment
     success_url = reverse_lazy('overwin:party_recruitment_list')
     template_name = 'overwin/recruitment_delete.html'

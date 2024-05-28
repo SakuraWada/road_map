@@ -1,9 +1,5 @@
 {% extends 'overwin/base.html'%}
 
-{% block title %}
-<div class="h1">パーティー募集</div>
-{% endblock %}
-
 {% block content %}
 <h1>{{ recruitment.title }}</h1>
 <p>{{ recruitment.content }}</p>
@@ -17,8 +13,9 @@
                 {{ field }}
             {% endfor %}
     {% csrf_token %}
-    <button type="submit" class="btn btn-success" >更新</button>
+    <button name="recruitment_update" type="submit" class="btn btn-success" >更新</button>
     <a href="{% url 'overwin:party_recruitment_list'%}" class="btn btn-secondary">募集一覧に戻る</a>
+    <a href="{% url 'overwin:party_recruitment_delete' recruitment.id %}" class="btn btn-secondary">募集を削除</a>
 {% else %}
 <ul>
     <li>
