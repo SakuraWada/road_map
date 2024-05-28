@@ -1,14 +1,16 @@
 {% extends 'overwin/base.html' %}
+{% load static %}
 
 <head>
     <title>マイページ</title>
 </head>
 
-{% block title %}
-    <h1>マイページ</h1>
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'overwin/css/mypage.css'%}">
 {% endblock %}
 
 {% block content %}
+<h1>マイページ</h1>
     {% if user.is_authenticated %}
         <p>こんにちは{{ user.username }}さん</p>
         <div class = "mypage_container fill">
