@@ -1,23 +1,27 @@
 {% extends 'overwin/base.html' %}
+{% load static %}
 
-{% block title %}
-<div class="h1">ログイン</div>
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'overwin/css/login.css' %}">
 {% endblock %}
 
 {% block content %}
-    <form method="post">
+    <h1>ログイン</h1>
+    <div class="login-container">
+        <form method="post">
         {% csrf_token %}
         {{ form.non_field_errors }}
         {% for field in form %}
-        {{ field.label }}
+        <div class="form-field">
+        {{ field.label_tag }}
         {{ field }}
         {{ field.errors }}
-        <br>
-        {% endfor %}
-        <div class="mt-3">
-            <button type="submit" class="btn btn-primary">ログイン</button>
-            <a href="{% url 'overwin:mypage' %}" class="btn btn-secondary">戻る</a>
         </div>
-        <a href="{% url 'overwin:account_register'%}">新規会員登録はこちら</a>
-    </form>
+        {% endfor %}
+        <div>
+        <button type="submit" class="btn btn-primary">ログイン</button>
+        </div>
+        <a class="btn-secondary" href="{% url 'overwin:account_register'%}">新規会員登録はこちら</a>
+        </form>
+    </div>
 {% endblock %}
