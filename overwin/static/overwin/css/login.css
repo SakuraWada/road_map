@@ -4,15 +4,6 @@ h1{
     text-align: center;
 }
 
-.logo {
-    text-align: center;
-}
-
-.logo img{
-    width: 150px;
-    height: auto;
-}
-
 .login-container{
     text-align: center;
 }
@@ -28,12 +19,7 @@ h1{
     color: #4C4C4C;
 }
 
-.btn-primary{
-    align-self: center;
-    padding: 10px 50px;
-    margin-top: 20px;
-}
-
 .btn-secondary{
+    text-align: right;
     color: #2e8acb;
 }

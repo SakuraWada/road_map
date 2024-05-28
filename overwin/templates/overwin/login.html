@@ -9,19 +9,21 @@
     <h1>ログイン</h1>
     <div class="login-container">
         <form method="post">
-        {% csrf_token %}
-        {{ form.non_field_errors }}
-        {% for field in form %}
-        <div class="form-field">
-        {{ field.label_tag }}
-        {{ field }}
-        {{ field.errors }}
-        </div>
-        {% endfor %}
-        <div>
-        <button type="submit" class="btn btn-primary">ログイン</button>
-        </div>
-        <a class="btn-secondary" href="{% url 'overwin:account_register'%}">新規会員登録はこちら</a>
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            {% for field in form %}
+            <div class="form-field">
+            {{ field.label_tag }}
+            {{ field }}
+            {{ field.errors }}
+            </div>
+            {% endfor %}
+            <div>
+                <button type="submit" class="btn btn-primary">ログイン</button>
+            </div>
+            <div>
+                <a class="btn-secondary" href="{% url 'overwin:account_register'%}">新規会員登録はこちら</a>
+            </div>
         </form>
     </div>
 {% endblock %}

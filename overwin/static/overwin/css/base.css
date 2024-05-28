@@ -5,24 +5,26 @@ body{
     color: #4c4c4c;
 }
 
-.logo {
-    text-align: center;
-}
-
-.logo img{
-    width: 150px;
-    height: auto;
+img.logo{
+    display: block;
+    margin: 0 auto;
+    height: 150px;
 }
 
 .btn-primary{
-    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 400;
     background-color: #E0612B;
     color: #fff;
     border: none;
     border-radius: 10px;
-    cursor: pointer;
+    padding: 10px 170px;
     margin-top: 20px;
-    margin-bottom: 10px;
-    text-align: center;
+    margin-bottom: 15px;
+    cursor: pointer;
 }
 
+.btn-secondary{
+    color: #2e8acb;
+    cursor: pointer;
+}
