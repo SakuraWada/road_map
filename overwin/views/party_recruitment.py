@@ -43,14 +43,19 @@ class PartyRecruitmentDetailView(generic.DetailView):
     def post(self, request, pk):
         recruitment = get_object_or_404(Recruitment, pk=pk)
         is_owner = request.user.pk == recruitment.owner.pk
+        form = RecruitmentForm(instance=recruitment)
 
         if is_owner:
-            form = form = RecruitmentForm(request.POST, instance=recruitment)
             if form.is_valid():
                 form.save()
             return redirect('overwin:party_recruitment_detail', pk=pk)
         else:
             form = RecruitmentForm(instance=recruitment)
+
+        if 'join' in request.POST:
+            recruitment.current_member_count += 1
+            recruitment.save()
+
         context = {
             'recruitment': recruitment,
             'is_owner': is_owner,
