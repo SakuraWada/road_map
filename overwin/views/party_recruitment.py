@@ -1,9 +1,9 @@
-from django.views import generic
+from ..forms.party_recruitment import RecruitmentForm
 from ..models import Recruitment
+from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from ..forms.party_recruitment import RecruitmentForm
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from django.shortcuts import render, get_object_or_404,redirect
 
 @login_required
@@ -43,7 +43,14 @@ class PartyRecruitmentDetailView(generic.DetailView):
     def post(self, request, pk):
         recruitment = get_object_or_404(Recruitment, pk=pk)
         is_owner = request.user.pk == recruitment.owner.pk
-        form = RecruitmentForm(instance=recruitment)
+
+        if is_owner:
+            form = form = RecruitmentForm(request.POST, instance=recruitment)
+            if form.is_valid():
+                form.save()
+            return redirect('overwin:party_recruitment_detail', pk=pk)
+        else:
+            form = RecruitmentForm(instance=recruitment)
         context = {
             'recruitment': recruitment,
             'is_owner': is_owner,
