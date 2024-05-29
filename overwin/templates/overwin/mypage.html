@@ -10,21 +10,22 @@
 <h1>マイページ</h1>
     {% if user.is_authenticated %}
         <p>こんにちは、{{ user.username }}さん</p>
+        <!-- TODO:ボタンの選択範囲を広げる -->
         <div class = "mypage-button-container">
             <div class="mypage-button">
-                <img id="search-player-btn-image" class="mypage-button-img" src="{% static 'overwin/img/mypage-search-player.png' %}" alt="マイページ">
+                <img id="search-player-btn-img" class="mypage-button-img" src="{% static 'overwin/img/mypage-search-player.png' %}" alt="マイページ">
                 <a href="{% url 'overwin:search_game_player' %}">プレイヤー検索</a>
             </div>
             <div class="mypage-button">
-                <img class="mypage-button-img" src="{% static 'overwin/img/mypage-favorite.png' %}" alt="お気に入りプレイヤー">
-                <a href="{% url 'overwin:favorite_game_player' %}">お気に入りプレイヤー</a>
+                <img id="favorite-btn-img" class="mypage-button-img" src="{% static 'overwin/img/mypage-favorite.png' %}" alt="お気に入りプレイヤー">
+                <a href="{% url 'overwin:favorite_game_player' %}">お気に入り<br>プレイヤー</a>
             </div>
             <div class="mypage-button">
-                <img class="mypage-button-img" src="{% static 'overwin/img/mypage-account-info.png' %}" alt="アカウント情報">
+                <img id="account-info-btn-img" class="mypage-button-img" src="{% static 'overwin/img/mypage-account-info.png' %}" alt="アカウント情報">
                 <a href="{% url 'overwin:account_info'%}">アカウント情報</a>
             </div>
             <div class="mypage-button">
-                <img class="mypage-button-img" src="{% static 'overwin/img/mypage-party-recruitment.png' %}" alt="パーティー募集">
+                <img id="party-recruitment-btn-img" class="mypage-button-img" src="{% static 'overwin/img/mypage-party-recruitment.png' %}" alt="パーティー募集">
                 <a href="{% url 'overwin:party_recruitment_list'%}">パーティー募集</a>
             </div>
         </div>

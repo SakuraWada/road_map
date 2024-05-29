@@ -8,9 +8,9 @@ p{
 
 .mypage-button-container{
     display: grid;
-    grid-template-columns: repeat(3, 150px);
+    grid-template-columns: repeat(3, 160px);
     grid-template-rows: repeat(2, 150px);
-    gap: 20px;
+    gap: 30px;
     justify-content: center;
 }
 .mypage-button{
@@ -18,17 +18,47 @@ p{
     padding: 10px;
     border: none;
     border-radius: 5px;
+    /* ボタン内の要素を垂直に並べ、中央に配置する */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .mypage-button-img{
     max-width: 50%;
+    margin-top: 10px;
     margin-bottom: 10px;
+    display: block;
+    text-align: center;
+}
+
+.mypage-button a{
+    color: #4c4c4c;
+    margin-top: auto;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 #search-player-btn-img{
     transform: rotate(45deg);
+    max-width: 45%;
+}
+
+#account-info-btn-img{
+    margin-top: 10px;
+    max-width: 60%;
+}
+
+#party-recruitment-btn-img{
+    max-width: 70%;
 }
 
 .btn-secondary{
-    
+    /* :TODO ログアウトボタンの修正 */
+    display: block;
+    text-align: left;
+    width: 100px;
+    height: 30px;
+    margin-top: 50px;
 }
