@@ -1,7 +1,6 @@
-from ..models import GamePlayer
 from django.views import generic
-from ..utils import fetch_data_from_api, rate_calculation, seconds_to_hour_and_minutes
-import math
+from models import GamePlayer
+from utils import fetch_data_from_api, rate_calculation, seconds_to_hour_and_minutes
 
 class GamePlayerInfoView(generic.TemplateView):
     template_name = 'overwin/game_player_info.html'
