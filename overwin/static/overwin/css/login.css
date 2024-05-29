@@ -5,6 +5,7 @@ h1{
     text-align: center;
 }
 
+/* TODO: 文字の大きさと太さ */
 .login-container{
     max-width: 375px;
     margin: 0 auto;
@@ -32,9 +33,10 @@ h1{
     display: block;
     text-align: center;
     width: 100%;
-    height: 40px;
+    height: 50px;
     margin-top: 50px;
     margin-bottom: 15px;
+    font-size: 2rem;
 }
 
 .register-link{
