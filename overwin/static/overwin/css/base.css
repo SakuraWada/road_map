@@ -21,6 +21,10 @@ img.logo{
 }
 
 .btn-secondary{
-    color: #2e8acb;
-    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: #2e8acb;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
 }
