@@ -6,14 +6,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'overwin/css/base.css'%}">
     {% block page_css %}
     {% endblock %}
-    <link rel="stylesheet" href="{% static 'overwin/css/base.css'%}">
     <title>Overwin</title>
 </head>
 
 <body>
-    <img class="logo" src="{% static 'overwin/img/logo.png' %}" alt="ロゴ">
+    <div class="logo-area">
+        <img class="logo-img" src="{% static 'overwin/img/logo.png' %}" alt="ロゴ">
+    </div>
 {% block content %}
 {% endblock %}
 </body>
