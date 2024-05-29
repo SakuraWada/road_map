@@ -1,9 +1,10 @@
-h1{
+h1,p{
     text-align: left;
 }
 
-p{
-    text-align: left;
+.mypage-container{
+    margin: 0 auto;
+    max-width: 600px;
 }
 
 .mypage-button-container{
@@ -18,7 +19,7 @@ p{
     padding: 10px;
     border: none;
     border-radius: 5px;
-    /* ボタン内の要素を垂直に並べ、中央に配置する */
+    /* ボタン内の要素を垂直に並べ、中央に配置 */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -38,6 +39,7 @@ p{
     margin-top: auto;
     margin-bottom: 10px;
     text-align: center;
+    cursor: pointer;
 }
 
 #search-player-btn-img{
@@ -55,10 +57,10 @@ p{
 }
 
 .btn-secondary{
-    /* :TODO ログアウトボタンの修正 */
-    display: block;
+    display: flex;
+    justify-content: center;
     text-align: left;
-    width: 100px;
-    height: 30px;
+    padding: 10px;
+    width: 150px;
     margin-top: 50px;
 }

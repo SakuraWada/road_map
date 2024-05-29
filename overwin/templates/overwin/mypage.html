@@ -10,7 +10,7 @@
 <h1>マイページ</h1>
     {% if user.is_authenticated %}
         <p>こんにちは、{{ user.username }}さん</p>
-        <!-- TODO:ボタンの選択範囲を広げる -->
+        <!-- TODO:JSでボタンの選択範囲を広げる -->
         <div class = "mypage-button-container">
             <div class="mypage-button">
                 <img id="search-player-btn-img" class="mypage-button-img" src="{% static 'overwin/img/mypage-search-player.png' %}" alt="マイページ">
