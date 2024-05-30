@@ -14,13 +14,13 @@
 .info-table {
     border-collapse:  collapse;
     background-color: white;
-    line-height: 1.7;
     margin: 0 auto;
 }
 
 td {
     border-bottom: 5px solid #DADDE4;
     border-spacing: 10px;
+    margin: 0 auto;
 }
 
 table td:first-child {
