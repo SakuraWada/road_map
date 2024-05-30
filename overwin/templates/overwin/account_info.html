@@ -8,6 +8,7 @@
 {% block content %}
 <div class="content">
     <div class="h1"><h1>アカウント情報</h1></div>
+    <div class="delete-area"><a href="{% url 'overwin:account_delete' %}" class="delete-link">アカウントを削除する</a></div>
     <table class="info-table">
         <tbody>
             <tr>
@@ -20,7 +21,6 @@
             </tr>
         </tbody>
     </table>
-    <div><a href="{% url 'overwin:account_info_update' %}" class="btn btn-primary ">編集する</a></div>
-    <div class="delete-area"><a href="{% url 'overwin:account_delete' %}" class="delete-link">アカウントを削除する</a></div>
+    <div><a href="{% url 'overwin:account_info_update' %}" class="btn btn-primary ">編集ページへ</a></div>
 </div>
 {% endblock %}

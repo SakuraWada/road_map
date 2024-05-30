@@ -8,11 +8,16 @@ body{
 
 a{
     text-decoration: none;
+    display: inline-block;
+}
+
+.logo-area{
+    text-align: center;
 }
 
 .logo{
     display: block;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     width: 210px;
 }
 
