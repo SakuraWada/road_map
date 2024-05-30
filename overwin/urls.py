@@ -27,7 +27,7 @@ urlpatterns = [
     path('account_info/update/',  UpdateAccountInfoView.as_view(),                name='account_info_update'),
     path('account_delete',        DeleteAccountInfoView.as_view(),                     name='account_delete'),
     #パーティー募集
-    path('party_recruitment_list',            RecruitmentListView.as_view(),               name='party_recruitment_list')  ,
+    path('party_recruitment_list',            RecruitmentListView.as_view(),               name='party_recruitment_list'),
     path('party_recruitment_create',          PartyRecruitmentCreateView.as_view(), name='party_recruitment_create'),
     path('party_recruitment_detail/<int:pk>', PartyRecruitmentDetailView.as_view(), name='party_recruitment_detail'),
 ]
