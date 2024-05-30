@@ -6,21 +6,21 @@
 {% endblock %}
 
 {% block content %}
-<div class="h1">アカウント情報</div>
-    <div>
-        <table>
-            <tbody>
-                <tr>
-                    <th>ユーザー名</th>
-                    <td>{{ username }}</td>
-                </tr>
-                <tr>
-                    <th>メールアドレス</th>
-                    <td>{{ email }}</td>
-                </tr>
-            </tbody>
-        </table>
-        <div><a href="{% url 'overwin:account_info_update' %}" class="btn btn-primary ">編集する</a></div>
-        <div><a href="{% url 'overwin:account_delete' %}" class="delete-btn btn-secondary">アカウントを削除する</a></div>
-    </div>
+<div class="content">
+    <div class="h1"><h1>アカウント情報</h1></div>
+    <table class="info-table">
+        <tbody>
+            <tr>
+                <td>ユーザー名</td>
+                <td><span class="border">{{ username }}</span></td>
+            </tr>
+            <tr>
+                <td>メールアドレス</td>
+                <td><span class="border">{{ email }}</span></td>
+            </tr>
+        </tbody>
+    </table>
+    <div><a href="{% url 'overwin:account_info_update' %}" class="btn btn-primary ">編集する</a></div>
+    <div class="delete-area"><a href="{% url 'overwin:account_delete' %}" class="delete-link">アカウントを削除する</a></div>
+</div>
 {% endblock %}

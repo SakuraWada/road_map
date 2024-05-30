@@ -3,16 +3,17 @@ body{
     background-color: #DADDE4;
     font-family: Arial, sans-serif;
     color: #4c4c4c;
+    max-width: 800px;
 }
 
 a{
     text-decoration: none;
 }
 
-img.logo{
+.logo{
     display: block;
     margin: 0 auto;
-    height: 150px;
+    width: 210px;
 }
 
 .btn-primary{

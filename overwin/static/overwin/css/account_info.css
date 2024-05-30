@@ -1,7 +1,59 @@
-th,td {
-    border: solid 1px;
+.logo{
+    width: 120px;
 }
 
-table {
-    border-collapse:  collapse;     /* セルの線を重ねる */
+.content{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.h1{
+    text-align: left;
+}
+
+.info-table {
+    border-collapse:  collapse;
+    background-color: white;
+    line-height: 1.7;
+    margin: 0 auto;
+}
+
+td {
+    border-bottom: 5px solid #DADDE4;
+    border-spacing: 10px;
+}
+
+table td:first-child {
+    text-align: center;
+    padding-left: 30px;
+}
+
+table td:last-child {
+    padding: 30px;
+    border-bottom: 5px solid #DADDE4;
+}
+
+.border{
+    border-left: 1px solid #8d8c8c;
+    padding-left: 20px;
+    display: block;
+}
+
+.btn-primary{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 40px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.delete-area{
+    text-align: right;
+}
+
+.delete-link{
+    color: red;
 }
