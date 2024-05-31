@@ -66,6 +66,7 @@ class PartyRecruitmentDetailView(generic.DetailView):
                 JoinedMember.objects.create(recruitment=recruitment, join_member=request.user)
                 recruitment.current_member_count += 1
                 recruitment.save()
+                return redirect('overwin:party_recruitment_detail', pk=pk)
 
         context = {
             'recruitment': recruitment,

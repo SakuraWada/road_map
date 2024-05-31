@@ -28,7 +28,7 @@
         {% else %}
             <form method="post">
                 {% csrf_token %}
-                <button type="submit" name="join" class="btn btn-primary">参加する</button>
+                <button type="submit" name="join" class="btn btn-primary">参加申請</button>
             </form>
         {% endif %}
     <a href="{% url 'overwin:party_recruitment_list'%}" class="btn btn-secondary">募集一覧に戻る</a>
