@@ -13,19 +13,27 @@
         <!-- TODO:JSでボタンの選択範囲を広げる -->
         <div class = "mypage-button-container">
             <div class="mypage-button">
-                <img id="search-player-btn-img" class="mypage-button-img" src="{% static 'overwin/img/mypage-search-player.png' %}" alt="マイページ">
+                <div class="mypage-btn-img-area">
+                    <img id="search-player-btn-img" class="mypage-button-img" src="{% static 'overwin/img/mypage-search-player.png' %}" alt="マイページ">
+                </div>
                 <a href="{% url 'overwin:search_game_player' %}">プレイヤー検索</a>
             </div>
             <div class="mypage-button">
-                <img id="favorite-btn-img" class="mypage-button-img" src="{% static 'overwin/img/mypage-favorite.png' %}" alt="お気に入りプレイヤー">
+                <div class="mypage-btn-img-area">
+                    <img id="favorite-btn-img" class="mypage-button-img" src="{% static 'overwin/img/mypage-favorite.png' %}" alt="お気に入りプレイヤー">
+                </div>
                 <a href="{% url 'overwin:favorite_game_player' %}">お気に入り<br>プレイヤー</a>
             </div>
             <div class="mypage-button">
-                <img id="account-info-btn-img" class="mypage-button-img" src="{% static 'overwin/img/mypage-account-info.png' %}" alt="アカウント情報">
+                <div class="mypage-btn-img-area">
+                    <img id="account-info-btn-img" class="mypage-button-img" src="{% static 'overwin/img/mypage-account-info.png' %}" alt="アカウント情報">
+                </div>
                 <a href="{% url 'overwin:account_info'%}">アカウント情報</a>
             </div>
             <div class="mypage-button">
-                <img id="party-recruitment-btn-img" class="mypage-button-img" src="{% static 'overwin/img/mypage-party-recruitment.png' %}" alt="パーティー募集">
+                <div class="mypage-btn-img-area">
+                    <img id="party-recruitment-btn-img" class="mypage-button-img" src="{% static 'overwin/img/mypage-party-recruitment.png' %}" alt="パーティー募集">
+                </div>
                 <a href="{% url 'overwin:party_recruitment_list'%}">パーティー募集</a>
             </div>
         </div>

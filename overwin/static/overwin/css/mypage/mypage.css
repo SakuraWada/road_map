@@ -26,12 +26,14 @@ h1,p{
     align-items: center;
 }
 
+.mypage-btn-img-area{
+    text-align: center;
+}
+
 .mypage-button-img{
     max-width: 50%;
     margin-top: 10px;
     margin-bottom: 10px;
-    display: block;
-    text-align: center;
 }
 
 .mypage-button a{
