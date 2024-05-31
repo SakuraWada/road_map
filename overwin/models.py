@@ -22,20 +22,21 @@ class FavoriteGamePlayer(models.Model):
 
 
 class Recruitment(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='募集者')
 
     max_recruit_member = models.IntegerField(
         validators=[
             MinValueValidator(1),
             MaxValueValidator(4),
         ],
+        verbose_name='募集人数',
     )
 
     current_member_count = models.PositiveIntegerField(default=0)
     tank_role_num        = models.IntegerField(default=0)
     damage_role_num      = models.IntegerField(default=0)
     support_role_num     = models.IntegerField(default=0)
-    comment              = models.TextField(max_length=255, blank=True, null=True)
+    comment              = models.TextField(max_length=255, blank=True, null=True,verbose_name='備考欄')
 
 
 class JoinedMember(models.Model):

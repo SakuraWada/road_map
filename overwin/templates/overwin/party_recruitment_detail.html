@@ -3,13 +3,13 @@
 {% block content %}
 <h1>{{ recruitment.title }}</h1>
 <p>{{ recruitment.content }}</p>
-<p>作成者: {{ recruitment.author.username }}</p>
+<h3>募集者：{{ recruitment.owner.username }}</h3>
 
 {% if is_owner %}
 <form method="POST">
     {{ form.non_field_errors }}
             {% for field in form %}
-                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
                 {{ field }}
             {% endfor %}
     {% csrf_token %}
@@ -19,7 +19,6 @@
 {% else %}
 <ul>
     <li>
-        <h3>募集者：{{ recruitment.owner.username }}</h3>
         <p>募集人数: {{ recruitment.max_recruit_member }}</p>
         <p>参加人数: {{ recruitment.current_member_count }}</p>
         <p>備考欄: {{ recruitment.comment }}</p>
