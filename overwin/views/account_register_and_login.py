@@ -2,7 +2,8 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.views import LoginView as BaseLoginView, LogoutView as BaseLogoutView
 from django.views import generic
 from django.urls import reverse_lazy
-from forms.account_register_and_login import UserRegisterForm,LoginForm
+# NOTE: ..formsではなくformsの場合、no module named'forms'エラーが出る
+from ..forms.account_register_and_login import UserRegisterForm,LoginForm
 
 class AccountRegisterView(generic.CreateView):
     form_class = UserRegisterForm
