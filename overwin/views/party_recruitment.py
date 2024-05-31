@@ -1,5 +1,5 @@
 from ..forms.party_recruitment import RecruitmentForm
-from ..models import Recruitment
+from ..models import Recruitment, JoinedMember
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -33,11 +33,13 @@ class PartyRecruitmentDetailView(generic.DetailView):
     def get(self, request, pk):
         recruitment = get_object_or_404(Recruitment, pk=pk)
         is_owner = request.user.pk == recruitment.owner.pk
+        applicated_to_recruiting = JoinedMember.objects.filter(recruitment=recruitment, join_member=request.user).exists()
         form = RecruitmentForm(instance=recruitment)
         context = {
             'recruitment': recruitment,
             'is_owner': is_owner,
-            'form' : form
+            'form' : form,
+            'applicated_to_recruiting' : applicated_to_recruiting,
         }
         return render(request, 'overwin/party_recruitment_detail.html', context)
 
@@ -50,12 +52,20 @@ class PartyRecruitmentDetailView(generic.DetailView):
         if 'recruitment_update' in request.POST:
             if form.is_valid():
                 form.save()
-            return redirect('overwin:party_recruitment_detail', pk=pk)
+                return redirect('overwin:party_recruitment_detail', pk=pk)
+            else:
+                return self.form_invalid(form)
 
         #参加者側の操作
         if 'join' in request.POST:
-            recruitment.current_member_count += 1
-            recruitment.save()
+            # 既に参加申請済みの場合は何もしない
+            if JoinedMember.objects.filter(recruitment=recruitment, join_member=request.user).exists():
+                pass
+            # 募集に未申請の場合は参加申請ができる
+            else:
+                JoinedMember.objects.create(recruitment=recruitment, join_member=request.user)
+                recruitment.current_member_count += 1
+                recruitment.save()
 
         context = {
             'recruitment': recruitment,
