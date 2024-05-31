@@ -1,0 +1,28 @@
+{% extends 'overwin/base.html'%}
+{% load static %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'overwin/css/account_info_update.css'%}">
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h1 class="h1">アカウント情報編集</h1>
+    <form method="POST">
+    {{ form.non_field_errors }}
+    <table class="info-table">
+        <tbody>
+            {% for field in form %}
+                <tr>
+                    <td><label for="{{ field.id_for_label }}">{{ field.label_tag }}</label></td>
+                    <td><span class="border">{{ field }}</span></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% csrf_token %}
+    <div><button type="submit" class="btn btn-primary" >更新</button></div>
+    <div><a href="{% url 'overwin:account_info'%}" class="btn btn-secondary">アカウント情報に戻る</a></div>
+</div>
+{% endblock %}
+
