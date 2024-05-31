@@ -23,7 +23,9 @@
         <p>募集人数: {{ recruitment.max_recruit_member }}</p>
         <p>参加人数: {{ recruitment.current_member_count }}</p>
         <p>備考欄: {{ recruitment.comment }}</p>
-        {% if applicated_to_recruiting %}
+        {% if has_full_member %}
+            <span>満員です</span>
+        {% elif applicated_to_recruiting %}
             <span>参加申請済み</span>
         {% else %}
             <form method="post">

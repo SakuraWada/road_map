@@ -34,12 +34,14 @@ class PartyRecruitmentDetailView(generic.DetailView):
         recruitment = get_object_or_404(Recruitment, pk=pk)
         is_owner = request.user.pk == recruitment.owner.pk
         applicated_to_recruiting = JoinedMember.objects.filter(recruitment=recruitment, join_member=request.user).exists()
+        has_full_member = recruitment.current_member_count >= recruitment.max_recruit_member
         form = RecruitmentForm(instance=recruitment)
         context = {
             'recruitment': recruitment,
             'is_owner': is_owner,
-            'form' : form,
             'applicated_to_recruiting' : applicated_to_recruiting,
+            'has_full_member' : has_full_member,
+            'form' : form,
         }
         return render(request, 'overwin/party_recruitment_detail.html', context)
 
