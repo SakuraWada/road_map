@@ -7,7 +7,7 @@ from ..utils import fetch_data_from_api
 
 @method_decorator(login_required, name="dispatch")
 class GamePlayerSearchView(generic.ListView):
-    template_name = "overwin/search_game_player.html"
+    template_name = "overwin/search_game_player/search_game_player.html"
     #検索時の動作
     def get_queryset(self):
         query = self.request.GET.get('query')
