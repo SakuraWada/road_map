@@ -1,0 +1,27 @@
+body{
+    padding: 40px;
+    background-color: #DADDE4;
+    font-family: Arial, sans-serif;
+    color: #4c4c4c;
+}
+
+.logo-img{
+    width: 210px;
+}
+
+.logo-area{
+    text-align: center;
+}
+
+.btn-primary{
+    font-weight: 400;
+    background-color: #E0612B;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+}
+
+.btn-secondary{
+    color: #2e8acb;
+    cursor: pointer;
+}
