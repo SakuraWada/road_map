@@ -7,12 +7,17 @@
 
 {% if is_owner %}
 <form method="POST">
-    {{ form.non_field_errors }}
-            {% for field in form %}
-                <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
-                {{ field }}
-            {% endfor %}
     {% csrf_token %}
+    {{ form.non_field_errors }}
+    {% if error_message %}
+        <div class="error_message">
+            {{ error_message }}
+        </div>
+    {% endif %}
+    {% for field in form %}
+        <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+        {{ field }}
+    {% endfor %}
     <button name="recruitment_update" type="submit" class="btn btn-success" >更新</button>
     <a href="{% url 'overwin:party_recruitment_list'%}" class="btn btn-secondary">募集一覧に戻る</a>
     <a href="{% url 'overwin:party_recruitment_delete' recruitment.id %}" class="btn btn-secondary">募集を削除</a>

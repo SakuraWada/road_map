@@ -1,10 +1,11 @@
-from ..forms.party_recruitment import RecruitmentForm
-from ..models import Recruitment, JoinedMember
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.urls import reverse_lazy
 from django.shortcuts import render, get_object_or_404,redirect
+from django.contrib import messages
+from ..models import Recruitment, JoinedMember
+from ..forms.party_recruitment import RecruitmentForm
 
 @method_decorator(login_required, name="dispatch")
 class RecruitmentListView(generic.ListView):
@@ -30,6 +31,7 @@ class PartyRecruitmentCreateView(generic.CreateView):
 
 @method_decorator(login_required, name="dispatch")
 class PartyRecruitmentDetailView(generic.DetailView):
+
     def get(self, request, pk):
         recruitment = get_object_or_404(Recruitment, pk=pk)
         is_owner = request.user.pk == recruitment.owner.pk
@@ -56,7 +58,13 @@ class PartyRecruitmentDetailView(generic.DetailView):
                 form.save()
                 return redirect('overwin:party_recruitment_detail', pk=pk)
             else:
-                return self.form_invalid(form)
+                context = {
+                    'recruitment': recruitment,
+                    'is_owner': is_owner,
+                    'form': form,
+                    'error_message': 'フォームが無効です。',
+                }
+                return render(request, 'overwin/party_recruitment_detail.html', context)
 
         #参加者側の操作
         if 'join' in request.POST:
