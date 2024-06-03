@@ -7,9 +7,11 @@ class UserRegisterForm(UserCreationForm):
         fields = ('username', 'email')
 
 class LoginForm(AuthenticationForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.label_suffix = " "
     class Meta:
         model = User
-
 class AccountInfoUpdateForm(UserChangeForm):
     #TODO パスワードの変更処理
     password = None
