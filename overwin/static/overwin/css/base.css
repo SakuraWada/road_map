@@ -9,6 +9,10 @@ a{
     text-decoration: none;
 }
 
+li{
+    list-style: none;
+}
+
 .logo-area{
     text-align: center;
 }

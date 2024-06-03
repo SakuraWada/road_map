@@ -17,14 +17,14 @@
 <form method="post">
     {% csrf_token %}
     <div>
+        <ul class="player-list">
         {% for player in object_list %}
-        <ul>
             <li>
                 <a href="{% url 'overwin:game_player_info' %}?battle_tag={{ player.game_player.battle_tag|urlencode }}">{{ player.name }}</a>
                 <input type="checkbox" name="favorite_player" value="{{ player.name }}">
             </li>
-        </ul>
         {% endfor %}
+        </ul>
     </div>
     <div class="fav-btn-area"><button class="btn-primary" id="fav-btn" type="submit">お気に入りに追加</button></div>
 </form>

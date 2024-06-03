@@ -7,7 +7,7 @@ from ..forms.account_register_and_login import UserRegisterForm,LoginForm
 
 class AccountRegisterView(generic.CreateView):
     form_class = UserRegisterForm
-    template_name = "overwin/account_register.html"
+    template_name = "overwin/account_register_and_login/account_register.html"
     success_url = reverse_lazy("overwin:login")
 
     def form_valid(self, form):
@@ -19,7 +19,7 @@ class AccountRegisterView(generic.CreateView):
 
 class LoginView(BaseLoginView):
     form_class = LoginForm
-    template_name = "overwin/login.html"
+    template_name = "overwin/account_register_and_login/login.html"
 
 class LogoutView(BaseLogoutView):
     success_url = reverse_lazy('overwin:login')
