@@ -1,0 +1,32 @@
+.logo-img{
+    width: 150px;
+}
+
+.content{
+    text-align: left;
+    max-width: 800px;
+}
+
+.favorite-player-list{
+    margin-top: 50px;
+    padding-left: 0;
+}
+
+.favorite-player{
+    margin-bottom: 15px;
+}
+
+.player-link{
+    color: #2e8acb;
+}
+
+.btn-secondary{
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+.add-link-area{
+    margin-top: 60px;
+}

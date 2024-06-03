@@ -5,6 +5,14 @@ body{
     color: #4c4c4c;
 }
 
+a{
+    text-decoration: none;
+}
+
+li{
+    list-style: none;
+}
+
 .logo-img{
     width: 210px;
 }
