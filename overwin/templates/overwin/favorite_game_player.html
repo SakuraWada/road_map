@@ -1,11 +1,13 @@
 {% extends 'overwin/base.html'%}
+{% load static %}
 
-{% block title %}
-<div class="h1">お気に入りプレイヤー一覧</div>
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'overwin/css/favorite_game_player.css'%}">
 {% endblock %}
 
 {% block content %}
 {% if object_list %}
+<h1>お気に入りプレイヤー一覧</h1>
 <div>
     {% for player in object_list %}
     <ul>
@@ -23,5 +25,4 @@
 {% else %}
 <p>プレイヤーが登録されていません</p>
 {% endif %}
-<a href="{% url 'overwin:mypage' %}" class="btn btn-secondary">マイページに戻る</a>
 {% endblock %}
