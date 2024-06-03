@@ -46,6 +46,10 @@ li{
     grid-template-columns: repeat(2, 1fr);
 }
 
+.player-name-link{
+    color: #2e8acb;
+}
+
 #fav-btn{
     margin-top: 50px;
     padding: 8px 40px;
