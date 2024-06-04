@@ -37,6 +37,7 @@ class PartyRecruitmentDetailView(generic.DetailView):
         applicated_to_recruiting = JoinMember.objects.filter(recruitment=recruitment, join_member=request.user).exists()
         possible_to_entry = recruitment.possible_to_entry
         form = RecruitmentForm(instance=recruitment)
+        approved_message = None
 
         if is_owner:
             joined_members = JoinMember.objects.filter(recruitment=recruitment, is_approved=True)
@@ -44,6 +45,11 @@ class PartyRecruitmentDetailView(generic.DetailView):
         else:
             joined_members = None
             applicant_members = None
+            try:
+                joined_member = JoinMember.objects.get(recruitment=recruitment, join_member=request.user, is_approved=True)
+                approved_message = joined_member.message
+            except JoinMember.DoesNotExist:
+                pass
 
         context = {
             'recruitment': recruitment,
@@ -53,6 +59,7 @@ class PartyRecruitmentDetailView(generic.DetailView):
             'form' : form,
             'joined_members': joined_members,
             'applicant_members': applicant_members,
+            'approved_message': approved_message,
         }
         return render(request, 'overwin/party_recruitment_detail.html', context)
 
@@ -80,10 +87,12 @@ class PartyRecruitmentDetailView(generic.DetailView):
         if 'approve_member' in request.POST:
             #NOTE: 許可ボタンが押された時に、そのユーザーのIDを取得
             member_id = request.POST.get('member_id')
-            if member_id:
+            message = request.POST.get('message')
+            if member_id and message:
                 try:
                     join_member = JoinMember.objects.get(recruitment=recruitment, join_member__id=member_id, is_approved=False)
                     join_member.is_approved = True
+                    join_member.message = message
                     join_member.save()
                     recruitment.current_member_count += 1
                     recruitment.save()

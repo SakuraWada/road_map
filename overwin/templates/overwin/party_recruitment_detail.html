@@ -27,7 +27,8 @@
             <form method="post">
                 {% csrf_token %}
                 <input type="hidden" name="member_id" value="{{ member.join_member.id }}">
-                <button type="submit" name="approve_member">許可</button>
+                <input type="text" name="message" maxlength="20" placeholder="バトルタグを記入" required>
+                <button type="submit" name="approve_member">バトルタグと参加許可を送信</button>
             </form>
         {% endfor %}
         </ul>
@@ -51,6 +52,9 @@
                 {% csrf_token %}
                 <button type="submit" name="join" class="btn btn-primary">参加申請</button>
             </form>
+        {% endif %}
+        {% if approved_message %}
+            <p>募集者のバトルタグ: {{ approved_message }}</p>
         {% endif %}
     <a href="{% url 'overwin:party_recruitment_list'%}" class="btn btn-secondary">募集一覧に戻る</a>
 {% endif %}

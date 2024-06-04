@@ -45,6 +45,7 @@ class Recruitment(models.Model):
 class JoinMember(models.Model):
     recruitment        = models.ForeignKey(Recruitment, on_delete=models.CASCADE)
     join_member        = models.ForeignKey(User,        on_delete=models.CASCADE)
+    message = models.TextField(blank=True, null=True)
 
     role = models.CharField(
         max_length=16,
