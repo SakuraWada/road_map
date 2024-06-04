@@ -21,10 +21,10 @@
 }
 
 .btn-secondary{
-    background-color: white;
     border: none;
     border-radius: 10px;
     margin-left: 10px;
+    color: red;
 }
 
 .add-link-area{
@@ -33,4 +33,6 @@
 
 .btn-primary{
     color: white;
+    background-color: #2e8acb;
+    padding: 10px;
 }
