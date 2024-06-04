@@ -20,7 +20,6 @@ class FavoriteGamePlayer(models.Model):
     def __str__(self):
         return f"{self.user.username} - {self.game_player.battle_tag}"
 
-
 class Recruitment(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='募集者')
 
@@ -37,6 +36,10 @@ class Recruitment(models.Model):
     damage_role_num      = models.IntegerField(default=0)
     support_role_num     = models.IntegerField(default=0)
     comment              = models.TextField(max_length=255, blank=True, null=True,verbose_name='備考欄')
+
+    @property
+    def possible_to_entry(self):
+        return self.current_member_count < self.max_recruit_member
 
 
 class JoinMember(models.Model):

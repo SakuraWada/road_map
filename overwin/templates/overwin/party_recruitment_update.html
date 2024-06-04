@@ -14,5 +14,6 @@
     {% endfor %}
     <div><button name="update" type="submit" class="btn btn-primary" >更新する</button></div>
 </form>
+    <a href="{% url 'overwin:party_recruitment_delete' recruitment.id %}" class="btn btn-secondary">募集を削除</a>
     <div><a href="{% url 'overwin:party_recruitment_detail' pk=recruitment.pk %}" class="btn btn-secondary">募集詳細に戻る</a></div>
 {% endblock %}

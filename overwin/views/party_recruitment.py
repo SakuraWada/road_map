@@ -35,7 +35,7 @@ class PartyRecruitmentDetailView(generic.DetailView):
         recruitment = get_object_or_404(Recruitment, pk=pk)
         is_owner = request.user.pk == recruitment.owner.pk
         applicated_to_recruiting = JoinMember.objects.filter(recruitment=recruitment, join_member=request.user).exists()
-        has_full_member = recruitment.current_member_count >= recruitment.max_recruit_member
+        possible_to_entry = recruitment.possible_to_entry
         form = RecruitmentForm(instance=recruitment)
 
         if is_owner:
@@ -49,7 +49,7 @@ class PartyRecruitmentDetailView(generic.DetailView):
             'recruitment': recruitment,
             'is_owner': is_owner,
             'applicated_to_recruiting' : applicated_to_recruiting,
-            'has_full_member' : has_full_member,
+            'possible_to_entry' : possible_to_entry,
             'form' : form,
             'joined_members': joined_members,
             'applicant_members': applicant_members,

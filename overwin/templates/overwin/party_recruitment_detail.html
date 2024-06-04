@@ -38,15 +38,14 @@
     <p>{{ recruitment.comment }}</p>
     <a href="{% url 'overwin:party_recruitment_list'%}" class="btn btn-secondary">募集一覧に戻る</a>
     <a href="{% url 'overwin:party_recruitment_update' recruitment.id %}" class="btn btn-secondary">募集編集ページへ</a>
-    <a href="{% url 'overwin:party_recruitment_delete' recruitment.id %}" class="btn btn-secondary">募集を削除</a>
 {% else %}
         <p>募集人数: {{ recruitment.max_recruit_member }}</p>
         <p>参加人数: {{ recruitment.current_member_count }}</p>
         <p>備考欄: {{ recruitment.comment }}</p>
-        {% if has_full_member %}
-            <span>満員です</span>
-        {% elif applicated_to_recruiting %}
+        {% if applicated_to_recruiting %}
             <span>参加申請済み</span>
+        {% elif not possible_to_entry %}
+            <span>満員です</span>
         {% else %}
             <form method="post">
                 {% csrf_token %}
