@@ -5,14 +5,15 @@ body{
     color: #4c4c4c;
 }
 
-img.logo{
-    display: block;
-    margin: 0 auto;
-    height: 150px;
+.logo-img{
+    width: 210px;
+}
+
+.logo-area{
+    text-align: center;
 }
 
 .btn-primary{
-    font-size: 16px;
     font-weight: 400;
     background-color: #E0612B;
     color: #fff;
