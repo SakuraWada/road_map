@@ -127,4 +127,4 @@ class PartyRecruitmentUpdateView(generic.UpdateView):
 class PartyRecruitmentDeleteView(generic.DeleteView):
     model = Recruitment
     success_url = reverse_lazy('overwin:party_recruitment_list')
-    template_name = 'overwin/recruitment_delete.html'
+    template_name = 'overwin/party_recruitment_delete.html'
