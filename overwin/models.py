@@ -48,3 +48,5 @@ class JoinedMember(models.Model):
         choices=Role.choices(),
         default=Role.FREE_ROLE.key,
     )
+
+    is_approveis_approved = models.BooleanField(default=False)

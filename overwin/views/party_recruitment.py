@@ -38,12 +38,22 @@ class PartyRecruitmentDetailView(generic.DetailView):
         applicated_to_recruiting = JoinedMember.objects.filter(recruitment=recruitment, join_member=request.user).exists()
         has_full_member = recruitment.current_member_count >= recruitment.max_recruit_member
         form = RecruitmentForm(instance=recruitment)
+
+        if is_owner:
+            joined_members = JoinedMember.objects.filter(recruitment=recruitment, join_member__isnull=False)
+            pending_members = JoinedMember.objects.filter(recruitment=recruitment, join_member__isnull=True)
+        else:
+            joined_members = None
+            pending_members = None
+
         context = {
             'recruitment': recruitment,
             'is_owner': is_owner,
             'applicated_to_recruiting' : applicated_to_recruiting,
             'has_full_member' : has_full_member,
             'form' : form,
+            'joined_members': joined_members,
+            'pending_members': pending_members,
         }
         return render(request, 'overwin/party_recruitment_detail.html', context)
 
@@ -68,14 +78,9 @@ class PartyRecruitmentDetailView(generic.DetailView):
 
         #参加者側の操作
         if 'join' in request.POST:
-            # 既に参加申請済みの場合は何もしない
-            if JoinedMember.objects.filter(recruitment=recruitment, join_member=request.user).exists():
-                pass
-            # 募集に未申請の場合は参加申請ができる
-            else:
+            # 未申請の場合は参加申請ができる
+            if not JoinedMember.objects.filter(recruitment=recruitment, join_member=request.user).exists():
                 JoinedMember.objects.create(recruitment=recruitment, join_member=request.user)
-                recruitment.current_member_count += 1
-                recruitment.save()
                 return redirect('overwin:party_recruitment_detail', pk=pk)
 
         context = {
