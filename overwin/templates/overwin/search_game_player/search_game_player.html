@@ -20,8 +20,8 @@
         <ul class="player-list">
         {% for player in object_list %}
             <li>
-                <a class="player-name-link" href="{% url 'overwin:game_player_info' %}?battle_tag={{ player.game_player.battle_tag|urlencode }}">{{ player.name }}</a>
                 <input type="checkbox" name="favorite_player" value="{{ player.name }}">
+                <a class="player-name-link" href="{% url 'overwin:game_player_info' %}?battle_tag={{ player.game_player.battle_tag|urlencode }}">{{ player.name }}</a>
             </li>
         {% endfor %}
         </ul>
