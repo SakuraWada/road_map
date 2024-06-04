@@ -7,6 +7,10 @@
     max-width: 800px;
 }
 
+li{
+    list-style: inside;
+}
+
 .favorite-player-list{
     margin-top: 50px;
     padding-left: 0;
@@ -14,6 +18,7 @@
 
 .favorite-player{
     margin-bottom: 15px;
+    font-size: large;
 }
 
 .player-link{
@@ -22,12 +27,15 @@
 
 .btn-secondary{
     border: none;
-    border-radius: 10px;
-    margin-left: 10px;
-    color: red;
+    margin-left: 4px;
+    color: #E0612B;
+    background-color: #DADDE4;
+    font-weight: 400;
+    text-decoration: underline;
+    text-underline-offset: 4px;
 }
 
-.add-link-area{
+.search-link-area{
     margin-top: 60px;
 }
 
