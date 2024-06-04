@@ -1,23 +1,14 @@
 {% extends 'overwin/base.html'%}
 
 {% block content %}
-<h1>{{ recruitment.title }}</h1>
-<p>{{ recruitment.content }}</p>
+
 <h3>募集者：{{ recruitment.owner.username }}</h3>
 
 {% if is_owner %}
-<form method="POST">
-    {% csrf_token %}
-    {{ form.non_field_errors }}
-    {% if error_message %}
-        <div class="error_message">
-            {{ error_message }}
-        </div>
-    {% endif %}
-    {% for field in form %}
-        <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
-        {{ field }}
-    {% endfor %}
+    <h4>募集人数</h4>
+    <p>{{ recruitment.max_recruit_member }}人</p>
+    <h4>現在の参加人数</h4>
+    <p>{{ recruitment.current_member_count }}人</p>
     <h4>参加者一覧</h4>
     {% if joined_members %}
         <ul>
@@ -43,8 +34,10 @@
     {% else %}
         <p>参加申請者はいません。</p>
     {% endif %}
-    <button name="recruitment_update" type="submit" class="btn btn-success" >更新</button>
+    <h4>コメント</h4>
+    <p>{{ recruitment.comment }}</p>
     <a href="{% url 'overwin:party_recruitment_list'%}" class="btn btn-secondary">募集一覧に戻る</a>
+    <a href="{% url 'overwin:party_recruitment_update' recruitment.id %}" class="btn btn-secondary">募集編集ページへ</a>
     <a href="{% url 'overwin:party_recruitment_delete' recruitment.id %}" class="btn btn-secondary">募集を削除</a>
 {% else %}
         <p>募集人数: {{ recruitment.max_recruit_member }}</p>

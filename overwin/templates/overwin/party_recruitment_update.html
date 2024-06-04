@@ -1,0 +1,18 @@
+{% extends 'overwin/base.html'%}
+{% load static %}
+
+{% block content %}
+<h1>募集内容更新</h1>
+<h3>募集者：{{ recruitment.owner.username }}</h3>
+
+<form method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+        <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+        {{ field }}
+        {{ field.errors }}
+    {% endfor %}
+    <div><button name="update" type="submit" class="btn btn-primary" >更新する</button></div>
+</form>
+    <div><a href="{% url 'overwin:party_recruitment_detail' pk=recruitment.pk %}" class="btn btn-secondary">募集詳細に戻る</a></div>
+{% endblock %}

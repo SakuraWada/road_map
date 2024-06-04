@@ -1,9 +1,8 @@
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy,reverse
 from django.shortcuts import render, get_object_or_404,redirect
-from django.contrib import messages
 from ..models import Recruitment, JoinMember
 from ..forms.party_recruitment import RecruitmentForm
 
@@ -105,6 +104,15 @@ class PartyRecruitmentDetailView(generic.DetailView):
             'form' : form
         }
         return render(request, 'overwin/party_recruitment_detail.html', context)
+
+@method_decorator(login_required, name="dispatch")
+class PartyRecruitmentUpdateView(generic.UpdateView):
+    template_name = 'overwin/party_recruitment_update.html'
+    model = Recruitment
+    form_class = RecruitmentForm
+
+    def get_success_url(self):
+        return reverse("overwin:party_recruitment_detail", kwargs={'pk': self.object.pk})
 
 @method_decorator(login_required, name="dispatch")
 class PartyRecruitmentDeleteView(generic.DeleteView):
