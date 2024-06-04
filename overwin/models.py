@@ -39,7 +39,7 @@ class Recruitment(models.Model):
     comment              = models.TextField(max_length=255, blank=True, null=True,verbose_name='備考欄')
 
 
-class JoinedMember(models.Model):
+class JoinMember(models.Model):
     recruitment        = models.ForeignKey(Recruitment, on_delete=models.CASCADE)
     join_member        = models.ForeignKey(User,        on_delete=models.CASCADE)
 
@@ -49,4 +49,4 @@ class JoinedMember(models.Model):
         default=Role.FREE_ROLE.key,
     )
 
-    is_approveis_approved = models.BooleanField(default=False)
+    is_approved = models.BooleanField(default=False)

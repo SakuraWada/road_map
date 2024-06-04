@@ -4,7 +4,7 @@ from django.utils.decorators import method_decorator
 from django.urls import reverse_lazy
 from django.shortcuts import render, get_object_or_404,redirect
 from django.contrib import messages
-from ..models import Recruitment, JoinedMember
+from ..models import Recruitment, JoinMember
 from ..forms.party_recruitment import RecruitmentForm
 
 @method_decorator(login_required, name="dispatch")
@@ -35,16 +35,16 @@ class PartyRecruitmentDetailView(generic.DetailView):
     def get(self, request, pk):
         recruitment = get_object_or_404(Recruitment, pk=pk)
         is_owner = request.user.pk == recruitment.owner.pk
-        applicated_to_recruiting = JoinedMember.objects.filter(recruitment=recruitment, join_member=request.user).exists()
+        applicated_to_recruiting = JoinMember.objects.filter(recruitment=recruitment, join_member=request.user).exists()
         has_full_member = recruitment.current_member_count >= recruitment.max_recruit_member
         form = RecruitmentForm(instance=recruitment)
 
         if is_owner:
-            joined_members = JoinedMember.objects.filter(recruitment=recruitment, join_member__isnull=False)
-            pending_members = JoinedMember.objects.filter(recruitment=recruitment, join_member__isnull=True)
+            joined_members = JoinMember.objects.filter(recruitment=recruitment, is_approved=True)
+            applicant_members = JoinMember.objects.filter(recruitment=recruitment, is_approved=False)
         else:
             joined_members = None
-            pending_members = None
+            applicant_members = None
 
         context = {
             'recruitment': recruitment,
@@ -53,7 +53,7 @@ class PartyRecruitmentDetailView(generic.DetailView):
             'has_full_member' : has_full_member,
             'form' : form,
             'joined_members': joined_members,
-            'pending_members': pending_members,
+            'applicant_members': applicant_members,
         }
         return render(request, 'overwin/party_recruitment_detail.html', context)
 
@@ -62,7 +62,8 @@ class PartyRecruitmentDetailView(generic.DetailView):
         is_owner = request.user.pk == recruitment.owner.pk
         form = RecruitmentForm(instance=recruitment)
 
-        #募集者側の操作
+        # 募集者側の操作
+        ## 募集の更新
         if 'recruitment_update' in request.POST:
             if form.is_valid():
                 form.save()
@@ -76,11 +77,26 @@ class PartyRecruitmentDetailView(generic.DetailView):
                 }
                 return render(request, 'overwin/party_recruitment_detail.html', context)
 
-        #参加者側の操作
+        ## 参加申請の許可
+        if 'approve_member' in request.POST:
+            #NOTE: 許可ボタンが押された時に、そのユーザーのIDを取得
+            member_id = request.POST.get('member_id')
+            if member_id:
+                try:
+                    join_member = JoinMember.objects.get(recruitment=recruitment, join_member__id=member_id, is_approved=False)
+                    join_member.is_approved = True
+                    join_member.save()
+                    recruitment.current_member_count += 1
+                    recruitment.save()
+                except JoinMember.DoesNotExist:
+                    pass
+            return redirect('overwin:party_recruitment_detail', pk=pk)
+
+        # 参加者側の操作
         if 'join' in request.POST:
             # 未申請の場合は参加申請ができる
-            if not JoinedMember.objects.filter(recruitment=recruitment, join_member=request.user).exists():
-                JoinedMember.objects.create(recruitment=recruitment, join_member=request.user)
+            if not JoinMember.objects.filter(recruitment=recruitment, join_member=request.user).exists():
+                JoinMember.objects.create(recruitment=recruitment, join_member=request.user)
                 return redirect('overwin:party_recruitment_detail', pk=pk)
 
         context = {

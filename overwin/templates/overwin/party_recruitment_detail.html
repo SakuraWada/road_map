@@ -29,10 +29,15 @@
         <p>参加者はいません。</p>
     {% endif %}
     <h4>参加申請者一覧</h4>
-    {% if pending_members %}
+    {% if applicant_members %}
         <ul>
-        {% for member in pending_members %}
+        {% for member in applicant_members %}
             <li>{{ member.join_member.username }}</li>
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="member_id" value="{{ member.join_member.id }}">
+                <button type="submit" name="approve_member">許可</button>
+            </form>
         {% endfor %}
         </ul>
     {% else %}
