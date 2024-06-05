@@ -10,8 +10,9 @@
 
 .banner-area {
     position: relative;
-    display: inline-block;
+    margin:  0 auto;
     margin-bottom: 40px;
+    max-width: 800px;
 }
 
 .player-namecard{
@@ -52,7 +53,9 @@
 .player-rank-area{
     display: flex;
     align-items: center;
+    margin: 0 auto;
     margin-bottom: 50px;
+    max-width: 860px;
 }
 
 .endorsement{
