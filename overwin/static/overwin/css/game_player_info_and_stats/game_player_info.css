@@ -25,7 +25,7 @@
 .player-name-and-title{
     position: absolute;
     left: 25%;
-    top: 50%;
+    top: 47%;
     transform: translateY(-50%);
     text-align: left;
 }
@@ -47,11 +47,12 @@
 .player-rank-area{
     display: flex;
     align-items: center;
+    margin-bottom: 50px;
 }
 
 .endorsement{
     width: 13%;
-    margin-right: 20px;
+    margin-right: 60px;
 }
 
 .role-container{
@@ -66,9 +67,21 @@
 
 .role-right-container{
     width: 50%;
+    padding-left: 5px;
 }
 
 .rank-icon,
 .tier-icon {
-    width: 70%;
+    width: 75%;
+}
+
+.hero-stats-table-area{
+    text-align: center;
+    width: 100%;
+}
+
+.table{
+    margin:0 auto;
+    border-spacing: 20px 30px;
+    font-size: 18px;
 }

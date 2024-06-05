@@ -42,28 +42,30 @@
         </div>
         <div class="container">
             <h1>Hero Stats</h1>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Hero</th>
-                        <th>Time Played</th>
-                        <th>Win Rate</th>
-                        <th>Average Damage</th>
-                        <th>Kill/Death Ratio</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for hero_name, hero_data in player_hero_info.items %}
-                    <tr>
-                        <td>{{ hero_name }}</td>
-                        <td>{{ hero_data.time_played }}</td>
-                        <td>{{ hero_data.win_rate }}%</td>
-                        <td>{{ hero_data.average_damage }}</td>
-                        <td>{{ hero_data.kill_count_divide_death_count }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+            <div class="hero-stats-table-area">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Hero</th>
+                            <th>Time Played</th>
+                            <th>Win Rate</th>
+                            <th>Average Damage</th>
+                            <th>Kill/Death Ratio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for hero_name, hero_data in player_hero_info.items %}
+                        <tr>
+                            <td>{{ hero_name }}</td>
+                            <td>{{ hero_data.time_played }}</td>
+                            <td>{{ hero_data.win_rate }}%</td>
+                            <td>{{ hero_data.average_damage }}</td>
+                            <td>{{ hero_data.kill_count_divide_death_count }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
         {% else %}
         <p>非公開のプレイヤーです</p>
