@@ -18,25 +18,25 @@
         {% if player_info %}
         <div class="player-rank-area">
             <img class="endorsement" src="{{ player_info.endorsement.frame }}" alt="Endorsement Frame">
-            <div class="tank-role-container">
-                <img class="tank-cs-role-icon" src="{{ player_info.tank_rank_cs.role_icon }}" alt="tank_cs_role_icon">
-                <div class="tank-role-right-container">
-                    <div><img class="tank-cs-rank-icon" src="{{ player_info.tank_rank_cs.rank_icon }}" alt="tank_cs_rank_icon"></div>
-                    <div><img class="tank-cs-tier-icon" src="{{ player_info.tank_rank_cs.tier_icon }}" alt="tank_cs_tier_icon"></div>
+            <div class="role-container">
+                <img class="role-icon" src="{{ player_info.tank_rank_cs.role_icon }}" alt="tank_cs_role_icon">
+                <div class="role-right-container">
+                    <div><img class="rank-icon" src="{{ player_info.tank_rank_cs.rank_icon }}" alt="tank_cs_rank_icon"></div>
+                    <div><img class="tier-icon" src="{{ player_info.tank_rank_cs.tier_icon }}" alt="tank_cs_tier_icon"></div>
                 </div>
             </div>
-            <div class="damage-role-container">
-                <img class="damage-cs-role-icon" src="{{ player_info.damage_rank_cs.role_icon }}" alt="damage_cs_role_icon" >
-                <div class="damage-role-right-container">
-                    <div><img class="damage-cs-rank-icon" src="{{ player_info.damage_rank_cs.rank_icon }}" alt="damage_cs_rank_icon"></div>
-                    <div><img class="damage-cs-tier-icon" src="{{ player_info.damage_rank_cs.tier_icon }}" alt="damage_cs_tier_icon"></div>
+            <div class="role-container">
+                <img class="role-icon" src="{{ player_info.damage_rank_cs.role_icon }}" alt="damage_cs_role_icon" >
+                <div class="role-right-container">
+                    <div><img class="rank-icon" src="{{ player_info.damage_rank_cs.rank_icon }}" alt="damage_cs_rank_icon"></div>
+                    <div><img class="tier-icon" src="{{ player_info.damage_rank_cs.tier_icon }}" alt="damage_cs_tier_icon"></div>
                 </div>
             </div>
-            <div class="support-role-container">
-                <img class="support-cs-role-icon" src="{{ player_info.support_rank_cs.role_icon }}" alt="support-cs-role-icon" >
-                <div class="support-role-right-container">
-                    <div><img class="support-cs-rank-icon" src="{{ player_info.support_rank_cs.rank_icon }}" alt="support-cs-rank-icon"></div>
-                    <div><img class="support-cs-tier-icon" src="{{ player_info.support_rank_cs.tier_icon }}" alt="support-cs-tier-icon"></div>
+            <div class="role-container">
+                <img class="role-icon" src="{{ player_info.support_rank_cs.role_icon }}" alt="support_cs_role-icon" >
+                <div class="role-right-container">
+                    <div><img class="rank-icon" src="{{ player_info.support_rank_cs.rank_icon }}" alt="support_cs_rank-icon"></div>
+                    <div><img class="tier-icon" src="{{ player_info.support_rank_cs.tier_icon }}" alt="support_cs_tier-icon"></div>
                 </div>
             </div>
         </div>

@@ -6,7 +6,7 @@
 .banner-area {
     position: relative;
     display: inline-block;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 .player-namecard{
@@ -43,63 +43,32 @@
     font-size: 2vw;
     font-style: italic;
 }
+
+.player-rank-area{
+    display: flex;
+    align-items: center;
+}
+
 .endorsement{
-    width: 15%;
+    width: 13%;
+    margin-right: 20px;
 }
 
-
-.tank-role-container{
+.role-container{
     display: flex;
     width: 30%;
+    margin-left: 10px;
 }
 
-.tank-cs-role-icon {
+.role-icon {
     width: 45%;
 }
 
-.tank-role-right-container{
+.role-right-container{
     width: 50%;
 }
 
-.tank-cs-rank-icon,
-.tank-cs-tier-icon {
-    width: 70%;
-}
-
-
-.damage-role-container{
-    display: flex;
-    width: 30%;
-}
-
-.damage-cs-role-icon {
-    width: 45%;
-}
-
-.damage-role-right-container{
-    width: 50%;
-}
-
-.damage-cs-rank-icon,
-.damage-cs-tier-icon {
-    width: 70%;
-}
-
-
-.support-role-container{
-    display: flex;
-    width: 30%;
-}
-
-.support-cs-role-icon {
-    width: 45%;
-}
-
-.support-role-right-container{
-    width: 50%;
-}
-
-.support-cs-rank-icon,
-.support-cs-tier-icon {
+.rank-icon,
+.tier-icon {
     width: 70%;
 }
