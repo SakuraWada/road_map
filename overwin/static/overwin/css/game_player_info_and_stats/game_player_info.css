@@ -1,0 +1,40 @@
+.logo-img{
+    width: 150px;
+    margin-bottom: 50px;
+}
+
+.banner-area {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 50px;
+}
+
+.player-namecard{
+    width: 100%;
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.player-avatar {
+    position: absolute;
+    width: 20%;
+    border-radius: 10px 0px 0px 10px;
+}
+
+/* TODO:バナー上に白のグラデーションを入れ、どのようなバナーでも名前を見やすく */
+.player-name {
+    color: white;
+    font-size: 4vw;
+    font-style: italic;
+    position: absolute;
+    left: 25%;
+}
+
+.player-title {
+    color: white;
+    font-size: 2vw;
+    font-style: italic;
+    position: absolute;
+    left: 25%;
+    top: 7%;
+}
