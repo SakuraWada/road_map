@@ -6,71 +6,73 @@
 {% endblock %}
 
 {% block content %}
-    {% if player %}
-        <div class="banner-area">
-            <div class="player-avatar-area"><img class="player-avatar" src="{{ player_info.avatar }}" alt="Player Avatar"></div>
-            <div class="player-namacard-area"><img class="player-namecard" src="{{ player_info.namecard }}" alt="Player Namecard"></div>
-            <div class="player-name-and-title">
-                <p class="player-name">{{ player }}</p>
-                <p class="player-title">{{ player_info.title }}</p>
+<div class="content">
+{% if player %}
+    <div class="banner-area">
+        <div class="player-avatar-area"><img class="player-avatar" src="{{ player_info.avatar }}" alt="Player Avatar"></div>
+        <div class="player-namacard-area"><img class="player-namecard" src="{{ player_info.namecard }}" alt="Player Namecard"></div>
+        <div class="player-name-and-title">
+            <p class="player-name">{{ player }}</p>
+            <p class="player-title">{{ player_info.title }}</p>
+        </div>
+    </div>
+    {% if player_info %}
+    <div class="player-rank-area">
+        <img class="endorsement" src="{{ player_info.endorsement.frame }}" alt="Endorsement Frame">
+        <div class="role-container">
+            <img class="role-icon" src="{% static 'overwin/img/tank-icon.svg' %}" alt="tank_cs_role_icon">
+            <div class="role-right-container">
+                <div><img class="rank-icon" src="{{ player_info.tank_rank_cs.rank_icon }}" alt="tank_cs_rank_icon"></div>
+                <div><img class="tier-icon" src="{{ player_info.tank_rank_cs.tier_icon }}" alt="tank_cs_tier_icon"></div>
             </div>
         </div>
-        {% if player_info %}
-        <div class="player-rank-area">
-            <img class="endorsement" src="{{ player_info.endorsement.frame }}" alt="Endorsement Frame">
-            <div class="role-container">
-                <img class="role-icon" src="{{ player_info.tank_rank_cs.role_icon }}" alt="tank_cs_role_icon">
-                <div class="role-right-container">
-                    <div><img class="rank-icon" src="{{ player_info.tank_rank_cs.rank_icon }}" alt="tank_cs_rank_icon"></div>
-                    <div><img class="tier-icon" src="{{ player_info.tank_rank_cs.tier_icon }}" alt="tank_cs_tier_icon"></div>
-                </div>
-            </div>
-            <div class="role-container">
-                <img class="role-icon" src="{{ player_info.damage_rank_cs.role_icon }}" alt="damage_cs_role_icon" >
-                <div class="role-right-container">
-                    <div><img class="rank-icon" src="{{ player_info.damage_rank_cs.rank_icon }}" alt="damage_cs_rank_icon"></div>
-                    <div><img class="tier-icon" src="{{ player_info.damage_rank_cs.tier_icon }}" alt="damage_cs_tier_icon"></div>
-                </div>
-            </div>
-            <div class="role-container">
-                <img class="role-icon" src="{{ player_info.support_rank_cs.role_icon }}" alt="support_cs_role-icon" >
-                <div class="role-right-container">
-                    <div><img class="rank-icon" src="{{ player_info.support_rank_cs.rank_icon }}" alt="support_cs_rank-icon"></div>
-                    <div><img class="tier-icon" src="{{ player_info.support_rank_cs.tier_icon }}" alt="support_cs_tier-icon"></div>
-                </div>
+        <div class="role-container">
+            <img class="role-icon" src="{% static 'overwin/img/damage-icon.svg' %}" alt="damage_cs_role_icon" >
+            <div class="role-right-container">
+                <div><img class="rank-icon" src="{{ player_info.damage_rank_cs.rank_icon }}" alt="damage_cs_rank_icon"></div>
+                <div><img class="tier-icon" src="{{ player_info.damage_rank_cs.tier_icon }}" alt="damage_cs_tier_icon"></div>
             </div>
         </div>
-        <div class="container">
-            <h1>Hero Stats</h1>
-            <div class="hero-stats-table-area">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Hero</th>
-                            <th>Time Played</th>
-                            <th>Win Rate</th>
-                            <th>Average Damage</th>
-                            <th>Kill/Death Ratio</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for hero_name, hero_data in player_hero_info.items %}
-                        <tr>
-                            <td>{{ hero_name }}</td>
-                            <td>{{ hero_data.time_played }}</td>
-                            <td>{{ hero_data.win_rate }}%</td>
-                            <td>{{ hero_data.average_damage }}</td>
-                            <td>{{ hero_data.kill_count_divide_death_count }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+        <div class="role-container">
+            <img class="role-icon" src="{% static 'overwin/img/support-icon.svg' %}" alt="support_cs_role-icon" >
+            <div class="role-right-container">
+                <div><img class="rank-icon" src="{{ player_info.support_rank_cs.rank_icon }}" alt="support_cs_rank-icon"></div>
+                <div><img class="tier-icon" src="{{ player_info.support_rank_cs.tier_icon }}" alt="support_cs_tier-icon"></div>
             </div>
         </div>
-        {% else %}
-        <p>非公開のプレイヤーです</p>
-        {% endif %}
+    </div>
+    <div class="container">
+        <h1>Hero Stats</h1>
+        <div class="hero-stats-table-area">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Hero</th>
+                        <th>Time Played</th>
+                        <th>Win Rate</th>
+                        <th>Average Damage</th>
+                        <th>Kill/Death Ratio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for hero_name, hero_data in player_hero_info.items %}
+                    <tr>
+                        <td>{{ hero_name }}</td>
+                        <td>{{ hero_data.time_played }}</td>
+                        <td>{{ hero_data.win_rate }}%</td>
+                        <td>{{ hero_data.average_damage }}</td>
+                        <td>{{ hero_data.kill_count_divide_death_count }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
     {% else %}
-    <p>プレイヤーが見つかりませんでした</p>
+    <p>非公開のプレイヤーです</p>
     {% endif %}
+{% else %}
+<p>プレイヤーが見つかりませんでした</p>
+{% endif %}
+</div>
 {% endblock %}

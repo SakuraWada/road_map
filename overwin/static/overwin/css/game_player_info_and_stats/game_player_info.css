@@ -1,3 +1,8 @@
+.content{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
 .logo-img{
     width: 150px;
     margin-bottom: 50px;
@@ -82,15 +87,17 @@
 
 .table{
     margin:0 auto;
-    border-spacing: 20px 30px;
+    /* border-spacing: 20px 30px; */
+    border-collapse: collapse;
     font-size: 18px;
 }
 
 .table th{
     font-size: 20px;
+    padding: 25px;
 }
 
-/* TODO:下線の表示 */
-.table tr{
-    border-bottom: 20px solid #E0612B;
+.table td{
+    border-bottom: 1px solid #E0612B;
+    padding: 40px 20px 0px 20px;
 }
