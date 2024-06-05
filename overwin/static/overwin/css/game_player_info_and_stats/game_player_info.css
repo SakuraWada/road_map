@@ -22,19 +22,84 @@
 }
 
 /* TODO:バナー上に白のグラデーションを入れ、どのようなバナーでも名前を見やすく */
+.player-name-and-title{
+    position: absolute;
+    left: 25%;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: left;
+}
+
 .player-name {
     color: white;
     font-size: 4vw;
     font-style: italic;
-    position: absolute;
-    left: 25%;
+    margin-bottom: 0;
 }
 
 .player-title {
+    margin-top: 5px;
     color: white;
     font-size: 2vw;
     font-style: italic;
-    position: absolute;
-    left: 25%;
-    top: 7%;
+}
+.endorsement{
+    width: 15%;
+}
+
+
+.tank-role-container{
+    display: flex;
+    width: 30%;
+}
+
+.tank-cs-role-icon {
+    width: 45%;
+}
+
+.tank-role-right-container{
+    width: 50%;
+}
+
+.tank-cs-rank-icon,
+.tank-cs-tier-icon {
+    width: 70%;
+}
+
+
+.damage-role-container{
+    display: flex;
+    width: 30%;
+}
+
+.damage-cs-role-icon {
+    width: 45%;
+}
+
+.damage-role-right-container{
+    width: 50%;
+}
+
+.damage-cs-rank-icon,
+.damage-cs-tier-icon {
+    width: 70%;
+}
+
+
+.support-role-container{
+    display: flex;
+    width: 30%;
+}
+
+.support-cs-role-icon {
+    width: 45%;
+}
+
+.support-role-right-container{
+    width: 50%;
+}
+
+.support-cs-rank-icon,
+.support-cs-tier-icon {
+    width: 70%;
 }
