@@ -85,3 +85,12 @@
     border-spacing: 20px 30px;
     font-size: 18px;
 }
+
+.table th{
+    font-size: 20px;
+}
+
+/* TODO:下線の表示 */
+.table tr{
+    border-bottom: 20px solid #E0612B;
+}
