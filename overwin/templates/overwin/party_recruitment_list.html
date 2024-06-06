@@ -1,10 +1,13 @@
 {% extends 'overwin/base.html'%}
+{% load static %}
 
-{% block title %}
-<div class="h1">パーティー募集</div>
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'overwin/css/party_recruitment/party_recruitment_list.css'%}">
 {% endblock %}
 
 {% block content %}
+<div class="h1">パーティー募集</div>
 <h2>自分の募集</h2>
 {% for recruitment in user_recruitment %}
 <ul>
