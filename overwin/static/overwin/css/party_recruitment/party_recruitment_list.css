@@ -35,8 +35,14 @@
 .card-content h3{
     margin-right: 40px;
 }
-.card-content p{
+.card-content h4{
     font-weight: 600;
     font-size: large;
     margin-left: 5px;
+}
+
+.card-content p{
+    font-weight: 200;
+    font-size: medium;
+    margin-left: 10px;
 }

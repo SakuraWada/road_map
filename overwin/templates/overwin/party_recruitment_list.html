@@ -16,12 +16,12 @@
         <a href="{%url 'overwin:party_recruitment_detail' recruitment.id %}">
         <div class="card-content">
             <h3>募集者：{{ recruitment.owner.username }}</h3>
-            <p>参加人数: {{ recruitment.current_member_count }}</p>
-            <p>募集人数: {{ recruitment.max_recruit_member }}</p>
+            <h4>参加人数: {{ recruitment.current_member_count }}</h4>
+            <h4>募集人数: {{ recruitment.max_recruit_member }}</h4>
             {% if recruitment.comment %}
-            <p>コメント: {{ recruitment.comment }}</p>
+            <p class="comment"> {{ recruitment.comment }}</p>
             {% else %}
-            <p>コメント: - </p>
+            <p class="comment"> - </p>
             {% endif %}
         </div>
         </a>
@@ -41,12 +41,12 @@
         <a href="{%url 'overwin:party_recruitment_detail' recruitment.id %}">
         <div class="card-content">
             <h3>募集者：{{ recruitment.owner.username }}</h3>
-            <p>募集人数: {{ recruitment.max_recruit_member }}</p>
-            <p>参加人数: {{ recruitment.current_member_count }}</p>
+            <h4>募集人数: {{ recruitment.max_recruit_member }}</h4>
+            <h4>参加人数: {{ recruitment.current_member_count }}</h4>
             {% if recruitment.comment %}
-            <p>コメント: {{ recruitment.comment }}</p>
+            <p class="comment"> {{ recruitment.comment }}</p>
             {% else %}
-            <p>コメント: - </p>
+            <p class="comment"> - </p>
             {% endif %}
         </div>
         </a>
