@@ -1,3 +1,42 @@
-body{
-    background-color: aqua;
+.logo-img{
+    width: 150px;
+}
+
+.content{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.title{
+    margin-top: 60px;
+    margin-left:15%;
+}
+
+.card {
+    width: 60%;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 0px 40px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.card a{
+    text-decoration: none;
+}
+
+.card-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #4c4c4c;
+}
+
+.card-content h3{
+    margin-right: 40px;
+}
+.card-content p{
+    font-weight: 600;
+    font-size: large;
+    margin-left: 5px;
 }
