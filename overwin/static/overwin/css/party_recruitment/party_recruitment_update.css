@@ -10,7 +10,6 @@ a{
     max-width: 800px;
     margin: 0 auto;
     margin-top: 50px;
-    margin-bottom: 50px;
 }
 
 .card{
@@ -51,12 +50,4 @@ a{
 .member-num-area p{
     margin-right: 80px;
     margin-left: 20px;
-}
-
-.list-link-area{
-    margin: 20px;
-    margin-top: 30px;
-    font-size: large;
-    font-weight: bold;
-    text-align: right;
 }
