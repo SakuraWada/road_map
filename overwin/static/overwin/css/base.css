@@ -3,12 +3,10 @@ body{
     background-color: #DADDE4;
     font-family: Arial, sans-serif;
     color: #4c4c4c;
-    max-width: 800px;
 }
 
-a{
-    text-decoration: none;
-    display: inline-block;
+.logo-img{
+    width: 210px;
 }
 
 .logo-area{
@@ -17,17 +15,16 @@ a{
 
 .logo{
     display: block;
-    /* margin: 0 auto; */
     width: 210px;
 }
 
 .btn-primary{
-    font-size: 16px;
     font-weight: 400;
     background-color: #E0612B;
     color: #fff;
     border: none;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .btn-secondary{
