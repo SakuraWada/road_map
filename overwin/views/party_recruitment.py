@@ -116,7 +116,7 @@ class PartyRecruitmentDetailView(generic.DetailView):
 
 @method_decorator(login_required, name="dispatch")
 class PartyRecruitmentUpdateView(generic.UpdateView):
-    template_name = 'overwin/party_recruitment_update.html'
+    template_name = 'overwin/party_recruitment/party_recruitment_update.html'
     model = Recruitment
     form_class = RecruitmentForm
 

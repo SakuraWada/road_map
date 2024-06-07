@@ -35,7 +35,7 @@
     </div>
 
     {% empty %}
-    <p>募集を作成していません</p>
+    <p class="no-recruitment-message">募集を作成していません</p>
     {% endfor %}
 </div>
 
@@ -56,6 +56,8 @@
         </div>
         </a>
     </div>
+    {% empty %}
+    <p class="no-recruitment-message">募集が作成されていません</p>
     {% endfor %}
 </div>
 {% endblock %}
