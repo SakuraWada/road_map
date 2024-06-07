@@ -7,9 +7,20 @@
     margin: 0 auto;
 }
 
+.title-and-link-area{
+    display: flex;
+    align-items: center;
+}
+
 .title{
-    margin-top: 60px;
-    margin-left:15%;
+    margin-left: 13%;
+}
+
+.create-link{
+    text-decoration: none;
+    margin-left: 30px;
+    font-weight: 700;
+    font-size: medium;
 }
 
 .card {
@@ -27,22 +38,36 @@
 
 .card-content{
     display: flex;
-    justify-content: space-between;
     align-items: center;
     color: #4c4c4c;
 }
 
-.card-content h3{
-    margin-right: 40px;
+.recruiter{
+    flex: 0 0 150px;
+    margin-right: 20px;
 }
-.card-content h4{
+
+.details{
+    flex: 1;
+}
+
+.member-num
+{
+    display: flex;
+    align-items: center;
     font-weight: 600;
     font-size: large;
-    margin-left: 5px;
+}
+
+.participants{
+    margin-right: 40px;
 }
 
 .card-content p{
     font-weight: 200;
     font-size: medium;
-    margin-left: 10px;
+}
+
+.recruitment-list{
+    margin-top: 80px;
 }
