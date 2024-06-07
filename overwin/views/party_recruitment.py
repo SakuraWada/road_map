@@ -9,7 +9,7 @@ from ..forms.party_recruitment import RecruitmentForm
 @method_decorator(login_required, name="dispatch")
 class RecruitmentListView(generic.ListView):
     model = Recruitment
-    template_name = 'overwin/party_recruitment_list.html'
+    template_name = 'overwin/party_recruitment/party_recruitment_list.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -19,7 +19,7 @@ class RecruitmentListView(generic.ListView):
 
 @method_decorator(login_required, name="dispatch")
 class PartyRecruitmentCreateView(generic.CreateView):
-    template_name = "overwin/party_recruitment_create.html"
+    template_name = "overwin/party_recruitment/party_recruitment_create.html"
     model = Recruitment
     form_class = RecruitmentForm
     success_url = reverse_lazy("overwin:party_recruitment_list")
@@ -61,7 +61,7 @@ class PartyRecruitmentDetailView(generic.DetailView):
             'applicant_members': applicant_members,
             'approved_message': approved_message,
         }
-        return render(request, 'overwin/party_recruitment_detail.html', context)
+        return render(request, 'overwin/party_recruitment/party_recruitment_detail.html', context)
 
     def post(self, request, pk):
         recruitment = get_object_or_404(Recruitment, pk=pk)
@@ -81,7 +81,7 @@ class PartyRecruitmentDetailView(generic.DetailView):
                     'form': form,
                     'error_message': 'フォームが無効です。',
                 }
-                return render(request, 'overwin/party_recruitment_detail.html', context)
+                return render(request, 'overwin/party_recruitment/party_recruitment_detail.html', context)
 
         ## 参加申請の許可
         if 'approve_member' in request.POST:
@@ -112,7 +112,7 @@ class PartyRecruitmentDetailView(generic.DetailView):
             'is_owner': is_owner,
             'form' : form
         }
-        return render(request, 'overwin/party_recruitment_detail.html', context)
+        return render(request, 'overwin/party_recruitment/party_recruitment_detail.html', context)
 
 @method_decorator(login_required, name="dispatch")
 class PartyRecruitmentUpdateView(generic.UpdateView):
@@ -127,4 +127,4 @@ class PartyRecruitmentUpdateView(generic.UpdateView):
 class PartyRecruitmentDeleteView(generic.DeleteView):
     model = Recruitment
     success_url = reverse_lazy('overwin:party_recruitment_list')
-    template_name = 'overwin/party_recruitment_delete.html'
+    template_name = 'overwin/party_recruitment/party_recruitment_delete.html'
