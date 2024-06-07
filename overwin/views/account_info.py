@@ -8,7 +8,7 @@ from django.utils.decorators import method_decorator
 
 @method_decorator(login_required, name="dispatch")
 class AccountInfoView(generic.TemplateView):
-    template_name = 'overwin/account_info.html'
+    template_name = 'overwin/account_info/account_info.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
