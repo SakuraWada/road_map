@@ -21,6 +21,11 @@ a{
 
 .card h4{
     margin-top: 25px;
+    margin-bottom: 0px;
+}
+
+.card p{
+    margin-top: 5px;
 }
 
 .card-recruiter-area{
@@ -49,6 +54,7 @@ a{
 }
 
 .member-num-area p{
+    margin-top: 5px;
     margin-right: 80px;
     margin-left: 20px;
 }

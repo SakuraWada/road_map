@@ -10,44 +10,40 @@ a{
     max-width: 800px;
     margin: 0 auto;
     margin-top: 50px;
+    text-align: left;
 }
 
-.card{
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 20px 60px;
+.delete-link-area{
+    text-align: right;
 }
 
-.card h4{
-    margin-top: 25px;
+.delete-link{
+    color: red;
 }
 
-.card-recruiter-area{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+.field-area{
+    margin-bottom: 20px;
 }
 
-.rectuiter{
-    margin-bottom: 0;
+.field-area > *{
+    vertical-align: top;
 }
 
-.update-link{
-    background-color: #1D2539;
-    color: #fff;
-    cursor: pointer;
+.field-area label{
+    font-weight: bold;
+    font-size: large;
+    margin-right: 15px;
+}
+
+.field-area textarea{
+    border-style: none;
     border-radius: 5px;
-    padding: 5px 20px;
+    width: 80%;
+    height: 50px;
+    resize: none;
 }
 
-.member-num-area{
-    display: flex;
-    justify-content: flex-start;
-    align-items: baseline;
-}
-
-.member-num-area p{
-    margin-right: 80px;
-    margin-left: 20px;
+.field-area input{
+    border-style: none;
+    border-radius: 5px;
 }
