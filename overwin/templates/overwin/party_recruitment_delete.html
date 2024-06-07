@@ -5,8 +5,9 @@
 {% endblock %}
 
 {% block content %}
-    <form action="" method="POST">
+    <form method="POST">
         {% csrf_token %}
         <p>募集を削除しますか？</p>
         <button type="submit" class="btn btn-success" >削除</button>
+    </form>
 {% endblock %}

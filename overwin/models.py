@@ -20,30 +20,37 @@ class FavoriteGamePlayer(models.Model):
     def __str__(self):
         return f"{self.user.username} - {self.game_player.battle_tag}"
 
-
 class Recruitment(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='募集者')
 
     max_recruit_member = models.IntegerField(
         validators=[
             MinValueValidator(1),
             MaxValueValidator(4),
         ],
+        verbose_name='募集人数',
     )
 
     current_member_count = models.PositiveIntegerField(default=0)
     tank_role_num        = models.IntegerField(default=0)
     damage_role_num      = models.IntegerField(default=0)
     support_role_num     = models.IntegerField(default=0)
-    comment              = models.TextField(max_length=255, blank=True, null=True)
+    comment              = models.TextField(max_length=255, blank=True, null=True,verbose_name='備考欄')
+
+    @property
+    def possible_to_entry(self):
+        return self.current_member_count < self.max_recruit_member
 
 
-class JoinedMember(models.Model):
+class JoinMember(models.Model):
     recruitment        = models.ForeignKey(Recruitment, on_delete=models.CASCADE)
     join_member        = models.ForeignKey(User,        on_delete=models.CASCADE)
+    message = models.TextField(blank=True, null=True)
 
     role = models.CharField(
         max_length=16,
         choices=Role.choices(),
         default=Role.FREE_ROLE.key,
     )
+
+    is_approved = models.BooleanField(default=False)
