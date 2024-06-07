@@ -47,3 +47,7 @@ h1{
     color: #2e8acb;
     cursor: pointer;
 }
+
+.register-container{
+    margin-bottom: 100px;
+}
