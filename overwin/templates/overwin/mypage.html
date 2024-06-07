@@ -1,34 +1,45 @@
 {% extends 'overwin/base.html' %}
 {% load static %}
 
-<head>
-    <title>マイページ</title>
-</head>
-
 {% block page_css %}
-<link rel="stylesheet" href="{% static 'overwin/css/mypage.css'%}">
+<link rel="stylesheet" href="{% static 'overwin/css/mypage/mypage.css' %}">
 {% endblock %}
 
 {% block content %}
+<div class="mypage-container">
 <h1>マイページ</h1>
     {% if user.is_authenticated %}
-        <p>こんにちは{{ user.username }}さん</p>
-        <div class = "mypage_container fill">
-            <div class="mypage_button fit">
+        <p>こんにちは、{{ user.username }}さん</p>
+        <!-- TODO:JSでボタンの選択範囲を広げる -->
+        <div class = "mypage-button-container">
+            <div class="mypage-button">
+                <div class="mypage-btn-img-area">
+                    <img id="search-player-btn-img" class="mypage-button-img" src="{% static 'overwin/img/mypage-search-player.png' %}" alt="マイページ">
+                </div>
                 <a href="{% url 'overwin:search_game_player' %}">プレイヤー検索</a>
             </div>
-            <div class="mypage_button fit">
-                <a href="{% url 'overwin:favorite_game_player' %}">お気に入りプレイヤー</a>
+            <div class="mypage-button">
+                <div class="mypage-btn-img-area">
+                    <img id="favorite-btn-img" class="mypage-button-img" src="{% static 'overwin/img/mypage-favorite.png' %}" alt="お気に入りプレイヤー">
+                </div>
+                <a href="{% url 'overwin:favorite_game_player' %}">お気に入り<br>プレイヤー</a>
             </div>
-            <div class="mypage_button fit">
+            <div class="mypage-button">
+                <div class="mypage-btn-img-area">
+                    <img id="account-info-btn-img" class="mypage-button-img" src="{% static 'overwin/img/mypage-account-info.png' %}" alt="アカウント情報">
+                </div>
                 <a href="{% url 'overwin:account_info'%}">アカウント情報</a>
             </div>
-            <div class="mypage_button fit">
+            <div class="mypage-button">
+                <div class="mypage-btn-img-area">
+                    <img id="party-recruitment-btn-img" class="mypage-button-img" src="{% static 'overwin/img/mypage-party-recruitment.png' %}" alt="パーティー募集">
+                </div>
                 <a href="{% url 'overwin:party_recruitment_list'%}">パーティー募集</a>
             </div>
         </div>
-        <a href="{% url 'overwin:logout' %}">ログアウト</a>
+        <a class="btn-secondary" href="{% url 'overwin:logout' %}">ログアウト</a>
     {% else %}
         <a href="{% url 'overwin:account_register' %}" class="btn btn-primary">ログインもしくは新規登録</a>
     {% endif %}
+</div>
 {% endblock %}
