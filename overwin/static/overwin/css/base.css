@@ -19,6 +19,7 @@ body{
     color: #fff;
     border: none;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .btn-secondary{
