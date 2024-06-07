@@ -47,3 +47,16 @@ a{
     border-style: none;
     border-radius: 5px;
 }
+
+.action-button-area{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-primary{
+    margin: 0 auto;
+}
+
+.btn-secondary{
+}

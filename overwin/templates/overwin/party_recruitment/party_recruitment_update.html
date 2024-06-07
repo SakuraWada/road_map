@@ -17,8 +17,10 @@
             {{ field.errors }}
         </div>
         {% endfor %}
-        <div class="action-button-area"><button name="update" type="submit" class="btn btn-primary" >更新する</button></div>
+        <div class="action-button-area">
+            <button name="update" type="submit" class="btn btn-primary" >更新する</button>
+            <a href="{% url 'overwin:party_recruitment_detail' pk=recruitment.pk %}" class="btn btn-secondary">募集詳細に戻る</a>
+        </div>
     </form>
-        <div class="action-button-area"><a href="{% url 'overwin:party_recruitment_detail' pk=recruitment.pk %}" class="btn btn-secondary">募集詳細に戻る</a></div>
 </div>
 {% endblock %}
