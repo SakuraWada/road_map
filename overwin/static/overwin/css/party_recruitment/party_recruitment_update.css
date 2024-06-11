@@ -7,7 +7,7 @@ a{
 }
 
 .content{
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
     margin-top: 50px;
     text-align: left;
@@ -48,15 +48,37 @@ a{
     border-radius: 5px;
 }
 
+.field-area input[type=number]{
+    width: 50px;
+    height: 30px;
+    padding-left: 15px;
+}
+
+.field-area textarea{
+    width: 400px;
+}
+
 .action-button-area{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    position: relative;
+    margin-top: 50px;
 }
 
 .btn-primary{
-    margin: 0 auto;
+    width: 200px;
+    height: 40px;
+    font-weight: 400;
+    font-size: large;
 }
 
 .btn-secondary{
+    font-weight: 500;
+    font-size: medium;
+}
+
+.back-link{
+    position: absolute;
+    right: 0;
 }

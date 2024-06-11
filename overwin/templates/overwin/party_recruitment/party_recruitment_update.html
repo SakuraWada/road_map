@@ -7,6 +7,7 @@
 
 {% block content %}
 <div class="content">
+    <h2>募集編集</h2>
     <div class="delete-link-area"><a href="{% url 'overwin:party_recruitment_delete' pk=recruitment.id %}" class="btn btn-secondary delete-link">募集を削除</a></div>
     <form method="POST">
         {% csrf_token %}
@@ -19,7 +20,7 @@
         {% endfor %}
         <div class="action-button-area">
             <button name="update" type="submit" class="btn btn-primary" >更新する</button>
-            <a href="{% url 'overwin:party_recruitment_detail' pk=recruitment.pk %}" class="btn btn-secondary">募集詳細に戻る</a>
+            <a href="{% url 'overwin:party_recruitment_detail' pk=recruitment.pk %}" class="btn btn-secondary back-link">募集詳細に戻る</a>
         </div>
     </form>
 </div>
