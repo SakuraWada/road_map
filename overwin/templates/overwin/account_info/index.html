@@ -1,0 +1,26 @@
+{% extends 'overwin/base.html'%}
+{% load static %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'overwin/css/account_info/index.css'%}">
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h1>アカウント情報</h1>
+    <div class="delete-area"><a href="{% url 'overwin:account_delete' %}" class="delete-link">アカウントを削除する</a></div>
+    <table class="info-table">
+        <tbody>
+            <tr>
+                <td>ユーザー名</td>
+                <td><span class="border">{{ username }}</span></td>
+            </tr>
+            <tr>
+                <td>メールアドレス</td>
+                <td><span class="border">{{ email }}</span></td>
+            </tr>
+        </tbody>
+    </table>
+    <div><a href="{% url 'overwin:account_info_update' %}" class="btn btn-primary ">編集ページへ</a></div>
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+h1,p{
+    text-align: left;
+}
+
+.mypage-container{
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.mypage-button-container{
+    display: grid;
+    grid-template-columns: repeat(3, 160px);
+    grid-template-rows: repeat(2, 150px);
+    gap: 30px;
+    justify-content: center;
+}
+.mypage-button{
+    background-color: #FFFFFF;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    /* ボタン内の要素を垂直に並べ、中央に配置 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mypage-btn-img-area{
+    text-align: center;
+}
+
+.mypage-button-img{
+    max-width: 50%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.mypage-button a{
+    color: #4c4c4c;
+    margin-top: auto;
+    margin-bottom: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#search-player-btn-img{
+    transform: rotate(45deg);
+    max-width: 45%;
+}
+
+#account-info-btn-img{
+    margin-top: 10px;
+    max-width: 60%;
+}
+
+#party-recruitment-btn-img{
+    max-width: 70%;
+}
+
+.btn-secondary{
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    padding: 10px;
+    width: 150px;
+    margin-top: 50px;
+}
