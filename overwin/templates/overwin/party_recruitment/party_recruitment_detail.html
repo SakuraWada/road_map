@@ -8,6 +8,8 @@
 
 {% block content %}
 <div class="content">
+    <h2>募集詳細</h2>
+    <!-- 募集者の詳細画面 -->
     {% if is_owner %}
     <div class="card">
         <div class="card-recruiter-area">
@@ -34,13 +36,15 @@
         {% if applicant_members %}
             <ul>
             {% for member in applicant_members %}
-                <li>{{ member.join_member.username }}</li>
-                <form method="post">
-                    {% csrf_token %}
-                    <input type="hidden" name="member_id" value="{{ member.join_member.id }}">
-                    <input type="text" name="message" maxlength="20" placeholder="バトルタグを記入" required>
-                    <button type="submit" name="approve_member">バトルタグと参加許可を送信</button>
-                </form>
+                <div class="applicant-area">
+                    <li>{{ member.join_member.username }}</li>
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="member_id" value="{{ member.join_member.id }}">
+                        <input type="text" name="message" maxlength="20" placeholder="（例）Player#1234" required>
+                        <button type="submit" name="approve_member" class="btn-primary apply-btn">バトルタグと参加許可を送信</button>
+                    </form>
+                </div>
             {% endfor %}
             </ul>
         {% else %}
@@ -49,27 +53,44 @@
         <h4>コメント</h4>
         <p>{{ recruitment.comment }}</p>
     </div>
+    <!-- 参加者の募集詳細画面 -->
     {% else %}
     <div class="card">
-    <h2 class="recruiter">募集者：{{ recruitment.owner.username }}</h2>
-        <p>募集人数: {{ recruitment.max_recruit_member }}</p>
-        <p>参加人数: {{ recruitment.current_member_count }}</p>
-        <p>コメント: {{ recruitment.comment }}</p>
-        {% if applicated_to_recruiting %}
-            <span>参加申請済み</span>
-        {% elif not possible_to_entry %}
-            <span>満員です</span>
+        <div class="card-recruiter-area">
+            <h2>募集者：{{ recruitment.owner.username }}</h2>
+        </div>
+        <div class="member-num-area">
+            <h4>募集人数</h4>
+            <p>{{ recruitment.max_recruit_member }}人</p>
+            <h4>現在の参加人数</h4>
+            <p>{{ recruitment.current_member_count }}人</p>
+        </div>
+        <h4>参加者一覧</h4>
+        {% if joined_members %}
+            <ul>
+            {% for member in joined_members %}
+                <li>{{ member.join_member.username }}</li>
+            {% endfor %}
+            </ul>
         {% else %}
-            <form method="post">
-                {% csrf_token %}
-                <button type="submit" name="join" class="btn btn-primary">参加申請</button>
-            </form>
+            <p>参加者はいません。</p>
         {% endif %}
-        {% if approved_message %}
-            <p>募集者のバトルタグ: {{ approved_message }}</p>
-        {% endif %}
+        <h4>コメント</h4>
+        <p>{{ recruitment.comment }}</p>
     </div>
-</div>
+    {% if applicated_to_recruiting %}
+        <p class="status-message">参加申請済み</p>
+    {% elif not possible_to_entry %}
+        <p class="status-message">満員です</p>
+    {% else %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="submit-btn-area"><button type="submit" name="join" class="btn entry-btn btn-primary">参加申請</button></div>
+        </form>
+    {% endif %}
+    {% if approved_message %}
+        <p>募集者のバトルタグ: {{ approved_message }}</p>
+    {% endif %}
 {% endif %}
 <div class="list-link-area"><a href="{% url 'overwin:party_recruitment_list'%}" class="btn btn-secondary list-link">募集一覧に戻る</a></div>
 </div>

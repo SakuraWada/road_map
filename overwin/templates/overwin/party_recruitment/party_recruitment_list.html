@@ -45,14 +45,18 @@
     <div class="card">
         <a href="{%url 'overwin:party_recruitment_detail' recruitment.id %}">
         <div class="card-content">
-            <h3>募集者：{{ recruitment.owner.username }}</h3>
-            <h4>募集人数: {{ recruitment.max_recruit_member }}</h4>
-            <h4>参加人数: {{ recruitment.current_member_count }}</h4>
-            {% if recruitment.comment %}
-            <p class="comment"> {{ recruitment.comment }}</p>
-            {% else %}
-            <p class="comment"> - </p>
-            {% endif %}
+            <h3 class="recruiter">募集者：{{ recruitment.owner.username }}</h3>
+            <div class="details">
+                <div class="member-num">
+                    <h4 class="participants">参加人数: {{ recruitment.current_member_count }}</h4>
+                    <h4 class="max-recruit-member">募集人数: {{ recruitment.max_recruit_member }}</h4>
+                </div>
+                {% if recruitment.comment %}
+                <p class="comment"> {{ recruitment.comment }}</p>
+                {% else %}
+                <p class="comment"> - </p>
+                {% endif %}
+            </div>
         </div>
         </a>
     </div>

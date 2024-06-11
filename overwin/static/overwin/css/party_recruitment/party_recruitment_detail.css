@@ -66,3 +66,53 @@ a{
     font-weight: bold;
     text-align: right;
 }
+
+.submit-btn-area{
+    text-align: center;
+}
+
+.entry-btn{
+    margin-top: 30px;
+    width: 200px;
+    height: 40px;
+    font-weight: 400;
+    font-size: large;
+}
+
+.status-message{
+    text-align: center;
+    margin-top: 50px;
+    font-weight: 600;
+    font-size: large;
+}
+
+/* 申請があった場合 */
+.applicant-area{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.applicant-area li {
+    margin-right: 20px;
+}
+
+.applicant-area input{
+    margin-right: 20px;
+    border-radius: 5px;
+    border-color: #DADDE4;
+    border-style: solid;
+    background-color: #DADDE4;
+    padding: 5px 10px;
+}
+
+.applicant-area li{
+    color: #E0612B;
+    font-size: larger;
+    font-weight: 500;
+}
+
+.apply-btn{
+    border-radius: 5px;
+    padding: 5px 10px;
+}
