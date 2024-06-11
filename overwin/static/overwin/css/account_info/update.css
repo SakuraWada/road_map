@@ -1,0 +1,63 @@
+.logo{
+    width: 120px;
+}
+
+.logo-area{
+    width: 50px;
+}
+
+.content{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.h1{
+    text-align: left;
+}
+
+.info-table {
+    border-collapse:  collapse;
+    background-color: white;
+    margin: 0 auto;
+}
+
+.content input{
+    padding: 10px;
+    border: 1px solid #4c4c4c;
+    border-radius: 5px;
+}
+
+td {
+    border-bottom: 5px solid #DADDE4;
+    border-spacing: 10px;
+    margin: 0 auto;
+}
+
+table td:first-child {
+    text-align: center;
+    padding-left: 30px;
+}
+
+table td:last-child {
+    text-align: center;
+    padding: 30px;
+    border-bottom: 5px solid #DADDE4;
+}
+
+.border{
+    border-left: 1px solid #DADDE4;
+    padding-left: 20px;
+    display: block;
+}
+
+.btn-primary{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 40px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
