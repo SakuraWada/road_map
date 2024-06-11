@@ -1,13 +1,17 @@
 {% extends 'overwin/base.html'%}
+{% load static %}
 
-{% block title %}
-<div class="h1">パーティー募集</div>
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'overwin/css/party_recruitment/party_recruitment_delete.css'%}">
 {% endblock %}
 
 {% block content %}
+<div class="content">
     <form method="POST">
         {% csrf_token %}
-        <p>募集を削除しますか？</p>
-        <button type="submit" class="btn btn-success" >削除</button>
+        <p class="error-message">募集を削除しますか？</p>
+        <div class="btn-area"><button type="submit" class="btn btn-primary btn-success" >削除</button></div>
+        <div class="back-link-area"><a href="{% url 'overwin:party_recruitment_detail' pk=recruitment.pk %}" class="btn btn-secondary back-link">募集詳細に戻る</a></div>
     </form>
+</div>
 {% endblock %}
