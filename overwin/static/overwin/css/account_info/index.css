@@ -5,11 +5,10 @@
 .content{
     margin: 0 auto;
     margin-top: 50px;
-    /* text-align: center; */
     max-width: 600px;
 }
 
-.h1{
+.content h1{
     text-align: left;
 }
 
