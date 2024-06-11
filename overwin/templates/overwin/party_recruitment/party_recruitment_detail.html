@@ -89,7 +89,7 @@
         </form>
     {% endif %}
     {% if approved_message %}
-        <p>募集者のバトルタグ: {{ approved_message }}</p>
+        <p class="applyed-message">参加が許可されました！ 募集者のバトルタグ: {{ approved_message }}</p>
     {% endif %}
 {% endif %}
 <div class="list-link-area"><a href="{% url 'overwin:party_recruitment_list'%}" class="btn btn-secondary list-link">募集一覧に戻る</a></div>
