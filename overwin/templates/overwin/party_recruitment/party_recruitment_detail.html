@@ -56,6 +56,14 @@
     <!-- 参加者の募集詳細画面 -->
     {% else %}
     <div class="card">
+        {% if applicated_to_recruiting %}
+            <p class="status-message">参加申請済み</p>
+        {% elif not possible_to_entry %}
+            <p class="status-message">満員です</p>
+        {% endif %}
+        {% if approved_message %}
+            <p class="applyed-message">参加が許可されました！ 募集者のバトルタグ: {{ approved_message }}</p>
+        {% endif %}
         <div class="card-recruiter-area">
             <h2>募集者：{{ recruitment.owner.username }}</h2>
         </div>
@@ -78,20 +86,13 @@
         <h4>コメント</h4>
         <p>{{ recruitment.comment }}</p>
     </div>
-    {% if applicated_to_recruiting %}
-        <p class="status-message">参加申請済み</p>
-    {% elif not possible_to_entry %}
-        <p class="status-message">満員です</p>
-    {% else %}
-        <form method="post">
-            {% csrf_token %}
-            <div class="submit-btn-area"><button type="submit" name="join" class="btn entry-btn btn-primary">参加申請</button></div>
-        </form>
-    {% endif %}
-    {% if approved_message %}
-        <p class="applyed-message">参加が許可されました！ 募集者のバトルタグ: {{ approved_message }}</p>
-    {% endif %}
 {% endif %}
-<div class="list-link-area"><a href="{% url 'overwin:party_recruitment_list'%}" class="btn btn-secondary list-link">募集一覧に戻る</a></div>
+{% if not applicated_to_recruiting and possible_to_entry %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="submit-btn-area"><button type="submit" name="join" class="btn entry-btn btn-primary">参加申請</button></div>
+    </form>
+{% endif %}
+<div class="list-link-area"><a href="{% url 'overwin:party_recruitment_list'%}" class="list-link">募集一覧に戻る</a></div>
 </div>
 {% endblock %}

@@ -64,7 +64,12 @@ a{
     margin-top: 30px;
     font-size: large;
     font-weight: bold;
-    text-align: right;
+    text-align: left;
+}
+
+.list-link{
+    color: #4c4c4c;
+    text-decoration: underline;
 }
 
 .submit-btn-area{
@@ -84,6 +89,7 @@ a{
     margin-top: 50px;
     font-weight: 600;
     font-size: large;
+    color: #2e8acb;
 }
 
 /* 申請があった場合 */
