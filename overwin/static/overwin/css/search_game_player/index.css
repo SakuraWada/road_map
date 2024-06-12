@@ -1,5 +1,5 @@
 .content{
-    text-align: center;
+    margin: 0 auto;
     max-width: 800px;
 }
 
@@ -13,7 +13,8 @@ h1{
 }
 
 .search-area{
-    text-align: left;
+    margin-top: 50px;
+    text-align: center;
     margin-bottom: 60px;
 }
 
@@ -34,28 +35,36 @@ input[type="search"]{
     padding: 5px 20px;
     font-size: medium;
     box-sizing: border-box;
-}
-
-li{
-    margin-bottom: 10px;
+    color: white;
 }
 
 .player-list{
     display: grid;
     gap: 1em;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    margin-left: 10%;
+}
+
+.player-name{
+    text-align: left;
+    margin-bottom: 15px;
+    font-size: large;
+    font-weight: bold;
+
 }
 
 .player-name-link{
     color: #2e8acb;
 }
 
+.fav-btn-area{
+    display: flex;
+    justify-content: center;
+}
+
 #fav-btn{
     margin-top: 50px;
     padding: 8px 40px;
     font-size: medium;
-}
-
-.fav-btn-area{
-    text-align: left;
+    color: white;
 }
