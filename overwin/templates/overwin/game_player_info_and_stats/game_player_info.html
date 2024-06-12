@@ -77,7 +77,7 @@
                         <td>{{ hero_data.time_played }}</td>
                         <td>{{ hero_data.win_rate }}%</td>
                         <td>
-                            <canvas id="win-rate-chart" win-rate="{{ hero_data.win_rate }}"></canvas>
+                            <canvas id="win-rate-chart-{{ forloop.counter }}" win-rate="{{ hero_data.win_rate }}"></canvas>
                         </td>
                         <td>{{ hero_data.average_damage }}</td>
                         <td>{{ hero_data.kill_count_divide_death_count }}</td>

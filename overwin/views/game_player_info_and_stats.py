@@ -78,5 +78,6 @@ class GamePlayerInfoView(generic.TemplateView):
             player = GamePlayer.objects.filter(battle_tag=battle_tag).first()
             context['player'] = player
             context['player_info'] = self.fetch_player_info_by_battle_tag()
+            # breakpoint()
             context['player_hero_info'] = self.fetch_player_hero_info_by_battle_tag()
         return context
