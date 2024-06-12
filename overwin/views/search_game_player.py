@@ -7,7 +7,7 @@ from ..utils import fetch_data_from_api
 
 @method_decorator(login_required, name="dispatch")
 class GamePlayerSearchView(generic.ListView):
-    template_name = "overwin/search_game_player.html"
+    template_name = "overwin/search_game_player/index.html"
     #検索時の動作
     def get_queryset(self):
         query = self.request.GET.get('query')
@@ -51,4 +51,3 @@ class GamePlayerSearchView(generic.ListView):
             favorite, created = FavoriteGamePlayer.objects.get_or_create(user=request.user, game_player=add_game_player_name)
         return self.get(request, *args, **kwargs)
 
-    #TODO:各プレイヤーの戦績画面へ遷移する動作

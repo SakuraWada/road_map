@@ -1,0 +1,29 @@
+{% extends 'overwin/base.html'%}
+{% load static %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'overwin/css/favorite_game_player/index.css'%}">
+{% endblock %}
+
+{% block content %}
+<div class="content">
+<h1>お気に入りプレイヤー</h1>
+{% if object_list %}
+    <ul class="favorite-player-list">
+    {% for player in object_list %}
+        <li class="favorite-player">
+            <a class="player-link" href="{% url 'overwin:game_player_info' %}?battle_tag={{ player.game_player.battle_tag|urlencode }}">{{ player.game_player.battle_tag }}</a>
+            <form action="{% url 'overwin:favorite_game_player' %}" method="post" style="display: inline;">
+                {% csrf_token %}
+                <input type="hidden" name="favorite_id" value="{{ player.id }}">
+                <button class="btn-secondary" type="submit">削除</button>
+            </form>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+<p class="no-player-message">プレイヤーが登録されていません</p>
+{% endif %}
+<div class="search-link-area"><a href="{% url 'overwin:search_game_player' %}" class="add-link btn-primary">プレイヤーを探す</a></div>
+</div>
+{% endblock %}

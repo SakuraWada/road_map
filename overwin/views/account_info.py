@@ -8,7 +8,7 @@ from django.utils.decorators import method_decorator
 
 @method_decorator(login_required, name="dispatch")
 class AccountInfoView(generic.TemplateView):
-    template_name = 'overwin/account_info/account_info.html'
+    template_name = 'overwin/account_info/index.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -18,7 +18,7 @@ class AccountInfoView(generic.TemplateView):
 
 @method_decorator(login_required, name="dispatch")
 class UpdateAccountInfoView(generic.UpdateView):
-    template_name = 'overwin/account_info_update.html'
+    template_name = 'overwin/update.html'
     model = User
     success_url = reverse_lazy('overwin:account_info')
     form_class = AccountInfoUpdateForm
@@ -45,7 +45,7 @@ class UpdateAccountInfoView(generic.UpdateView):
 class DeleteAccountInfoView(generic.DeleteView):
     model = User
     success_url = reverse_lazy('overwin:login')
-    template_name = 'overwin/account_delete.html'
+    template_name = 'overwin/delete.html'
 
     def get_object(self, queryset=None):
         return get_object_or_404(User, pk=self.request.user.pk)

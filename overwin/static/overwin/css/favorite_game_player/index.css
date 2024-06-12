@@ -1,0 +1,53 @@
+.logo-img{
+    width: 150px;
+}
+
+.content{
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+li{
+    list-style: inside;
+}
+
+.favorite-player-list{
+    margin-top: 50px;
+    padding-left: 0;
+}
+
+.favorite-player{
+    margin-bottom: 15px;
+    font-size: large;
+}
+
+.player-link{
+    color: #2e8acb;
+}
+
+.btn-secondary{
+    border: none;
+    margin-left: 4px;
+    color: #E0612B;
+    background-color: #DADDE4;
+    font-weight: 400;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.search-link-area{
+    margin-top: 60px;
+}
+
+.btn-primary{
+    color: white;
+    background-color: #2e8acb;
+    padding: 10px;
+}
+
+.no-player-message{
+    text-align: center;
+    margin-top: 100px;
+    font-weight: medium;
+    font-size: large;
+}

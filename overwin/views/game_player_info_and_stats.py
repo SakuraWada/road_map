@@ -3,7 +3,7 @@ from ..models import GamePlayer
 from ..utils import fetch_data_from_api, rate_calculation, seconds_to_hour_and_minutes
 
 class GamePlayerInfoView(generic.TemplateView):
-    template_name = 'overwin/game_player_info.html'
+    template_name = 'overwin/game_player_info_and_stats/game_player_info.html'
 
     def fetch_player_info_by_battle_tag(self):
         battle_tag = self.request.GET.get('battle_tag')

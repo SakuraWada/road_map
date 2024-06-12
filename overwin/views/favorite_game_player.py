@@ -6,7 +6,7 @@ from django.shortcuts import redirect
 
 @method_decorator(login_required, name="dispatch")
 class FavoritePlayerView(generic.ListView):
-    template_name = "overwin/favorite_game_player.html"
+    template_name = "overwin/favorite_game_player/index.html"
     model = FavoriteGamePlayer
     query_set = FavoriteGamePlayer.objects.all()
 
