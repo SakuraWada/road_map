@@ -9,8 +9,12 @@
 <div class="content">
 {% if player %}
     <div class="banner-area">
-        <div class="player-avatar-area"><img class="player-avatar" src="{{ player_info.avatar }}" alt="Player Avatar"></div>
-        <div class="player-namacard-area"><img class="player-namecard" src="{{ player_info.namecard }}" alt="Player Namecard"></div>
+        <div class="player-avatar-area">
+            <img class="player-avatar" src="{{ player_info.avatar }}" alt="Player Avatar">
+        </div>
+        <div class="player-namacard-area">
+            <img class="player-namecard" src="{{ player_info.namecard }}" alt="Player Namecard">
+        </div>
         <div class="player-name-and-title">
             <p class="player-name">{{ player }}</p>
             <p class="player-title">{{ player_info.title }}</p>
@@ -22,22 +26,34 @@
         <div class="role-container">
             <img class="role-icon" src="{% static 'overwin/img/tank-icon.svg' %}" alt="tank_cs_role_icon">
             <div class="role-right-container">
-                <div><img class="rank-icon" src="{{ player_info.tank_rank_cs.rank_icon }}" alt="tank_cs_rank_icon"></div>
-                <div><img class="tier-icon" src="{{ player_info.tank_rank_cs.tier_icon }}" alt="tank_cs_tier_icon"></div>
+                <div>
+                    <img class="rank-icon" src="{{ player_info.tank_rank_cs.rank_icon }}" alt="tank_cs_rank_icon">
+                </div>
+                <div>
+                    <img class="tier-icon" src="{{ player_info.tank_rank_cs.tier_icon }}" alt="tank_cs_tier_icon">
+                </div>
             </div>
         </div>
         <div class="role-container">
             <img class="role-icon" src="{% static 'overwin/img/damage-icon.svg' %}" alt="damage_cs_role_icon" >
             <div class="role-right-container">
-                <div><img class="rank-icon" src="{{ player_info.damage_rank_cs.rank_icon }}" alt="damage_cs_rank_icon"></div>
-                <div><img class="tier-icon" src="{{ player_info.damage_rank_cs.tier_icon }}" alt="damage_cs_tier_icon"></div>
+                <div>
+                    <img class="rank-icon" src="{{ player_info.damage_rank_cs.rank_icon }}" alt="damage_cs_rank_icon">
+                </div>
+                <div>
+                    <img class="tier-icon" src="{{ player_info.damage_rank_cs.tier_icon }}" alt="damage_cs_tier_icon">
+                </div>
             </div>
         </div>
         <div class="role-container">
             <img class="role-icon" src="{% static 'overwin/img/support-icon.svg' %}" alt="support_cs_role-icon" >
             <div class="role-right-container">
-                <div><img class="rank-icon" src="{{ player_info.support_rank_cs.rank_icon }}" alt="support_cs_rank-icon"></div>
-                <div><img class="tier-icon" src="{{ player_info.support_rank_cs.tier_icon }}" alt="support_cs_tier-icon"></div>
+                <div>
+                    <img class="rank-icon" src="{{ player_info.support_rank_cs.rank_icon }}" alt="support_cs_rank-icon">
+                </div>
+                <div>
+                    <img class="tier-icon" src="{{ player_info.support_rank_cs.tier_icon }}" alt="support_cs_tier-icon">
+                </div>
             </div>
         </div>
     </div>
