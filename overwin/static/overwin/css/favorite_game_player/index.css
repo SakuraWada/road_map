@@ -3,7 +3,7 @@
 }
 
 .content{
-    text-align: left;
+    margin: 0 auto;
     max-width: 800px;
 }
 
@@ -43,4 +43,11 @@ li{
     color: white;
     background-color: #2e8acb;
     padding: 10px;
+}
+
+.no-player-message{
+    text-align: center;
+    margin-top: 100px;
+    font-weight: medium;
+    font-size: large;
 }

@@ -2,13 +2,13 @@
 {% load static %}
 
 {% block page_css %}
-<link rel="stylesheet" href="{% static 'overwin/css/favorite_game_player.css'%}">
+<link rel="stylesheet" href="{% static 'overwin/css/favorite_game_player/index.css'%}">
 {% endblock %}
 
 {% block content %}
-{% if object_list %}
 <div class="content">
 <h1>お気に入りプレイヤー</h1>
+{% if object_list %}
     <ul class="favorite-player-list">
     {% for player in object_list %}
         <li class="favorite-player">
@@ -21,9 +21,9 @@
         </li>
     {% endfor %}
     </ul>
-    <div class="search-link-area"><a href="{% url 'overwin:search_game_player' %}" class="add-link btn-primary">プレイヤーを探す</a></div>
-</div>
 {% else %}
-<p>プレイヤーが登録されていません</p>
+<p class="no-player-message">プレイヤーが登録されていません</p>
 {% endif %}
+<div class="search-link-area"><a href="{% url 'overwin:search_game_player' %}" class="add-link btn-primary">プレイヤーを探す</a></div>
+</div>
 {% endblock %}

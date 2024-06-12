@@ -1,0 +1,64 @@
+.content{
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.logo-img{
+    width: 150px;
+}
+
+h1{
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.search-area{
+    margin-top: 70px;
+    text-align: left;
+    margin-bottom: 60px;
+}
+
+input[type="search"]{
+    border: none;
+    border-radius: 10px;
+    background-color: white;
+    width: 250px;
+    padding: 10px;
+    padding-left: 12px;
+    box-sizing: border-box;
+    font-size: medium;
+    color: #4c4c4c;
+}
+
+#search-btn{
+    margin-left: 15px;
+    padding: 5px 20px;
+    font-size: medium;
+    box-sizing: border-box;
+    color: white;
+}
+
+li{
+    margin-bottom: 10px;
+}
+
+.player-list{
+    display: grid;
+    gap: 1em;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.player-name-link{
+    color: #2e8acb;
+}
+
+#fav-btn{
+    margin-top: 50px;
+    padding: 8px 40px;
+    font-size: medium;
+    color: white;
+}
+
+.fav-btn-area{
+    text-align: left;
+}

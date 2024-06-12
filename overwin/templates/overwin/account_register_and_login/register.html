@@ -1,0 +1,24 @@
+{% extends 'overwin/base.html'%}
+{% load static %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'overwin/css/account_register_and_login/register.css' %}">
+{% endblock %}
+
+{% block content %}
+<h1>新規アカウント登録</h1>
+<div class="register-container">
+    <form method="POST">
+        {% csrf_token %}
+        <!-- フォーム内の2つのフィールド間の関係に問題がある場合などにエラーメッセージを表示 -->
+        {{ form.non_field_errors }}
+        {% for field in form %}
+            {{ field.label_tag }}
+            {{ field }}
+            {{ field.errors }}
+        {% endfor %}
+        <button type="submit" class="btn-primary">アカウントを登録する</button>
+        <a class="login-link" href="{% url 'overwin:login' %}">すでにアカウントを持っている方はこちら</a>
+    </form>
+</div>
+{% endblock %}
