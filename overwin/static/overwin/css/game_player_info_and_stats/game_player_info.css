@@ -38,7 +38,7 @@
 
 .player-name {
     color: white;
-    font-size: 4vw;
+    font-size: 3vw;
     font-style: italic;
     margin-bottom: 0;
 }
@@ -106,4 +106,8 @@
 .table td{
     border-bottom: 1px solid #E0612B;
     padding: 40px 20px 0px 20px;
+}
+
+.win-rate-num-and-chart-area{
+    text-align: left;
 }
