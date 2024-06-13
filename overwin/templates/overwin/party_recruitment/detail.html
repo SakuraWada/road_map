@@ -86,12 +86,12 @@
         <h4>コメント</h4>
         <p>{{ recruitment.comment }}</p>
     </div>
-{% endif %}
-{% if not applicated_to_recruiting and possible_to_entry %}
+    {% if not applicated_to_recruiting and possible_to_entry %}
     <form method="post">
         {% csrf_token %}
         <div class="submit-btn-area"><button type="submit" name="join" class="btn entry-btn btn-primary">参加申請</button></div>
     </form>
+    {% endif %}
 {% endif %}
 <div class="list-link-area"><a href="{% url 'overwin:party_recruitment_list'%}" class="list-link">募集一覧に戻る</a></div>
 </div>
