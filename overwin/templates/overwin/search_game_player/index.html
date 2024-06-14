@@ -19,8 +19,8 @@
         <ul class="player-list">
         {% for player in object_list %}
             <li class="player-name">
-                <input type="checkbox" class="favorite_player" data-game-player-name="{{ player.game_player.battle_tag }}" {% if player.is_favorite %}checked{% endif %}>
-                <a class="player-name-link" href="{% url 'overwin:game_player_info' %}?battle_tag={{ player.game_player.battle_tag|urlencode }}">{{ player.name }}</a>
+                <input type="checkbox" class="favorite_player" data-game-player-name="{{ player.name }}" {% if player.is_favorite %}checked{% endif %}>
+                <a class="player-name-link" href="{% url 'overwin:game_player_info' %}?battle_tag={{ player.name|urlencode }}">{{ player.name }}</a>
             </li>
         {% endfor %}
         </ul>

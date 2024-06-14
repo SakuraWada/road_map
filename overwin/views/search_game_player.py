@@ -2,7 +2,6 @@ from django.views import generic
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from django.views.decorators.csrf import ensure_csrf_cookie
 from ..models import GamePlayer, FavoriteGamePlayer
 from ..utils import fetch_data_from_api
 
@@ -29,6 +28,8 @@ class GamePlayerSearchView(generic.ListView):
                     'title'      : player['title']      ,
                     'career_url' : player['career_url'] ,
                     'blizzard_id': player['blizzard_id'],
+                    # TODO: モデルのpropertyで定義
+                    'is_favorite': FavoriteGamePlayer.objects.filter(user=self.request.user, game_player__battle_tag=player['name']).exists(),
                 }
                 for player in json_data['results']
             ]
