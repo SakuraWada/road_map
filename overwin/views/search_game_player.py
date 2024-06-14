@@ -48,9 +48,6 @@ class GamePlayerSearchView(generic.ListView):
         game_player, created = GamePlayer.objects.get_or_create(battle_tag=game_player_name)
 
         ## FavoriteGamePlayerモデルに登録
-        add_game_player_name = GamePlayer.objects.get(battle_tag=game_player_name)
-        game_player, created = FavoriteGamePlayer.objects.get_or_create(user=request.user, game_player=add_game_player_name)
-
         if is_favorite:
             FavoriteGamePlayer.objects.get_or_create(user=request.user, game_player=game_player)
         else:
