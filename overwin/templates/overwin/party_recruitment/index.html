@@ -1,0 +1,67 @@
+{% extends 'overwin/base.html'%}
+{% load static %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'overwin/css/party_recruitment/index.css'%}">
+{% endblock %}
+
+{% block content %}
+<div class="content">
+
+<div class="title-and-link-area">
+    <h2 class="title">自分の募集</h2>
+    <a class="create-link btn-secondary" href="{% url 'overwin:party_recruitment_create'%}">募集の新規作成</a>
+</div>
+
+<div class="card-container">
+    {% for recruitment in user_recruitment %}
+    <div class="card">
+        <a href="{%url 'overwin:party_recruitment_detail' recruitment.id %}">
+        <div class="card-content">
+            <h3 class="recruiter">募集者：{{ recruitment.owner.username }}</h3>
+            <div class="details">
+                <div class="member-num">
+                    <h4 class="participants">参加人数: {{ recruitment.current_member_count }}</h4>
+                    <h4 class="max-recruit-member">募集人数: {{ recruitment.max_recruit_member }}</h4>
+                </div>
+                {% if recruitment.comment %}
+                <p class="comment"> {{ recruitment.comment }}</p>
+                {% else %}
+                <p class="comment"> - </p>
+                {% endif %}
+            </div>
+        </div>
+        </a>
+    </div>
+
+    {% empty %}
+    <p class="no-recruitment-message">募集を作成していません</p>
+    {% endfor %}
+</div>
+
+<h2 class="title recruitment-list">募集一覧</h2>
+<div class="card-container">
+    {% for recruitment in other_recruitments %}
+    <div class="card">
+        <a href="{%url 'overwin:party_recruitment_detail' recruitment.id %}">
+        <div class="card-content">
+            <h3 class="recruiter">募集者：{{ recruitment.owner.username }}</h3>
+            <div class="details">
+                <div class="member-num">
+                    <h4 class="participants">参加人数: {{ recruitment.current_member_count }}</h4>
+                    <h4 class="max-recruit-member">募集人数: {{ recruitment.max_recruit_member }}</h4>
+                </div>
+                {% if recruitment.comment %}
+                <p class="comment"> {{ recruitment.comment }}</p>
+                {% else %}
+                <p class="comment"> - </p>
+                {% endif %}
+            </div>
+        </div>
+        </a>
+    </div>
+    {% empty %}
+    <p class="no-recruitment-message">募集が作成されていません</p>
+    {% endfor %}
+</div>
+{% endblock %}
