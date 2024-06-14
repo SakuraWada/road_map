@@ -13,9 +13,12 @@
 </head>
 
 <body>
-    <div class="logo-area">
-        <img class="logo-img" src="{% static 'overwin/img/logo.png' %}" alt="ロゴ">
+    <div class="logo-container">
+        <a class="logo-area" href="{% url 'overwin:mypage' %}">
+            <img class="logo-img" src="{% static 'overwin/img/logo.png' %}" alt="ロゴ">
+        </a>
     </div>
+
 {% block content %}
 {% endblock %}
 {% block page_js %}
