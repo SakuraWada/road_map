@@ -13,23 +13,23 @@ urlpatterns = [
     #mypage関連
     path('mypage/',               MyPageView.as_view(),               name='mypage'),
     #accountのログイン、登録関連
-    path('account_register/',     AccountRegisterView.as_view(),      name='account_register'),
+    path('account-register/',     AccountRegisterView.as_view(),      name='account_register'),
     path('',                      LoginView.as_view(),                name='login'),
     path('logout/',               LogoutView.as_view(),               name='logout'),
     #個人戦績
-    path('game_player_info/',     GamePlayerInfoView.as_view(),       name='game_player_info'),
+    path('game-player-info/',     GamePlayerInfoView.as_view(),       name='game_player_info'),
     #プレイヤー検索
-    path('search_game_player/',   GamePlayerSearchView.as_view(),     name='search_game_player'),
+    path('search-game-player/',   GamePlayerSearchView.as_view(),     name='search_game_player'),
     #お気に入りプレイヤー表示
-    path('favorite_game_player/', FavoritePlayerView.as_view(),       name='favorite_game_player'),
+    path('favorite-game-player/', FavoritePlayerView.as_view(),       name='favorite_game_player'),
     #アカウント情報関連
-    path('account_info/',         AccountInfoView.as_view(),                  name='account_info'),
-    path('account_info/update/',  UpdateAccountInfoView.as_view(),                name='account_info_update'),
-    path('account_delete',        DeleteAccountInfoView.as_view(),                     name='account_delete'),
+    path('account-info/',         AccountInfoView.as_view(),                  name='account_info'),
+    path('account-info/update/',  UpdateAccountInfoView.as_view(),                name='account_info_update'),
+    path('account-delete',        DeleteAccountInfoView.as_view(),                     name='account_delete'),
     #パーティー募集
-    path('party_recruitment_list',            RecruitmentListView.as_view(),        name='party_recruitment_list'),
-    path('party_recruitment_create',          PartyRecruitmentCreateView.as_view(), name='party_recruitment_create'),
-    path('party_recruitment_delete/<int:pk>', PartyRecruitmentDeleteView.as_view(), name='party_recruitment_delete'),
-    path('party_recruitment_detail/<int:pk>', PartyRecruitmentDetailView.as_view(), name='party_recruitment_detail'),
-    path('party_recruitment_update/<int:pk>', PartyRecruitmentUpdateView.as_view(), name='party_recruitment_update'),
+    path('party-recruitment-list',            RecruitmentListView.as_view(),        name='party_recruitment_list'),
+    path('party-recruitment-create',          PartyRecruitmentCreateView.as_view(), name='party_recruitment_create'),
+    path('party-recruitment-delete/<int:pk>', PartyRecruitmentDeleteView.as_view(), name='party_recruitment_delete'),
+    path('party-recruitment-detail/<int:pk>', PartyRecruitmentDetailView.as_view(), name='party_recruitment_detail'),
+    path('party-recruitment-update/<int:pk>', PartyRecruitmentUpdateView.as_view(), name='party_recruitment_update'),
 ]

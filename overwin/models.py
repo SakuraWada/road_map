@@ -35,7 +35,7 @@ class Recruitment(models.Model):
     tank_role_num        = models.IntegerField(default=0)
     damage_role_num      = models.IntegerField(default=0)
     support_role_num     = models.IntegerField(default=0)
-    comment              = models.TextField(max_length=255, blank=True, null=True,verbose_name='備考欄')
+    comment              = models.TextField(max_length=64, blank=True, null=True,verbose_name='コメント')
 
     @property
     def possible_to_entry(self):
