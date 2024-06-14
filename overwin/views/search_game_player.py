@@ -42,21 +42,19 @@ class GamePlayerSearchView(generic.ListView):
     def post(self, request, *args, **kwargs):
         ## （例）player#1234"
         game_player_name = request.POST.get('game_player_name')
+        is_favorite = request.POST.get('is_favorite') == 'true'
 
-        ##GamePlayerモデルに登録されていないプレイヤーの場合モデルに登録
-        if not GamePlayer.objects.filter(battle_tag=game_player_name).exists():
-            game_player = GamePlayer(battle_tag=game_player_name)
-            game_player.save()
+        ## GamePlayerモデルに登録されていないプレイヤーの場合モデルに登録
+        game_player, created = GamePlayer.objects.get_or_create(battle_tag=game_player_name)
 
-        ##FavoriteGamePlayerモデルに登録
+        ## FavoriteGamePlayerモデルに登録
         add_game_player_name = GamePlayer.objects.get(battle_tag=game_player_name)
-        favorite, created = FavoriteGamePlayer.objects.get_or_create(user=request.user, game_player=add_game_player_name)
+        game_player, created = FavoriteGamePlayer.objects.get_or_create(user=request.user, game_player=add_game_player_name)
 
-        if created:
-            is_favorite = True
+        if is_favorite:
+            FavoriteGamePlayer.objects.get_or_create(user=request.user, game_player=game_player)
         else:
-            favorite.delete()
-            is_favorite = False
+            FavoriteGamePlayer.objects.filter(user=request.user, game_player=game_player).delete()
 
-        return JsonResponse({'is_favorite': is_favorite})
+        return JsonResponse({'status': 'success'})
 

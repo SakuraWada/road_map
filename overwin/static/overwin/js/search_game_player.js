@@ -1,13 +1,14 @@
 $(document).ready(function() {
     $('.favorite_player').change(function() {
-        var  game_player_name= $(this).data('game-player-name');
-        var isFavorite = $(this).is(':checked');
+        let game_player_name = $(this).data('game-player-name');
+        let isFavorite = $(this).is(':checked');
 
         $.ajax({
             url: '/search-game-player/',
             method: 'POST',
             data: {
                 'game_player_name': game_player_name,
+                'is_favorite': isFavorite,
                 'csrfmiddlewaretoken': getCookie('csrftoken')
             },
             success: function(response) {
@@ -21,11 +22,11 @@ $(document).ready(function() {
     });
 
 function getCookie(name) {
-    var cookieValue = null;
+    let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i].trim();
+        let cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            let cookie = cookies[i].trim();
             if (cookie.substring(0, name.length + 1) === (name + '=')) {
                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                 break;
