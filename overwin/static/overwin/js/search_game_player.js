@@ -1,7 +1,6 @@
 $(document).ready(function() {
     $('.favorite_player').change(function() {
         let game_player_name = $(this).data('game-player-name');
-        console.log(game_player_name)
         let isFavorite = $(this).is(':checked');
 
         $.ajax({

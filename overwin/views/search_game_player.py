@@ -19,21 +19,19 @@ class GamePlayerSearchView(generic.ListView):
             params    = {'name':search_query, 'limit': 200}
             json_data = fetch_data_from_api("players", params)
 
-            #データのフィルタリング
-            game_player_list = [
-                {
-                    'player_id'  : player['player_id']  , #（例）player-1234
-                    'name'       : player['name']       , #（例）player#1234
-                    'namecard'   : player['namecard']   ,
-                    'title'      : player['title']      ,
-                    'career_url' : player['career_url'] ,
-                    'blizzard_id': player['blizzard_id'],
-                    # TODO: モデルのpropertyで定義
-                    'is_favorite': FavoriteGamePlayer.objects.filter(user=self.request.user, game_player__battle_tag=player['name']).exists(),
+            game_player_list = []
+            for player in json_data['results']:
+                game_player, _ = GamePlayer.objects.get_or_create(battle_tag=player['name'])
+                game_player_data = {
+                        'player_id'  : player['player_id']  , #（例）player-1234
+                        'name'       : player['name']       , #（例）player#1234
+                        'namecard'   : player['namecard']   ,
+                        'title'      : player['title']      ,
+                        'career_url' : player['career_url'] ,
+                        'blizzard_id': player['blizzard_id'],
+                        'is_favorite': game_player.is_favorite(self.request.user),
                 }
-                for player in json_data['results']
-            ]
-
+                game_player_list.append(game_player_data)
         else:
             game_player_list = []
 
@@ -48,7 +46,6 @@ class GamePlayerSearchView(generic.ListView):
         ## GamePlayerモデルに登録されていないプレイヤーの場合モデルに登録
         game_player, created = GamePlayer.objects.get_or_create(battle_tag=game_player_name)
 
-        ## FavoriteGamePlayerモデルに登録
         if is_favorite:
             FavoriteGamePlayer.objects.get_or_create(user=request.user, game_player=game_player)
         else:
