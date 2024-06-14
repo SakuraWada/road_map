@@ -1,0 +1,21 @@
+{% extends 'overwin/base.html'%}
+{% load static %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'overwin/css/party_recruitment/create.css'%}">
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h1>募集新規作成</h1>
+    <form method="post">
+        <div class="field-area">
+        {% csrf_token %}
+        {{ form.as_p }}
+        </div>
+        <div class="action-button-area">
+            <button type="submit" class="btn-primary">作成</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

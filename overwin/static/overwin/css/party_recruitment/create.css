@@ -1,0 +1,60 @@
+a{
+    text-decoration: none;
+}
+
+.logo-img{
+    width: 150px;
+}
+
+.content{
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 50px;
+    text-align: left;
+}
+
+.field-area{
+    margin-bottom: 20px;
+    vertical-align: top;
+}
+
+.field-area label{
+    font-weight: bold;
+    font-size: large;
+    margin-right: 15px;
+    vertical-align: top;
+}
+
+.field-area textarea{
+    border-style: none;
+    border-radius: 5px;
+    width: 400px;
+    height: 50px;
+    padding: 10px 15px;
+    resize: none;
+}
+
+.field-area input{
+    border-style: none;
+    border-radius: 5px;
+}
+
+.field-area input[type=number]{
+    width: 50px;
+    height: 30px;
+    padding-left: 15px;
+}
+
+.action-button-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.btn-primary{
+    width: 200px;
+    height: 40px;
+    font-weight: 400;
+    font-size: large;
+}
