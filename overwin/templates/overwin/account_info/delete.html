@@ -1,4 +1,9 @@
 {% extends 'overwin/base.html'%}
+{% load static %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'overwin/css/account_info/delete.css'%}">
+{% endblock %}
 
 {% block content %}
 <div class="h1">アカウント情報</div>

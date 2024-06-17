@@ -1,0 +1,28 @@
+.logo{
+    width: 120px;
+}
+
+.logo-area{
+    width: 50px;
+}
+
+.content{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.h1{
+    text-align: left;
+}
+
+.btn-primary{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 40px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
