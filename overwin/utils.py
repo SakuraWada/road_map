@@ -45,3 +45,16 @@ def seconds_to_hour_and_minutes(seconds):
     minutes = math.floor((seconds % 3600) / 60)
     return f"{hours:02d}:{minutes:02d}"
 
+def convert_text(text):
+    converted_text = ""
+    for char in text:
+        if 0x30A0 <= ord(char) <= 0x30FF:
+            # カタカナをひらがなに変換
+            converted_text += chr(ord(char) - 0x60)
+        elif 0x41 <= ord(char) <= 0x5A:
+            # アルファベットの大文字を小文字に変換
+            converted_text += chr(ord(char) + 0x20)
+        else:
+            converted_text += char
+    return converted_text
+

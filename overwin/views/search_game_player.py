@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from ..models import GamePlayer, FavoriteGamePlayer
-from ..utils import fetch_data_from_api
+from ..utils import fetch_data_from_api, convert_text
 
 @method_decorator(login_required, name="dispatch")
 class GamePlayerSearchView(generic.ListView):
@@ -12,28 +12,33 @@ class GamePlayerSearchView(generic.ListView):
     def get_queryset(self):
         query = self.request.GET.get('query')
 
-        if query:
-            search_query = query.replace('#','-')
+        if not query:
+            return []
 
-            #apiからデータを取得
-            params    = {'name':search_query, 'limit': 200}
-            json_data = fetch_data_from_api("players", params)
+        #apiからデータを取得
+        params    = {'name':query, 'limit': 200}
+        json_data = fetch_data_from_api("players", params)
 
-            game_player_list = []
-            for player in json_data['results']:
-                game_player, _ = GamePlayer.objects.get_or_create(battle_tag=player['name'])
-                game_player_data = {
-                        'player_id'  : player['player_id']  , #（例）player-1234
-                        'name'       : player['name']       , #（例）player#1234
-                        'namecard'   : player['namecard']   ,
-                        'title'      : player['title']      ,
-                        'career_url' : player['career_url'] ,
-                        'blizzard_id': player['blizzard_id'],
-                        'is_favorite': game_player.is_favorite(self.request.user),
-                }
-                game_player_list.append(game_player_data)
-        else:
-            game_player_list = []
+        game_player_list = []
+        for player in json_data['results']:
+            try:
+                game_player = GamePlayer.objects.get(battle_tag=player['name'])
+                is_favorite = game_player.is_favorite(self.request.user)
+            except GamePlayer.DoesNotExist:
+                is_favorite = False
+            if convert_text(query) not in convert_text(player["name"]):
+                continue
+            game_player_data = {
+                    'player_id'  : player['player_id']  , #（例）player-1234
+                    'name'       : player['name']       , #（例）player#1234
+                    'namecard'   : player['namecard']   ,
+                    'title'      : player['title']      ,
+                    'career_url' : player['career_url'] ,
+                    'blizzard_id': player['blizzard_id'],
+                    'is_favorite': is_favorite,
+            }
+            game_player_list.append(game_player_data)
+
 
         return game_player_list
 
