@@ -1,28 +1,31 @@
-.logo{
-    width: 120px;
-}
-
-.logo-area{
-    width: 50px;
+.logo-img{
+    width: 150px;
 }
 
 .content{
-    margin-top: 50px;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 50px;
     text-align: center;
 }
 
-.h1{
-    text-align: left;
+.error-message{
+    margin-top: 50px;
+    font-weight: bold;
+    font-size: large;
 }
 
 .btn-primary{
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80px;
-    height: 40px;
     margin-top: 30px;
-    margin-bottom: 20px;
-    cursor: pointer;
+    width: 200px;
+    height: 40px;
+    font-weight: 400;
+    font-size: large;
+}
+
+.back-link-area{
+    margin: 0 auto;
+    text-decoration: none;
+    margin-top: 20px;
 }

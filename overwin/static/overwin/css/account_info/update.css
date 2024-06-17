@@ -7,8 +7,9 @@
 }
 
 .content{
+    margin: 0 auto;
     margin-top: 50px;
-    text-align: center;
+    max-width: 600px;
 }
 
 .h1{
@@ -60,4 +61,8 @@ table td:last-child {
     margin-top: 30px;
     margin-bottom: 20px;
     cursor: pointer;
+}
+
+.back-link-area{
+    text-align: center;
 }
