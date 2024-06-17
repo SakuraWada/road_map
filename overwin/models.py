@@ -8,6 +8,9 @@ class GamePlayer(models.Model):
     def __str__(self):
         return self.battle_tag
 
+    def is_favorite(self, user):
+        return FavoriteGamePlayer.objects.filter(user=user, game_player=self).exists()
+
 
 class User(AbstractUser):
     pass

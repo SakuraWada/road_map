@@ -7,26 +7,25 @@
 
 {% block content %}
 <div class="content">
-<div class="page-title"><h1>プレイヤー検索</h1></div>
-<form method="get">
-    <div class="search-area">
-        <input name="query" value="{{ request.GET.query }}" type="search" />
-        <button class="btn-primary" id="search-btn" type="submit">検索</button>
-    </div>
-</form>
-<form method="post">
-    {% csrf_token %}
+    <div class="page-title"><h1>プレイヤー検索</h1></div>
+    <form method="get">
+        <div class="search-area">
+            <input name="query" value="{{ request.GET.query }}" type="search" />
+            <button class="btn-primary" id="search-btn" type="submit">検索</button>
+        </div>
+    </form>
+    <!-- {% csrf_token %} -->
     <div class="player-list-area">
         <ul class="player-list">
         {% for player in object_list %}
             <li class="player-name">
-                <input type="checkbox" name="favorite_player" value="{{ player.name }}">
+                <input type="checkbox" class="favorite_player" data-game-player-name="{{ player.name }}" {% if player.is_favorite %}checked{% endif %}>
                 <a class="player-name-link" href="{% url 'overwin:game_player_info' %}?battle_tag={{ player.name|urlencode }}">{{ player.name }}</a>
             </li>
         {% endfor %}
         </ul>
     </div>
-    <div class="fav-btn-area"><button class="btn-primary" id="fav-btn" type="submit">お気に入りに追加</button></div>
-</form>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'overwin/js/search_game_player.js'%}"></script>
 {% endblock %}
