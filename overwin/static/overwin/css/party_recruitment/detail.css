@@ -2,6 +2,10 @@ a{
     text-decoration: none;
 }
 
+li{
+    list-style: disc;
+}
+
 .logo-img{
     width: 150px;
 }

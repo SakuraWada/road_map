@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block page_css %}
-<link rel="stylesheet" href="{% static 'overwin/css/update.css'%}">
+<link rel="stylesheet" href="{% static 'overwin/css/account_info/update.css'%}">
 {% endblock %}
 
 {% block content %}
@@ -21,8 +21,12 @@
             {% endfor %}
         </tbody>
     </table>
-    <div><button type="submit" class="btn btn-primary" >更新</button></div>
-    <div><a href="{% url 'overwin:account_info'%}" class="btn btn-secondary">アカウント情報に戻る</a></div>
+    <div>
+        <button type="submit" class="btn btn-primary" >更新</button>
+    </div>
+    <div class="back-link-area">
+        <a href="{% url 'overwin:account_info'%}" class="btn back-link btn-secondary">アカウント情報に戻る</a>
+    </div>
 </div>
 {% endblock %}
 

@@ -1,10 +1,16 @@
 {% extends 'overwin/base.html'%}
+{% load static %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'overwin/css/account_info/delete.css'%}">
+{% endblock %}
 
 {% block content %}
-<div class="h1">アカウント情報</div>
+<h1>アカウント情報</h1>
     <form method="POST">
         {% csrf_token %}
         <p>アカウントを削除しますか？</p>
-        <button type="submit" class="btn btn-success" >削除</button>
+        <div class="btn-area"><button type="submit" class="btn btn-primary btn-success" >削除</button></div>
+        <div class="back-link-area"><a href="{% url 'overwin:account_info' %}" class="btn btn-secondary back-link">アカウント情報に戻る</a></div>
     </form>
 {% endblock %}

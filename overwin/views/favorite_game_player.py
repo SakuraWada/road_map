@@ -8,7 +8,9 @@ from django.shortcuts import redirect
 class FavoritePlayerView(generic.ListView):
     template_name = "overwin/favorite_game_player/index.html"
     model = FavoriteGamePlayer
-    query_set = FavoriteGamePlayer.objects.all()
+
+    def get_queryset(self):
+        return FavoriteGamePlayer.objects.filter(user=self.request.user)
 
     def post(self, request, *args, **kwargs):
         favorite_id = request.POST.get('favorite_id')
