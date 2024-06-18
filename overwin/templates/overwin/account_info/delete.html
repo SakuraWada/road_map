@@ -11,6 +11,6 @@
         {% csrf_token %}
         <p>アカウントを削除しますか？</p>
         <div class="btn-area"><button type="submit" class="btn btn-primary btn-success" >削除</button></div>
-        <div class="back-link-area"><a href="{% url 'overwin:account_info_update' %}" class="btn btn-secondary back-link">アカウント編集に戻る</a></div>
+        <div class="back-link-area"><a href="{% url 'overwin:account_info' %}" class="btn btn-secondary back-link">アカウント情報に戻る</a></div>
     </form>
 {% endblock %}
