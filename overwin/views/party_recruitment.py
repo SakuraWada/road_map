@@ -43,7 +43,7 @@ class PartyRecruitmentDetailView(generic.DetailView):
             joined_members = JoinMember.objects.filter(recruitment=recruitment, is_approved=True)
             applicant_members = JoinMember.objects.filter(recruitment=recruitment, is_approved=False)
         else:
-            joined_members = None
+            joined_members = JoinMember.objects.filter(recruitment=recruitment, is_approved=True)
             applicant_members = None
             try:
                 joined_member = JoinMember.objects.get(recruitment=recruitment, join_member=request.user, is_approved=True)
