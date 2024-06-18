@@ -27,9 +27,9 @@ urlpatterns = [
     path('account-info/update/',  UpdateAccountInfoView.as_view(),                name='account_info_update'),
     path('account-info/delete/',        DeleteAccountInfoView.as_view(),                     name='account_delete'),
     #パーティー募集
-    path('party-recruitment-list',            RecruitmentListView.as_view(),        name='party_recruitment_list'),
-    path('party-recruitment-create',          PartyRecruitmentCreateView.as_view(), name='party_recruitment_create'),
-    path('party-recruitment-delete/<int:pk>', PartyRecruitmentDeleteView.as_view(), name='party_recruitment_delete'),
-    path('party-recruitment-detail/<int:pk>', PartyRecruitmentDetailView.as_view(), name='party_recruitment_detail'),
-    path('party-recruitment-update/<int:pk>', PartyRecruitmentUpdateView.as_view(), name='party_recruitment_update'),
+    path('party-recruitment-list/',            RecruitmentListView.as_view(),        name='party_recruitment_list'),
+    path('party-recruitment-create/',          PartyRecruitmentCreateView.as_view(), name='party_recruitment_create'),
+    path('party-recruitment-delete/<int:pk>/', PartyRecruitmentDeleteView.as_view(), name='party_recruitment_delete'),
+    path('party-recruitment-detail/<int:pk>/', PartyRecruitmentDetailView.as_view(), name='party_recruitment_detail'),
+    path('party-recruitment-update/<int:pk>/', PartyRecruitmentUpdateView.as_view(), name='party_recruitment_update'),
 ]
