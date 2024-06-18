@@ -69,20 +69,6 @@ class PartyRecruitmentDetailView(generic.DetailView):
         form = RecruitmentForm(instance=recruitment)
 
         # 募集者側の操作
-        ## 募集の更新
-        if 'recruitment_update' in request.POST:
-            if form.is_valid():
-                form.save()
-                return redirect('overwin:party_recruitment_detail', pk=pk)
-            else:
-                context = {
-                    'recruitment': recruitment,
-                    'is_owner': is_owner,
-                    'form': form,
-                    'error_message': 'フォームが無効です。',
-                }
-                return render(request, 'overwin/party_recruitment/detail.html', context)
-
         ## 参加申請の許可
         if 'approve_member' in request.POST:
             #NOTE: 許可ボタンが押された時に、そのユーザーのIDを取得
