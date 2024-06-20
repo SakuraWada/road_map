@@ -26,34 +26,46 @@
         <div class="role-container">
             <img class="role-icon" src="{% static 'overwin/img/tank-icon.svg' %}" alt="tank_cs_role_icon">
             <div class="role-right-container">
+                {% if player_info.tank_rank_cs %}
                 <div>
                     <img class="rank-icon" src="{{ player_info.tank_rank_cs.rank_icon }}" alt="tank_cs_rank_icon">
                 </div>
                 <div>
                     <img class="tier-icon" src="{{ player_info.tank_rank_cs.tier_icon }}" alt="tank_cs_tier_icon">
                 </div>
+                {% else %}
+                <p class="not-certified-message">未認定</p>
+                {% endif %}
             </div>
         </div>
         <div class="role-container">
             <img class="role-icon" src="{% static 'overwin/img/damage-icon.svg' %}" alt="damage_cs_role_icon" >
             <div class="role-right-container">
+                {% if player_info.damage_rank_cs %}
                 <div>
                     <img class="rank-icon" src="{{ player_info.damage_rank_cs.rank_icon }}" alt="damage_cs_rank_icon">
                 </div>
                 <div>
                     <img class="tier-icon" src="{{ player_info.damage_rank_cs.tier_icon }}" alt="damage_cs_tier_icon">
                 </div>
+                {% else %}
+                <p class="not-certified-message">未認定</p>
+                {% endif %}
             </div>
         </div>
         <div class="role-container">
             <img class="role-icon" src="{% static 'overwin/img/support-icon.svg' %}" alt="support_cs_role-icon" >
             <div class="role-right-container">
+                {% if player_info.support_rank_cs %}
                 <div>
                     <img class="rank-icon" src="{{ player_info.support_rank_cs.rank_icon }}" alt="support_cs_rank-icon">
                 </div>
                 <div>
                     <img class="tier-icon" src="{{ player_info.support_rank_cs.tier_icon }}" alt="support_cs_tier-icon">
                 </div>
+                {% else %}
+                <p class="not-certified-message">未認定</p>
+                {% endif %}
             </div>
         </div>
     </div>
