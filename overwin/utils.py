@@ -27,17 +27,22 @@ def fetch_data_from_api(continuation_api_url,params=None):
     return json_data
 
 
+def format_num(float_num, digits_after_point):
+    format_str = "{:." + str(digits_after_point) + "f}"
+    return format_str.format(float_num)
+
 def rate_calculation(divisor,dividend,digits_after_point=None):
     try:
         if digits_after_point:
-            divided_num = round((divisor / dividend),digits_after_point)
+            divided_str = format_num((divisor / dividend),digits_after_point)
         else:
-            divided_num = round((divisor / dividend),digits_after_point)
+            divided_str = divisor / dividend
 
     except ZeroDivisionError:
-        divided_num = "-"
+        divided_str = "-"
 
-    return divided_num
+    return divided_str
+
 
 
 def seconds_to_hour_and_minutes(seconds):

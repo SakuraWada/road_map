@@ -1,6 +1,6 @@
 from django.views import generic
 from ..models import GamePlayer
-from ..utils import fetch_data_from_api, rate_calculation, seconds_to_hour_and_minutes
+from ..utils import fetch_data_from_api, rate_calculation, seconds_to_hour_and_minutes, format_num
 
 class GamePlayerInfoView(generic.TemplateView):
     template_name = 'overwin/game_player_info_and_stats/game_player_info.html'
@@ -47,7 +47,7 @@ class GamePlayerInfoView(generic.TemplateView):
 
             for hero_name, hero_stats in heroes_stats_summary_dict.items():
                 time_played = seconds_to_hour_and_minutes(hero_stats["time_played"])
-                win_rate = hero_stats["winrate"]
+                win_rate = format_num(hero_stats["winrate"],2)
 
                 kill_count = hero_stats["average"].get("eliminations", 0)
                 death_count = hero_stats["average"].get("deaths", 0)
