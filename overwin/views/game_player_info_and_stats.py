@@ -29,7 +29,6 @@ class GamePlayerInfoView(generic.TemplateView):
         # todo: 200じゃなかったときの処理
         # if response.status_code != 200:
         #     pass
-
         return player_info
 
     def fetch_player_hero_info_by_battle_tag(self):

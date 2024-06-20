@@ -75,12 +75,17 @@
 
 .role-right-container{
     width: 50%;
-    padding-left: 5px;
+    padding-left: 16px;
 }
 
 .rank-icon,
 .tier-icon {
     width: 75%;
+}
+
+.not-certified-message{
+    padding-top: 8px;
+    font-size: large;
 }
 
 .container{
